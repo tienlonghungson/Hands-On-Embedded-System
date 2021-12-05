@@ -1,0 +1,186 @@
+module DK3200_1
+LCD_d7 PIN 21;  "Reserved for Peripheral I/O mode
+LCD_d6 PIN 22;  "Reserved for Peripheral I/O mode
+LCD_d5 PIN 24;  "Reserved for Peripheral I/O mode
+LCD_d4 PIN 26;  "Reserved for Peripheral I/O mode
+LCD_d3 PIN 28;  "Reserved for Peripheral I/O mode
+LCD_d2 PIN 32;  "Reserved for Peripheral I/O mode
+LCD_d1 PIN 34;  "Reserved for Peripheral I/O mode
+LCD_d0 PIN 35;  "Reserved for Peripheral I/O mode
+LCD_e PIN 66;
+LCD_rw PIN 67;
+LCD_rs PIN 72;
+term_count PIN 73;
+a15_x PIN 74;
+a14_x PIN 76;
+a13_x PIN 78;
+a12_x PIN 80;
+tdo PIN 6; "TDO
+tdi PIN 7; "TDI
+_terr PIN 9; "/TERR
+tstat PIN 14; "TSTAT
+vstby PIN 15; "SRAM standby voltage input
+tck PIN 16; "TCK
+tms PIN 20;  "TMS
+ale PIN 4; "ALE output
+PWM4 PIN 18; "GP I/O
+PWM0 PIN 27; "PWM0 Output
+USART1_Txd PIN 77; "UART1 TxD
+USART1_Rxd PIN 75; "UART1 RxD
+ADC_Ch0 PIN 59; "ADC channel0 input
+a11 PIN 57; "Address line
+a10 PIN 55; "Address line
+a9 PIN 53; "Address line
+a8 PIN 51; "Address line
+a7 PIN 47;  "Data/address bus line
+a6 PIN 45;  "Data/address bus line
+a5 PIN 43;  "Data/address bus line
+a4 PIN 41;  "Data/address bus line
+a3 PIN 39;  "Data/address bus line
+a2 PIN 38;  "Data/address bus line
+a1 PIN 37;  "Data/address bus line
+a0 PIN 36;  "Data/address bus line
+Reset_In PIN 68;
+VREF PIN 70; "VREF input
+_wr PIN 65;
+_psen PIN 63;
+_rd PIN 62;
+USB_minus PIN 8; "USB- bus
+USB_plus PIN 10; "USB+ bus
+Xtal1 PIN 48; "Xtal1
+Xtal2 PIN 49; "Xtal2
+psel0 node;
+rs0 node;
+csiop node;
+fs0 node;
+fs1 node;
+fs2 node;
+fs3 node;
+fs4 node;
+fs5 node;
+fs6 node;
+fs7 node;
+csboot0 node;
+csboot1 node;
+csboot2 node;
+csboot3 node;
+_reset node 543;
+a12 node 512;
+a13 node 513;
+a14 node 514;
+a15 node 515;
+pgr2..pgr0 node;
+down_count0 NODE istype 'reg_D';
+down_count1 NODE istype 'reg_D';
+down_count2 NODE istype 'reg_D';
+down_count3 NODE istype 'reg_D';
+init_count0 NODE istype 'reg_D';
+init_count1 NODE istype 'reg_D';
+init_count2 NODE istype 'reg_D';
+init_count3 NODE istype 'reg_D';
+jtagsel node;
+
+X = .x.;
+address = [a15..a0];
+page = [pgr2..pgr0];
+Vcc = 1;
+Gnd = 0;
+
+
+
+
+// Begin user preserved declarations (not affected by iterations of DA usage) ===================
+
+WSIPSD PROPERTY 'DataBus_OMC D[7:4]:down_count[3:0] MCELLAB'; // This statement forces the alignment 
+                             // of down_count bits [3..0] to the MCU data bus bit positions [7..4]. 
+                             // If this WSIPSD PROPERTY statement was not present, then PSDsoft 
+                             // would pick random MCU bit positions. The WSIPSD PROPERTY is needed 
+                             // only if the MCU will read or write to MicroCells and only if a  
+                             // particular MCU data bus position is required by the designer.
+                                                       
+WSIPSD PROPERTY 'DataBus_OMC D[3:0]:init_count[3:0] MCELLAB'; // This statement forces the alignment  
+                            // of init_count bits [3..0] to the MCU data bus bit positions [3..0]. 
+
+DCOUNT = [down_count3..down_count0];  // 4-bit down counter
+INIT = [init_count3..init_count0];	// 4-bit initial count from MCU
+//INIT = [0,1,0,0];	
+
+
+// End user preserved declarations (not affected by iterations of DA usage) ===================
+
+
+
+equations
+
+
+jtagsel = !_reset;
+rs0 = ((address >= ^h2000) & (address <= ^h3FFF));
+csiop = ((address >= ^h0200) & (address <= ^h02FF));
+fs0 = ((page == 0) & (address >= ^h8000) & (address <= ^hFFFF));
+fs1 = ((page == 1) & (address >= ^h8000) & (address <= ^hFFFF));
+fs2 = ((page == 2) & (address >= ^h8000) & (address <= ^hFFFF));
+fs3 = ((page == 3) & (address >= ^h8000) & (address <= ^hFFFF));
+fs4 = ((page == 4) & (address >= ^h8000) & (address <= ^hFFFF));
+fs5 = ((page == 5) & (address >= ^h8000) & (address <= ^hFFFF));
+fs6 = ((page == 6) & (address >= ^h8000) & (address <= ^hFFFF));
+fs7 = ((page == 7) & (address >= ^h8000) & (address <= ^hFFFF));
+csboot0 = ((address >= ^h0000) & (address <= ^h1FFF));
+csboot1 = ((address >= ^h2000) & (address <= ^h3FFF));
+csboot2 = ((address >= ^h4000) & (address <= ^h5FFF));
+csboot3 = ((address >= ^h6000) & (address <= ^h7FFF));
+psel0 = ((address >= ^h0300) & (address <= ^h03FF) & (_psen));
+LCD_e = ((address >= ^h0300) & (address <= ^h03FF) & (!_rd))
+     # ((address >= ^h0300) & (address <= ^h03FF) & (!_wr));
+LCD_rw = a0;
+LCD_rw.oe = Vcc;
+LCD_rs = a1;
+LCD_rs.oe = Vcc;
+a15_x = a15;
+a15_x.oe = Vcc;
+a14_x = a14;
+a14_x.oe = Vcc;
+a13_x = a13;
+a13_x.oe = Vcc;
+a12_x = a12;
+a12_x.oe = Vcc;
+down_count0.ck = ale;
+down_count0.re = !_reset;
+down_count0.pr = Gnd;
+down_count1.ck = ale;
+down_count1.re = !_reset;
+down_count1.pr = Gnd;
+down_count2.ck = ale;
+down_count2.re = !_reset;
+down_count2.pr = Gnd;
+down_count3.ck = ale;
+down_count3.re = !_reset;
+down_count3.pr = Gnd;
+init_count0.ck = Gnd;
+init_count0.re = !_reset;
+init_count0.pr = Gnd ;
+init_count1.ck = Gnd;
+init_count1.re = !_reset;
+init_count1.pr = Gnd;
+init_count2.ck = Gnd;
+init_count2.re = !_reset;
+init_count2.pr = Gnd;
+init_count3.ck = Gnd;
+init_count3.re = !_reset;
+init_count3.pr = Gnd;
+
+
+
+// Begin user preserved equations (not affected by iterations of DA usage) ===================
+
+term_count = (DCOUNT == 0);  // term_count true when count reaches zero
+
+when term_count then DCOUNT := INIT;  // automatically reload counter with initial  
+                                      // value after a count of zero is reached
+
+else DCOUNT := DCOUNT - 1;           // specify down count action
+
+
+
+// End user preserved equations (not affected by iterations of DA usage) ===================
+
+end DK3200_1

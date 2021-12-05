@@ -1,0 +1,5 @@
+Copyright (c) 2011 ARM Ltd and ARM Germnay GmbH.
+All rights reserved.
+
+This program is a bank switching example that shows how you can
+run (simulate) code executing in several code banks.

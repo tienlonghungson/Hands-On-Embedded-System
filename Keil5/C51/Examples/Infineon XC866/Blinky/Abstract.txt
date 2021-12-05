@@ -1,0 +1,9 @@
+The Blinky project is a simple program for the Infineon XC866
+using the Keil MCB-XC866 Evaluation Board.
+
+It blinks the LEDs prints HELLO to the UART interface.
+
+The Blinky program is available in different targets:
+  Simulator:           runs in software Simulator
+  Target via ULINK:    is configured for debugging with Keil ULINK
+  

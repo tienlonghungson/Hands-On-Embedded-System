@@ -1,0 +1,1081 @@
+{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil Times New Roman;}{\f4\fswiss\fprq2 Arial;}}
+{\colortbl\red0\green0\blue0;\red0\green0\blue128;\red255\green0\blue0;}
+\deflang1031\pard\plain\f4\fs28\cf0 DAvE's Project Documentation
+\par \plain\f4\fs22\cf0
+\par \plain\f4\fs22\cf0 Project: \tab\tab\b DaveTest.dav
+\par 
+\par \plain\f4\fs22\cf0 Controller: \tab\tab\b XC866-4FR
+\par \plain\f4\fs22\cf0 Compiler: \tab\tab\b Keil
+\par 
+\par \plain\f4\fs22\cf0 Date: \tab\tab\tab\b 09.02.2005 00:47:37
+\par 
+\par 
+\par \plain\f4\fs22\cf2\b Please read this document carefully and note
+\par \plain\f4\fs22\cf2\b the red-colored hints.
+\par 
+\par \plain\f4\fs22\cf2\b If you miss a file in the generated files list
+\par \plain\f4\fs22\cf2\b maybe you have forgotten to select the
+\par \plain\f4\fs22\cf2\b initialisation function of the related module.
+\par 
+\par \plain\f4\fs22\cf0 Generated Files:
+\plain\f4\fs20\cf0\b
+\par \tab\tab\tab MAIN.H
+\par \tab\tab\tab MAIN.C
+\par \tab\tab\tab START_XC.A51
+\par \tab\tab\tab IO.H
+\par \tab\tab\tab IO.C
+\par \tab\tab\tab T01.H
+\par \tab\tab\tab T01.C
+\par \tab\tab\tab T2.H
+\par \tab\tab\tab T2.C
+\par \tab\tab\tab CC6.H
+\par \tab\tab\tab CC6.C
+\par \tab\tab\tab DAVETEST.ASM
+\par 
+\par 
+\par \plain\f4\fs20\cf0
+\par \plain\f4\fs28\cf0\ul Project Settings
+\par
+\par \plain\f4\fs24\cf0 Macros:\f4\fs20\cf0
+\par \plain\f4\fs24\cf0 Functions:\f4\fs20\cf0
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void MAIN_vInit(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This function initializes the microcontroller. It is
+
+\par \tab \tab assumed that the SFRs are in their reset state.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void main(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the main function.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs24\cf0 Initialization:
+\par \plain\f4\fs20\cf0\b
+\par
+\tab Configuration of the System Clock:\par 
+\tab - On Chip Osc is Selected\par 
+\tab - PLL Mode, NDIV = 2\par 
+\tab - input frequency is 9.4 MHz\par 
+\par 
+\tab Initialization of module 'GPIO'\par 
+\par 
+\tab Initialization of module 'Timer 0/1'\par 
+\par 
+\tab Initialization of module 'Timer 2'\par 
+\par 
+\tab Initialization of module 'Capture / Compare Unit 6 (CCU6)'\par 
+\par 
+
+\par \plain\f4\fs20\cf0
+\par \plain\f4\fs28\cf0\ul GPIO
+\par
+\par \plain\f4\fs24\cf0 Macros:\f4\fs20\cf0
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab IO_ubReadPin(PinName)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This macro returns the status of the chosen portpin.
+
+\par \tab \tab Note:
+
+\par \tab \tab 'PinName' identifies the pin of a bit-addressable port. The
+
+\par \tab \tab default names can be changed in the port configuration
+
+\par \tab \tab dialog.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b Status of the chosen portpin\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab PinName:
+
+\par \tab \tab Pin to be read
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab IO_vSetPin(PinName)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab The chosen portpin is set to '1'.
+
+\par \tab \tab Note:
+
+\par \tab \tab 'PinName' identifies the pin of a bit-addressable port. The
+
+\par \tab \tab default names can be changed in the port configuration
+
+\par \tab \tab dialog.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab PinName:
+
+\par \tab \tab Pin to be set to '1'
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab IO_vResetPin(PinName)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab The chosen portpin is set to '0'.
+
+\par \tab \tab Note:
+
+\par \tab \tab 'PinName' identifies the pin of a bit-addressable port. The
+
+\par \tab \tab default names can be changed in the port configuration
+
+\par \tab \tab dialog.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab PinName:
+
+\par \tab \tab Pin to be set to '0'
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab IO_vTogglePin(PinName)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab The chosen portpin will be toggled.
+
+\par \tab \tab Note:
+
+\par \tab \tab 'PinName' identifies the pin of a bit-addressable port. The
+
+\par \tab \tab default names can be changed in the port configuration
+
+\par \tab \tab dialog.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab PinName:
+
+\par \tab \tab Pin to be toggled
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab IO_ubReadPort(PortName)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This macro returns the value of the chosen port.
+
+\par \tab \tab The following definitions for PortName are available:
+
+\par \tab \tab P0, P1, P2, P3
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b Value of the port\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab PortName:
+
+\par \tab \tab Port to be read
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab IO_vWritePort(PortName, Data)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab The forwarded data is written to the chosen port.
+
+\par \tab \tab The following definitions for PortName are available:
+
+\par \tab \tab P0, P1, P3
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab PortName:
+
+\par \tab \tab Port to be altered
+
+\par \tab \tab Data:
+
+\par \tab \tab Value to be written to the chosen port
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab IO_vSetInput(PortName, Mask)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This macro changes the direction of I/O port pins to input.
+
+\par \tab \tab Parameter 'PortName' selects the port and parameter 'Mask'
+
+\par \tab \tab selects the lines of this port.
+
+\par \tab \tab Example: IO_vSetInput(P1, 0x11) sets P1.0 and P1.4 to input.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab PortName:
+
+\par \tab \tab Port to be configured
+
+\par \tab \tab Mask:
+
+\par \tab \tab Mask for port pins to be configured
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab IO_vSetOutput(PortName, Mask)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This macro changes the direction of I/O port pins to
+
+\par \tab \tab output. Parameter 'PortName' selects the port and parameter
+
+\par \tab \tab 'Mask' selects the lines of this port.
+
+\par \tab \tab Example: IO_vSetOutput(P1, 0x11) sets P1.0 and P1.4 to
+
+\par \tab \tab output.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab PortName:
+
+\par \tab \tab Port to be configured
+
+\par \tab \tab Mask:
+
+\par \tab \tab Mask for port pins to be configured
+
+\par \plain\f4\fs24\cf0 Functions:\f4\fs20\cf0
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void IO_vInit(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the initialization function of the IO function
+
+\par \tab \tab library. It is assumed that the SFRs used by this library
+
+\par \tab \tab are in their reset state.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs24\cf0 Initialization:
+\par \plain\f4\fs20\cf0\b
+\par
+\tab Configuration of Port P0:\par 
+\tab - no pin of port P0 is used\par 
+\par 
+\tab Configuration of Port P1:\par 
+\tab - no pin of port P1 is used\par 
+\par 
+\tab Configuration of Port P2:\par 
+\tab - no pin of port P2 is used\par 
+\par 
+\tab Configuration of Port P3:\par 
+\tab P3.0:\par 
+\tab - is used as general purpose output\par 
+\tab - open drain output is selected\par 
+\tab - the pin status is low level\par 
+\tab - pull-up device is assigned\par 
+\tab P3.1:\par 
+\tab - is used as general purpose output\par 
+\tab - open drain output is selected\par 
+\tab - the pin status is low level\par 
+\tab - pull-up device is assigned\par 
+\tab P3.2:\par 
+\tab - is used as general purpose output\par 
+\tab - open drain output is selected\par 
+\tab - the pin status is low level\par 
+\tab - pull-up device is assigned\par 
+\tab P3.3:\par 
+\tab - is used as general purpose output\par 
+\tab - open drain output is selected\par 
+\tab - the pin status is low level\par 
+\tab - pull-up device is assigned\par 
+\tab P3.4:\par 
+\tab - is used as general purpose output\par 
+\tab - open drain output is selected\par 
+\tab - the pin status is low level\par 
+\tab - pull-up device is assigned\par 
+\tab P3.5:\par 
+\tab - is used as general purpose output\par 
+\tab - open drain output is selected\par 
+\tab - the pin status is low level\par 
+\tab - pull-up device is assigned\par 
+\tab P3.6:\par 
+\tab - is used as general purpose output\par 
+\tab - open drain output is selected\par 
+\tab - the pin status is low level\par 
+\tab - pull-up device is assigned\par 
+\tab P3.7:\par 
+\tab - is used as alternate output for the Output of Capture/Compare\par 
+\tab channel 3\par 
+\tab - push/pull output is selected\par 
+\tab - pull-up device is assigned\par 
+\par 
+
+\par \plain\f4\fs20\cf0
+\par \plain\f4\fs28\cf0\ul Timer 0/1
+\par
+\par \plain\f4\fs24\cf0 Macros:\f4\fs20\cf0
+\par \plain\f4\fs24\cf0 Functions:\f4\fs20\cf0
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void T01_vInit(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the initialization function of the Timer 0/1
+
+\par \tab \tab function library. It is assumed that the SFRs used by this
+
+\par \tab \tab library are in their reset state.
+
+\par \tab \tab The following SFR fields will be initialized for both
+
+\par \tab \tab timers 0 and 1:
+
+\par \tab \tab T0M            - Timer 0 mode
+
+\par \tab \tab T1M            - Timer 1 mode
+
+\par \tab \tab GATE0/GATE1    - gating control
+
+\par \tab \tab TLx, THx       - timer low/high registers
+
+\par \tab \tab ETx            - interrupt enable
+
+\par \tab \tab TRx            - timer run control (this is the final
+
+\par \tab \tab action)
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void T01_viTmr0(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the service routine for the timer 0 interrupt. It
+
+\par \tab \tab is called
+
+\par \tab \tab - when TH0 overflows if timer 0 is in mode 0 or 1
+
+\par \tab \tab - when TL0 overflows if timer 0 is in mode 2 or 3
+
+\par \tab \tab Please note that you have to add application specific code
+
+\par \tab \tab to this function.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b none\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void T01_viTmr1(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the service routine for the timer 1 interrupt. It
+
+\par \tab \tab is called
+
+\par \tab \tab - when TH1 overflows if timer 1 is in mode 0 or 1 and timer
+
+\par \tab \tab 0 is not in mode 3
+
+\par \tab \tab - when TL1 overflows if timer 1 is in mode 2 and timer 0 is
+
+\par \tab \tab not in mode 3
+
+\par \tab \tab - when TH0 overflows if timer 0 is in mode 3
+
+\par \tab \tab Please note that you have to add application specific code
+
+\par \tab \tab to this function.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b none\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs24\cf0 Initialization:
+\par \plain\f4\fs20\cf0\b
+\par
+\tab Timer 0\par 
+\tab Mode 0: 8-bit timer (TH0) with a divide-by-32 prescaler (TL0)\par 
+\tab the timer 0 overflow is 65,362 µs\par 
+\par 
+\tab Timer 1\par 
+\tab Mode 0: 8-bit timer (TH1) with a divide-by-32 prescaler (TL1)\par 
+\tab the timer 1 overflow is 65,362 µs\par 
+\par 
+\tab Enable Timer 0 interrupt\par 
+\par 
+\tab Enable Timer 1 interrupt\par 
+\par 
+\tab Start Timer 0\par 
+\par 
+\tab Start Timer 1\par 
+\par 
+
+\par \plain\f4\fs20\cf0
+\par \plain\f4\fs28\cf0\ul Timer 2
+\par
+\par \plain\f4\fs24\cf0 Macros:\f4\fs20\cf0
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab T2_vStartTmr()\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This macro starts timer 2 by setting bit TR2.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab T2_vStopTmr()\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This macro stops timer 2 by clearing bit TR2.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab T2_uwReadTmr()\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This macro reads the contents of the T2 timer register. The
+
+\par \tab \tab timer is not stopped.
+
+\par \tab \tab Please take into account that an active timer 2 unit may
+
+\par \tab \tab interfere with the sequence of high and low byte access.
+
+\par \tab \tab Thus you should stop the timer first, unless you are sure
+
+\par \tab \tab that the access takes place at a save moment.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b 16-bit timer register contents\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab T2_vSetRC2Reg(Value)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This macro writes the passed value into the reload/capture
+
+\par \tab \tab timer 2 register (RC2H/RC2L).
+
+\par \tab \tab Please take into account that an active timer 2 unit may
+
+\par \tab \tab interfere with the sequence of high and low byte access.
+
+\par \tab \tab Thus you should stop the timer first, unless you are sure
+
+\par \tab \tab that the access takes place at a save moment.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab Value:
+
+\par \tab \tab 16-bit timer reload value
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab T2_uwGetRC2Reg()\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This macro reads the contents of the reload/capture timer 2
+
+\par \tab \tab register (RC2H/RC2L).
+
+\par \tab \tab Please take into account that an active timer 2 unit may
+
+\par \tab \tab interfere with the sequence of high and low byte access.
+
+\par \tab \tab Thus you should stop the timer first, unless you are sure
+
+\par \tab \tab that the access takes place at a save moment.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b 16-bit reload/capture register contents\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par \plain\f4\fs24\cf0 Functions:\f4\fs20\cf0
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void T2_vInit(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the initialization function of the Timer 2 function
+
+\par \tab \tab library. It is assumed that the SFRs used by this library
+
+\par \tab \tab are in their reset state.
+
+\par \tab \tab The following SFRs and SFR fields will be initialized:
+
+\par \tab \tab T2_RC2H/RC2L     - reload/capture timer 2 register
+
+\par \tab \tab ET2           - timer 2 interrupt enable
+
+\par \tab \tab T2_T2MOD         - timer 2 mode register
+
+\par \tab \tab CP/RL2        - Capture/Reload select
+
+\par \tab \tab EXEN2         - External enable control
+
+\par \tab \tab TR2           - Timer2 run control
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void T2_viTmr(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the service routine for the Timer 2 interrupt.
+
+\par \tab \tab Depending on the selected operating mode it is called when
+
+\par \tab \tab TF2 is set by an overflow or underflow of the timer 2
+
+\par \tab \tab register or when EXF2 is set by a negative transition on
+
+\par \tab \tab T2EX.
+
+\par \tab \tab Please note that you have to add application specific code
+
+\par \tab \tab to this function.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b none\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs24\cf0 Initialization:
+\par \plain\f4\fs20\cf0\b
+\par
+\tab 16-bit timer function with automatic reload when timer 2 overflows\par 
+\tab Prescaler enabled - input clock = fPCLK/16\par 
+\tab the timer 2 resolution is 0,766 µs\par 
+\tab the timer 2 overflow is 50197,787 µs\par 
+\tab timer 2 interrupt: enabled\par 
+\tab timer 2 will be started\par 
+\par 
+
+\par \plain\f4\fs20\cf0
+\par \plain\f4\fs28\cf0\ul Capture / Compare Unit 6 (CCU6)
+\par
+\par \plain\f4\fs24\cf0 Macros:\f4\fs20\cf0
+\par \plain\f4\fs24\cf0 Functions:\f4\fs20\cf0
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void CC6_vInit(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the initialization function of the CCU6 function
+
+\par \tab \tab library. It is assumed that the SFRs used by this library
+
+\par \tab \tab are in their reset state.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void CC6_viNodeI0(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the interrupt service routine for the CC6 node I0.
+
+\par \tab \tab If the content of the corresponding compare timer
+
+\par \tab \tab (configurable) equals the content of the capture/compare
+
+\par \tab \tab register or if a capture event occurs at the associated
+
+\par \tab \tab port pin, the interrupt request flag is set and an
+
+\par \tab \tab interrupt is triggered (only if enabled).
+
+\par \tab \tab Please note that you have to add application specific code
+
+\par \tab \tab to this function.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void CC6_vStartTmr(ubyte TimerNr)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This Function starts the selected CC6 timer. The timer
+
+\par \tab \tab continues counting from where it stopped.
+
+\par \tab \tab The following definitions for TimerNr are available:
+
+\par \tab \tab CC6_TIMER_12
+
+\par \tab \tab CC6_TIMER_13
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab TimerNr:
+
+\par \tab \tab Name of the CC6 timer to be started
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void CC6_vStopTmr(ubyte TimerNr)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This Function stops the selected CC6 timer. The content of
+
+\par \tab \tab the timer register remains unchanged.
+
+\par \tab \tab The following definitions for TimerNr are available:
+
+\par \tab \tab CC6_TIMER_12
+
+\par \tab \tab CC6_TIMER_13
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab TimerNr:
+
+\par \tab \tab Name of the CC6 timer to be stopped
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void CC6_vResetTmr(ubyte TimerNr)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This function sets the selected CC6 timer counter register
+
+\par \tab \tab to zero. Timer is not stopped.
+
+\par \tab \tab The following definitions for TimerNr are available:
+
+\par \tab \tab CC6_TIMER_12
+
+\par \tab \tab CC6_TIMER_13
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab TimerNr:
+
+\par \tab \tab Name of the CC6 timer to be cleared
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void CC6_vSetTmrPeriod(ubyte TimerNr, uword Value)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This function loads the period register of the selected CC6
+
+\par \tab \tab timer.
+
+\par \tab \tab Note: Call the function CC6_vEnableShadowTransfer() to
+
+\par \tab \tab enable the shadow transfer.
+
+\par \tab \tab The following definitions for TimerNr are available:
+
+\par \tab \tab CC6_TIMER_12
+
+\par \tab \tab CC6_TIMER_13
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab TimerNr:
+
+\par \tab \tab Name of the CC6 timer to be used
+
+\par \tab \tab Value:
+
+\par \tab \tab 16-bit Value with which the CC6 timer reload register is to
+
+\par \tab \tab be loaded
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void CC6_vSetDeadTimePeriod(ubyte ubValue)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This function loads the counter of the dead time register.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab ubValue:
+
+\par \tab \tab Counter value (ubValue = 0x01 .. 0x3F)
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void CC6_vEnableShadowTransfer(ubyte TimerNr)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This function enables the transfer from the shadow
+
+\par \tab \tab registers to the actual CC6 registers.
+
+\par \tab \tab The following definitions for TimerNr are available:
+
+\par \tab \tab CC6_TIMER_12
+
+\par \tab \tab CC6_TIMER_13
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab TimerNr:
+
+\par \tab \tab Name of the CC6 timer to be used
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void CC6_vLoadChannelShadowRegister(ubyte ChName, uword\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This function loads the selected CC6 channel shadow
+
+\par \tab \tab register with the parameter Value.
+
+\par \tab \tab The following definitions are available for RegName:
+
+\par \tab \tab CC6_CHANNEL_0 .. CC6_CHANNEL_3 (see @Defines in header file)
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab ChName:
+
+\par \tab \tab Name of the CC6 channel to be loaded
+
+\par \tab \tab Value:
+
+\par \tab \tab 16-bit Value with which the CC6 shadow register is to be
+
+\par \tab \tab loaded
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void CC6_vSetStatusBit(ubyte ChName)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This function sets the capture / compare modifikation
+
+\par \tab \tab status bit of the selected CC6 channel.
+
+\par \tab \tab The following definitions are available for ChName:
+
+\par \tab \tab CC6_CHANNEL_0 .. CC6_CHANNEL_3 (see @Defines in header file)
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab ChName:
+
+\par \tab \tab Name of the CC6 channel to be used
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void CC6_vResetStatusBit(ubyte ChName)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This function resets the capture / compare modifikation
+
+\par \tab \tab status bit of the selected CC6 channel.
+
+\par \tab \tab The following definitions are available for ChName:
+
+\par \tab \tab CC6_CHANNEL_0 .. CC6_CHANNEL_3 (see @Defines in header file)
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab ChName:
+
+\par \tab \tab Name of the CC6 channel to be used
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void CC6_uwSetTmrCounter(ubyte TimerNr, uword Value)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This function loads the selected CC6 timer counter register
+
+\par \tab \tab with the parameter Value . It is possible to use this
+
+\par \tab \tab function only if the selected timer is stopped.
+
+\par \tab \tab The following definitions for TimerNr are available:
+
+\par \tab \tab CC6_TIMER_12
+
+\par \tab \tab CC6_TIMER_13
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab TimerNr:
+
+\par \tab \tab Name of the CC6 timer to be used
+
+\par \tab \tab Value:
+
+\par \tab \tab 16-bit value with which the CC6 counter register is to be
+
+\par \tab \tab loaded
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab uword CC6_uwGetChannelShadowRegister(ubyte ChName)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This function returns the content of the CC6
+
+\par \tab \tab capture/compare shadow register of the selected channel.
+
+\par \tab \tab The following definitions are available for RegName:
+
+\par \tab \tab CC6_CHANNEL_0 .. CC6_CHANNEL_3 (see @Defines in header file)
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b Current 16-bit value of the CC6 shadow register\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab ChName:
+
+\par \tab \tab Name of the CC6 channel to be readed
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab uword CC6_uwGetTmrCounter(ubyte TimerNr)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This function returns the contents of the selected CC6
+
+\par \tab \tab timer counter register.
+
+\par \tab \tab The following definitions for TimerNr are available:
+
+\par \tab \tab CC6_TIMER_12
+
+\par \tab \tab CC6_TIMER_13
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b 16-bit counter value\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab TimerNr:
+
+\par \tab \tab Name of the CC6 timer to be used
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab uword CC6_uwGetChannelRegister(ubyte ChName)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This function returns the content of the CC6
+
+\par \tab \tab capture/compare register of the selected channel.
+
+\par \tab \tab The following definitions are available for RegName:
+
+\par \tab \tab CC6_CHANNEL_0 .. CC6_CHANNEL_3 (see @Defines in header file)
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b Current 16-bit value of the CC6 register\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab ChName:
+
+\par \tab \tab Name of the CC6 channel to be readed
+
+\par
+\par \plain\f4\fs24\cf0 Initialization:
+\par \plain\f4\fs20\cf0\b
+\par
+\tab Configuration of CCU6 module input signals:\par 
+\tab - signal CC60 is not used\par 
+\tab - signal CC61 is not used\par 
+\tab - signal CC62 is not used\par 
+\tab - signal #CTRAP is not used\par 
+\par 
+\tab - signal CCPOS0 is not used\par 
+\tab - signal CCPOS1 is not used\par 
+\tab - signal CCPOS2 is not used\par 
+\tab - signal T12HR is not used\par 
+\par 
+\tab - signal T13HR is not used\par 
+\par 
+\tab Configuration of CCU6 Timer 12:\par 
+\tab - prescaler factor is 1\par 
+\tab - timer 12 run bit is reset\par 
+\tab - single shot mode is disabled\par 
+\tab - timer 12 works in edge aligned mode\par 
+\tab - interrupt on period match is disabled\par 
+\tab - interrupt on one match is disabled\par 
+\par 
+\tab Configuration of CCU6 Timer 13:\par 
+\tab - prescaler factor is 128\par 
+\tab - timer 13 run bit is reset\par 
+\tab - trigger control is disabled\par 
+\tab - single shot mode is disabled\par 
+\tab - interrupt on period match is enabled\par 
+\tab - interrupt on compare match is disabled\par 
+\par 
+\tab Configuration of Multi Channel Mode:\par 
+\tab - multi channel mode is disabled\par 
+\par 
+\tab Configuration of CCU6 Channel 0:\par 
+\tab - channel 0 is disabled\par 
+\par 
+\tab Configuration of CCU6 Channel 1:\par 
+\tab - channel 1 is disabled\par 
+\par 
+\tab Configuration of CCU6 Channel 2:\par 
+\tab - channel 2 is disabled\par 
+\par 
+\tab Configuration of CCU6 Channel 3:\par 
+\tab - alternate output function COUT63 for the PWM signal generated by T13\par 
+\tab is enabled\par 
+\tab - the trap functionality of the pin COUT63 is disabled\par 
+\tab - the compare output COUT63 drives passive level while CC63ST is ’0’\par 
+\tab - the passive level of the output COUT63 is '0'\par 
+\tab - T13 output is not inverted\par 
+\par 
+\tab - enable shadow transfer to T12 and T13\par 
+\par 
+\tab Configuration of CCU6 trap control:\par 
+\tab - a trap can only be generated by SW by setting the bit TRPF\par 
+\tab - the trap state is left when a zero-match of T12 (while counting up)\par 
+\tab is detected (synchronization to T12)\par 
+\tab - bit TRPF is automatically cleared by HW (according to TRPPEN, TRPM0\par 
+\tab and TRPM1)\par 
+\tab - trap interrupt is disabled\par 
+\par 
+\tab Configuration of CCU6 interrupt control:\par 
+\tab - for channel 0 interrupts is node I0 selected\par 
+\tab - for channel 1 interrupts is node I0 selected\par 
+\tab - for channel 2 interrupts is node I0 selected\par 
+\tab - for correct hall event interrupt is node I0 selected\par 
+\tab - for error interrupts is node I0 selected\par 
+\tab - for T12 interrupts is node I0 selected\par 
+\tab - for T13 interrupts is node I0 selected\par 
+\par 
+\tab Configuration of the used CCU6 Channel Port Pins:\par 
+\tab Configuration of the used CCU6 Channels Interrupts:\par 
+\tab - capture/compare interrupt node 0 is enabled\par 
+\tab - capture/compare interrupt node 1 is disabled\par 
+\tab - capture/compare interrupt node 2 is disabled\par 
+\tab - capture/compare interrupt node 3 is disabled\par 
+\par 
+
+}

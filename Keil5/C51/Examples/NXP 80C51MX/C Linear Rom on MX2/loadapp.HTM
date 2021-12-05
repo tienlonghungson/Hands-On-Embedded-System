@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>LX51 Static Call Analysis</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type="text/css">
+<!--
+p            { font-family: Verdana; font-size: 8pt; margin-top: 2; margin-bottom: 2 }
+.LI2         { margin-top: 2; margin-bottom: 2 }
+.Release     { background-color: #CCCCCC; font-weight: bold; padding: 6 }
+.ToolT       { font-size: 8pt; color: #808080 }
+.TinyT       { font-size: 8pt; text-align: Center }
+ul           { font-family: Verdana; font-size: 8pt; list-style-type: square;  margin-top: 2; margin-bottom: 2 }
+ol           { font-family: Verdana; font-size: 8pt }
+h1           { font-family: Verdana; font-size: 14pt; color: #000080; font-weight: bold; text-align: Center; margin-right: 3 }
+h2           { font-family: Verdana; font-size: 8pt; color: #000080; font-weight: bold; margin-top: 12; margin-bottom: 3; background-color: #CCCCCC; padding: 6 }
+h3           { font-family: Verdana; font-size: 8pt; font-weight: bold; margin-top: 12; margin-bottom: 3; background-color: #CCCCCC; padding: 6 }
+pre          { font-family: Courier New; font-size: 8pt; background-color: #CCFFCC; margin-left: 24; margin-right: 24 }
+li           { margin-top: 3; margin-bottom: 0 }
+-->
+</style>
+</head>
+<body>
+<h1>Static Call Analysis for<br>loadapp (MAIN_B)</h1>
+
+<p class="TinyT">
+Created from: <b>LX51 LINKER/LOCATER V4.00 BETA</b><br>
+Creation time: <b>08/31/2005  15:30:50</b><p>
+
+<hr>
+
+
+<h2><a name="S1"></a>?PR?MAIN?MAIN_B (8000F3H - 80011BH)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=9 Bytes (<a href="#S8">?PR?MAIN_APP?MAIN_A</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S18">?L?COM0001</a></li>
+<li><a href="#S5">?PR?INT_OFF?MAIN_B</a></li>
+<li><a href="#S4">?PR?INT_ON?MAIN_B</a></li>
+<li><a href="#S8">?PR?MAIN_APP?MAIN_A</a></li>
+<li><a href="#S2">?PR?T2_INI_LOAD?MAIN_B</a></li>
+</ul>
+
+<h2><a name="S11"></a>?PR?TIMER2?INT (800130H - 800158H)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=14 Bytes (<a href="#S3">?PR?T2_ISR_LOAD?MAIN_B</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S10">?PR?T2_ISR_APP?MAIN_A</a></li>
+<li><a href="#S3">?PR?T2_ISR_LOAD?MAIN_B</a></li>
+</ul>
+
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S12">?INT?0002B</a></li>
+</ul>
+
+<h2><a name="S12"></a>?INT?0002B (80002BH - 80002CH)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=14 Bytes (<a href="#S11">?PR?TIMER2?INT</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S11">?PR?TIMER2?INT</a></li>
+</ul>
+
+<h2><a name="S2"></a>?PR?T2_INI_LOAD?MAIN_B (80011FH - 800129H)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=3 Bytes (<a href="#S21">?L?COM0005</a>) Top=3 Bytes (<a href="#S1">?PR?MAIN?MAIN_B</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S20">?L?COM0004</a></li>
+<li><a href="#S21">?L?COM0005</a></li>
+</ul>
+
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S1">?PR?MAIN?MAIN_B</a></li>
+</ul>
+
+<h2><a name="S3"></a>?PR?T2_ISR_LOAD?MAIN_B (80012DH - 80012FH)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=3 Bytes (<a href="#S19">?L?COM0003</a>) Top=11 Bytes (<a href="#S11">?PR?TIMER2?INT</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S19">?L?COM0003</a></li>
+</ul>
+
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S11">?PR?TIMER2?INT</a></li>
+</ul>
+
+<h2><a name="S4"></a>?PR?INT_ON?MAIN_B (80011CH - 80011EH)</h2>
+<p><br><b>Maximum Stack:</b> Top=6 Bytes (<a href="#S8">?PR?MAIN_APP?MAIN_A</a>)<p>
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S1">?PR?MAIN?MAIN_B</a></li>
+<li><a href="#S8">?PR?MAIN_APP?MAIN_A</a></li>
+</ul>
+
+<h2><a name="S5"></a>?PR?INT_OFF?MAIN_B (80012AH - 80012CH)</h2>
+<p><br><b>Maximum Stack:</b> Top=6 Bytes (<a href="#S8">?PR?MAIN_APP?MAIN_A</a>)<p>
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S1">?PR?MAIN?MAIN_B</a></li>
+<li><a href="#S8">?PR?MAIN_APP?MAIN_A</a></li>
+</ul>
+
+<h2><a name="S8"></a>?PR?MAIN_APP?MAIN_A (870000H - 87001EH)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=6 Bytes (<a href="#S9">?PR?T2_INI_APP?MAIN_A</a>) Top=3 Bytes (<a href="#S1">?PR?MAIN?MAIN_B</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S18">?L?COM0001</a></li>
+<li><a href="#S5">?PR?INT_OFF?MAIN_B</a></li>
+<li><a href="#S4">?PR?INT_ON?MAIN_B</a></li>
+<li><a href="#S9">?PR?T2_INI_APP?MAIN_A</a></li>
+</ul>
+
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S1">?PR?MAIN?MAIN_B</a></li>
+</ul>
+
+<h2><a name="S9"></a>?PR?T2_INI_APP?MAIN_A (87001FH - 87002FH)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=3 Bytes (<a href="#S21">?L?COM0005</a>) Top=6 Bytes (<a href="#S8">?PR?MAIN_APP?MAIN_A</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S20">?L?COM0004</a></li>
+<li><a href="#S21">?L?COM0005</a></li>
+</ul>
+
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S8">?PR?MAIN_APP?MAIN_A</a></li>
+</ul>
+
+<h2><a name="S10"></a>?PR?T2_ISR_APP?MAIN_A (870030H - 870035H)</h2>
+<p><br><b>Maximum Stack:</b> Bottom=3 Bytes (<a href="#S19">?L?COM0003</a>) Top=11 Bytes (<a href="#S11">?PR?TIMER2?INT</a>)<p>
+<p><br><b>Calls to:</b></p>
+<ul>
+<li><a href="#S19">?L?COM0003</a></li>
+</ul>
+
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S11">?PR?TIMER2?INT</a></li>
+</ul>
+
+<h2><a name="S18"></a>?L?COM0001 (80000CH - 80001DH)</h2>
+<p><br><b>Maximum Stack:</b> Top=6 Bytes (<a href="#S8">?PR?MAIN_APP?MAIN_A</a>)<p>
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S1">?PR?MAIN?MAIN_B</a></li>
+<li><a href="#S8">?PR?MAIN_APP?MAIN_A</a></li>
+</ul>
+
+<h2><a name="S19"></a>?L?COM0003 (80001EH - 800029H)</h2>
+<p><br><b>Maximum Stack:</b> Top=14 Bytes (<a href="#S3">?PR?T2_ISR_LOAD?MAIN_B</a>)<p>
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S10">?PR?T2_ISR_APP?MAIN_A</a></li>
+<li><a href="#S3">?PR?T2_ISR_LOAD?MAIN_B</a></li>
+</ul>
+
+<h2><a name="S20"></a>?L?COM0004 (8000E0H - 8000EAH)</h2>
+<p><br><b>Maximum Stack:</b> Top=9 Bytes (<a href="#S9">?PR?T2_INI_APP?MAIN_A</a>)<p>
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S9">?PR?T2_INI_APP?MAIN_A</a></li>
+<li><a href="#S2">?PR?T2_INI_LOAD?MAIN_B</a></li>
+</ul>
+
+<h2><a name="S21"></a>?L?COM0005 (8000EBH - 8000F2H)</h2>
+<p><br><b>Maximum Stack:</b> Top=9 Bytes (<a href="#S9">?PR?T2_INI_APP?MAIN_A</a>)<p>
+<p><br><b>Called from:</b></p>
+<ul>
+<li><a href="#S9">?PR?T2_INI_APP?MAIN_A</a></li>
+<li><a href="#S2">?PR?T2_INI_LOAD?MAIN_B</a></li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+#------------------------------------------------------------------------------
+# Define uVision settings for C251 source code files
+#
+# Copyright : (c) 2012 - 2016 ARM Ltd. and ARM Germany GmbH
+# Version   : 1.0.0
+# Product   : uVision
+# Author    : EG
+#
+#
+#   (A) C251 Keyword sections
+#        1) C251 ANSI C Keywords
+#        2) C251 Operator
+#        3) C251 Listing Directive
+#        4) C251 Object Directive
+#        5) C251 Source Directive
+#        6) C251 New Keyword
+#        7) C251 Memory Areas
+#        8) C251 Memory Models
+#        9) C251 Memory Type
+#       10) C251 Data Types
+#       11) C251 Storage Classes
+#       12) C251 Predefined Macros
+#       13) C251 Directive
+#       14) C251 Optimizer Options
+#       15) C251 Optimizer Options for cx51 code (backward compatibility)
+#       16) C251 absolute access macros
+#
+#   (B) C251 Keyword assignement
+#
+#
+#------------------------------------------------------------------------------
+
+
+
+#   (A) C251 Keyword sections
+#
+# Nr 1) C251 ANSI C Keywords
+c251_ansi_c_keyword=auto break case char const continue default do double else enum extern float for goto \
+if int long register return short signed sizeof static struct switch typedef \
+union unsigned void volatile while
+
+# Nr 2) C251 Operator
+# c251_operator=( ) [ ] . -> - ! ++ -- - + * .. sizeof / % << >> < > <= > >= \
+# == != & ^ | && || ?:  = *= /= %= += -= <<= >>= &= |= ^= , 
+
+# Nr 3) C251 Listing Directive
+c251_listing_directive=code cond eject listinclude nocond noprint pagelength pagewidth \
+preprint print symbols tabs warning warninglevel
+
+# Nr 4) C251 Object Directive
+c251_object_directive=browse debug disable fixdrk float64 floatfuzzy functions hptr hold \
+inerval intr2 intvector large maxargs modbin name noalias noamake nvm_const noaasmexpand nocase \
+nointvector noobject noregparms object objectadvanced optimize order pack \
+parm251 parm51 regfile regparms renamecode restore rom save small src string \
+tiny usigned_char userclass xsmall xtiny
+
+# Nr 5) C251 Source Directive
+c251_source_directive=asm asmexpand define endasm incdir noextend preprintonly
+
+# Nr 6) C251 New Keyword
+c251_new_keyword=_at_ alien bdata bit code compact data \
+far idata interrupt large pdata _priority_ reentrant \
+sbit sfr sfr16 small _task_ using xdata \
+
+# Nr 7) C251 Memory Areas
+c251_memory_area=code const data bdata ebdata xdata near far huge sfr
+
+# Nr 8) C251 Memory Models
+c251_memory_model=tiny xtiny small xsmall large
+
+# Nr 9) C251 Memory Type
+c251_memory_type=code data bdata ebdata near xdata far huge idata
+
+# Nr 10) C251 Data Types
+c251_data_type=bit char enum int float double sbit sfr sfr16
+
+# Nr 11) C251 Storage Classes
+c251_storage_class=auto register static extern
+
+# Nr 12) C251 Predefined Macros
+c251_predefined_macro=__c251__ __date__ __date2__ __file__ __line__ __model__ __time__ __stdc__ __float64__ __modsrc__
+
+# Nr 13) C251 Directive 
+c251_directive=
+
+# Nr 14) C251 Optimizer Options
+c251_optimizer_option=regfile noalias optimize size objectadvanced
+
+# Nr 15) C251 directives for cx51 code
+c251_c51_compatibility_directives=aregs noaregs register
+
+# Nr 16) C251 absolute access macros
+c251_absolute_access_macros=cbyte dbyte hbyte nbyte xbyte \
+cvar dvar hvar nvar xvar carray darray harray narray xarray 
+
+
+# (B) Keyword assignement for C251
+keywords6.$(file.patterns.cpp)=$(c251_new_keyword) $(c251_optimizer_option) $(c251_storage_class) $(c251_data_type) $(c251_memory_type) $(c251_memory_model) \
+$(c251_directive) $(ext_instruction) $(c251_source_directive) $(c251_listing_directive) $(c251_object_directive) $(c251_predefined_macro) $(c251_c51_compatibility_directives) $(c251_absolute_access_macros)

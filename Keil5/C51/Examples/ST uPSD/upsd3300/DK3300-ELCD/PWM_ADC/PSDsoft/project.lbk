@@ -1,0 +1,105 @@
+
+Current project is: 'project'
+
+AHDL2BLF  ABEL-HDL Processor
+PSDabel-CPLD 6.20 Copyright 1983-1994 Data I/O Corp. All Rights Reserved.
+Module: 'project'
+
+  Processing equations..............
+
+  Module parsing complete. Building logic network...
+
+  Creating Berkeley PLA file project.tt1...
+
+Module 'project' processing complete.
+
+Using backup JHD file.
+AHDL2BLF complete - 0 errors, 0 warnings. Time: 1 seconds
+
+BLIFOPT  Open-ABEL Optimizer 
+U.C. Berkeley, SIS Ver. 1.0, modified by Data I/O Corp.
+PSDabel-CPLD 6.20 Copyright 1983-1994 Data I/O Corp. All Rights Reserved.
+Reading Open-ABEL (PLA) file project.tt1...
+Performing 'bypin choose' optimization...
+Shortening signal names...
+Writing signal name cross reference file project.xrf... 
+Writing Open-ABEL (PLA) file project.tt2...
+
+BLIFOPT complete - 0 errors, 0 warnings. Time: 1 seconds
+
+DIOFFT  Flip-Flop Transformation program
+PSDabel-CPLD 6.20 Copyright 1983-1994 Data I/O Corp. All Rights Reserved.
+Input file: project.tt2.
+Output file: project.tt3.
+
+......
+
+DIOFFT complete. - Time 0 seconds
+
+AHDL2BLF  ABEL-HDL Processor
+PSDabel-CPLD 6.20 Copyright 1983-1994 Data I/O Corp. All Rights Reserved.
+Module: 'project'
+
+  Processing equations..............
+
+  Module parsing complete. Building logic network...
+
+  Creating Berkeley PLA file project.tt1...
+
+Module 'project' processing complete.
+
+Using backup JHD file.
+AHDL2BLF complete - 0 errors, 0 warnings. Time: 1 seconds
+
+AHDL2BLF  ABEL-HDL Processor
+PSDabel-CPLD 6.20 Copyright 1983-1994 Data I/O Corp. All Rights Reserved.
+Module: 'project'
+
+  Processing equations..............
+
+  Module parsing complete. Building logic network...
+
+  Creating Berkeley PLA file project.tt1...
+
+Module 'project' processing complete.
+
+Using backup JHD file.
+AHDL2BLF complete - 0 errors, 0 warnings. Time: 1 seconds
+
+BLIFOPT  Open-ABEL Optimizer 
+U.C. Berkeley, SIS Ver. 1.0, modified by Data I/O Corp.
+PSDabel-CPLD 6.20 Copyright 1983-1994 Data I/O Corp. All Rights Reserved.
+Reading Open-ABEL (PLA) file project.tt1...
+Performing 'bypin choose' optimization...
+Shortening signal names...
+Writing signal name cross reference file project.xrf... 
+Writing Open-ABEL (PLA) file project.tt2...
+
+BLIFOPT complete - 0 errors, 0 warnings. Time: 1 seconds
+
+DIOFFT  Flip-Flop Transformation program
+PSDabel-CPLD 6.20 Copyright 1983-1994 Data I/O Corp. All Rights Reserved.
+Input file: project.tt2.
+Output file: project.tt3.
+
+........
+
+DIOFFT complete. - Time 1 seconds
+
+PSD Fitter - Logic Synthesis and Device Fitting
+PSDsoft Express 8.30 Copyright (C) 1993-2004 STMicroelectronics, Inc.  All Rights Reserved.
+PROJECT    : project                          DATE : 11/24/2004
+DEVICE     : uPSD3334D                        TIME : 16:53:33
+FIT OPTION : Keep Current
+DESCRIPTION: Combo Demo code to demonstrate Turbo uPSD's IPs: PCA-PWM, 
+I2C, SPI, and JTAG, it runs on a DK3300 ELCD board.
+
+  >> PSD Fitter complete - Successful Fitting
+  >> View fitter report for detail
+PSD Address Translation - Merge MCU Firmware with PSD 
+PSDsoft Express 8.30 Copyright (C) 1993-2004 STMicroelectronics, Inc.  All Rights Reserved.
+PROJECT    : project                                  DATE : 11/24/2004
+DEVICE     : uPSD3334D                                TIME : 16:54:53
+  >> 
+  >> Address Translation complete.
+  >> 

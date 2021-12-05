@@ -1,0 +1,11 @@
+ 
+This Example Program does nothing more than blink the LED1 on 
+the AT8X5122 Demo Board.
+
+
+The Blinky program is available in different targets:
+  Simulator:       Blinky example in SMALL model for Simulation
+
+  FlashMon:        Blinky example for the AT8X5122 Demo Board
+
+

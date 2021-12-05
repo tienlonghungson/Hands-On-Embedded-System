@@ -1,0 +1,5 @@
+The BLINKY program is a very simple program toggeling all
+bits on all ports. If there are LEDs connected they will blink.
+
+If using the simulator shifted bits can bee seen in the corresponding 
+port dialog boxes.

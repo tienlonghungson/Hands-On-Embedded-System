@@ -1,0 +1,30 @@
++------------------------------------------------------------------------------
+Copyright (c) 2012 ARM Ltd and ARM Germany GmbH.
+All rights reserved.
+
+This program is a bank switching example that shows how you can
+run (simulate) code executing in up to 4 code banks for
+Maxim(Teridian) devices.
+
+Description:
+They are 2 function calls in main.
+
+The first called function func0 is located in bank0 and calls the function func2() in bank2. 
+The second called function func1 is located in bank1 and calls the function func2() in bank2. 
+
+Function callgraph:
+
+main 
+   |
+   +----> func0  /* Located in bank0 */
+   |          |
+   |          +----> func2  /* Located in bank2 */
+   |
+   |
+   |
+   +----> func1  /* Located in bank1 */
+              |
+              +----> func2  /* Located in bank2 */
+
+
++------------------------------------------------------------------------------

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+  @note    Copyright (C) 2012 ARM Limited and ARM Germany GmbH. All rights reserved.
+  @par
+   ARM Limited (ARM) is supplying this software for use with Keil MDK-ARM toolkit, 
+   but can be equally used for other Keil toolchains.
+   This file can be freely distributed. Modifications to this file shall be clearly marked.
+
+  @date: 21.11.2012
+
+  @par
+   THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
+   OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
+   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
+   ARM SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR
+   CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0">
+  
+  <xs:element name="uvcdb">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Zero, one or more vendors -->
+        <xs:element name="vendor" minOccurs="1" maxOccurs="unbounded" >
+          <xs:complexType>
+            <xs:sequence>
+              <!-- Zero, one or more devices -->
+              <xs:element name="device" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:all>
+                    <!-- device startup file -->
+                    <xs:element name="startup" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!-- device system file  -->
+                    <xs:element name="system" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!-- device header file -->
+                    <xs:element name="includeFile" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!-- include path to device header file -->
+                    <xs:element name="includePath" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!-- misc compiler options, device define -->
+                    <xs:element name="CMISC" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!-- device description -->
+                    <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                  </xs:all>
+                  <!-- device attributes -->
+                  <xs:attribute name="name" type="xs:string" use="required"/>
+                  <!-- device CPU  -->
+                  <xs:attribute name="core" type="xs:string" use="optional"/>
+                  <!-- device architecture -->
+                  <xs:attribute name="family" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <!-- vendor name attribute -->
+            <xs:attribute name="name" type="xs:string" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="schemaVersion" type="xs:decimal" use="required" fixed="1.0"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

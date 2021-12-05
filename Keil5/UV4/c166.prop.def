@@ -1,0 +1,104 @@
+#------------------------------------------------------------------------------
+# Define uVision settings for C166 source code files
+#
+# Copyright : (c) 2012 - 2016 ARM Ltd. and ARM Germany GmbH
+# Version   : 1.0.0
+# Product   : uVision
+# Author    : EG
+#
+#
+#   (A) C166 Keyword sections
+#        1) C166 ANSI C Keywords
+#        2) C166 Operator
+#        3) C166 Listing Directive
+#        4) C166 Object Directive
+#        5) C166 Source Directive
+#        6) C166 Linker Directive
+#        7) C166 New Keyword
+#        8) C166 Classes
+#        9) C166 Memory Areas
+#       10) C166 Memory Models
+#       11) C166 Memory Type
+#       12) C166 Data Types
+#       13) C166 Predefined Macros
+#       14) C166 Directive
+#       15) C166 Optimizer Options
+#       16) C166 absolute access macros
+#
+#   (B) C166 Keyword assignement
+#
+#
+#------------------------------------------------------------------------------
+
+
+
+# (A) C166 Keyword sections
+#
+# Nr 1) C166 ANSI C Keywords
+c166_ansi_c_keyword=auto break case char const continue default do double else enum extern float for goto \
+if int long register return short signed sizeof static struct switch typedef \
+union unsigned void volatile while
+
+# Nr 2) C166 Operator
+# c166_operator=( ) [ ] . -> - ! ++ -- - + * .. sizeof / % << >> < > <= > >= \
+# == != & ^ | && || ?:  = *= /= %= += -= <<= >>= &= |= ^= , 
+
+# Nr 3) C166 Listing Directive
+c166_listing_directive=code1 cond eject2 listinclude nocond noprint1 pagelength1 pagewidth1 preprint1 \
+preprintonly1 print1 symbols1 tabs1 warning2 warninglevel1
+
+# Nr 4) C166 Object Directive
+c166_object_directive=browse1 bytealign commonret compact1 debug1 disable2 dynamicusrstk1 extins extmac \
+fix166 fix167 fix272 fix32f fixbfld fix_br03 fixmdu fixpec float64 hcompact1 hlarge1 hold \
+init2 large1 mac medium1 mod167 modv2 noalias1 noamake1 noasmexpand nodppsave1 \
+nofixdpp1 noframe noinit2 noobject1 nosavemac object1 order1 pack pecdef1 \
+reentrant regfile1 renameclass reorder restore2 save2 savemac savesys saveusr small1 \
+src1 static tiny1 unsigned_char1 userstackdpp31 xlarge1 \
+
+# Nr 5) C166 Source Directive
+c166_source_directive=asm2 asmexpand define3 endasm2 incdir1 noextend1
+
+# Nr 6) C166 Linker Directive
+c166_linker_directive=assign cinittab classes disablewarning dppuse elf groups intno ixref linkonly name \
+noamake nocase nocomments nodefaultlibrary noinit nolines nomap noprint nopublics \
+nosortsize nosymbols notype novectab objectcontrols pagelength pagewidth print \
+printcontrols publicsonly purge regbank regfile reserve rtx166 rtx166tiny secsize \
+sections vectab warninglevel
+
+# Nr 7) C166  New Keyword
+c166_new_keyword=__asm bdata bit ebdata far huge idata interrupt __inline near \
+sbit sdata sfr _task_ using xhuge
+
+# Nr 8) C166 Classes
+c166_classes=ncode nconst fconst xconst fcode ndata ndata0 sdata sdata0 \
+idata idata0 bit bit0 bdata bdata0 fdata fdata0 hdata hdata0 xdata xdata0 icode
+
+# Nr 9) C166 Memory Areas
+c166_memory_area=code const data bdata ebdata xdata near far huge sfr
+
+# Nr 10) C166 Memory Models
+c166_memory_model=tiny small medium compact large hcompact hlarge xlarge
+
+# Nr 11) C166 Memory Type
+c166_memory_type=near bdata idata sdata far huge xhuge
+
+# Nr 12) C166 Data Types
+c166_data_type=char enum short int long float double bit sbit sfr
+
+# Nr 13) C166 Predefined Macros
+c166_predefined_macro=__c166__ __date__ __date2__ __dus__ __file__ __float64__ __line__ \
+__mac__ __mod167__ __model__ __modv2__ __savemac__ __stdc__ __time__
+
+# Nr 14) C166 Directive 
+c166_directive=
+
+# Nr 15) C166 Optimizer Options
+c166_optimizer_option=noalias nodppsave nofixdpp optimize size static
+
+# Nr 16) C166 absolute access macros
+c166_absolute_access_macros=hvar mvar xvar harray marray xarray 
+
+
+# (B) Keyword assignement for C166
+keywords6.$(file.patterns.cpp)=$(c166_new_keyword) $(c166_optimizer_option) $(c166_classes) $(c166_data_type) $(c166_memory_type) $(c166_memory_model) $(c166_memory_area) \
+$(c166_directive) $(c166_source_directive) $(c166_listing_directive) $(c166_object_directive) $(c166_linker_directive) $(ext_instruction) $(c166_predefined_macro) $(c166_absolute_access_macros)

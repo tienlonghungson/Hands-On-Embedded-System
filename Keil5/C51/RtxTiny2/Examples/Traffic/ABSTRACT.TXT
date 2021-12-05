@@ -1,0 +1,33 @@
+Traffic is a program that controls a traffic light.
+
+The traffic light is timed and lets cars pass during a
+specific time period.  There is a pedestrial crossing
+button that lets pedestrians cross.  The lights are
+connected to Port 2.  You can see this in action using
+dScope.
+
+There are several things of interest here:
+
+*  This program uses RTX51 Tiny.  Program initialization
+   and operation code are in TRAFFIC.C.  Look for the
+   init task to see where everything starts.
+
+*  Serial I/O is interrupt and signal driven.  Look at
+   SERIAL.C for the complete, encapsulated module (you
+   may want to use this in your programs).
+
+The TRAFFIC program is available in one target:
+  Demo-Simulator:  for eval tools in SMALL model for Simulation
+  Simulator:       for full tools in SMALL model for Simulation
+  MCB900-RUN:      for MCB900 Eval Board in RUN Mode
+  EPM900-Emulator: for EPM900 Emulator for target testing
+
+The configuration file Conf_tny.A51 disables the round-robin timeout
+and enables the CPU idle mode.
+
+Notes:
+- The target Demo-Simulator allows program run with Eval Tools.
+- The target Demo-Simulator loads a fixed program image that
+  cannot be modified.
+- The remaining targets (Simulator, MCB900-RUN, EPM900-Emulator)
+  require a full version of the Keil C51 Tool Chain.

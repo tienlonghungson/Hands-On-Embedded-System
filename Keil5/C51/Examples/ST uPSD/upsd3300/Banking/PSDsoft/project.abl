@@ -1,0 +1,161 @@
+module project
+pa7 PIN 21;  "Reserved for Peripheral I/O mode
+pa6 PIN 22;  "Reserved for Peripheral I/O mode
+pa5 PIN 24;  "Reserved for Peripheral I/O mode
+pa4 PIN 26;  "Reserved for Peripheral I/O mode
+pa3 PIN 28;  "Reserved for Peripheral I/O mode
+pa2 PIN 32;  "Reserved for Peripheral I/O mode
+pa1 PIN 34;  "Reserved for Peripheral I/O mode
+pa0 PIN 35;  "Reserved for Peripheral I/O mode
+LCD_e PIN 66;
+LCD_a1 PIN 67;
+LCD_a0 PIN 71;
+En_EB PIN 74;
+En_EA PIN 76;
+En_DirOut PIN 78;
+En_PulseOut PIN 80;
+tdo PIN 6; "TDO
+tdi PIN 7; "TDI
+tck PIN 16; "TCK
+tms PIN 20;  "TMS
+ale PIN 4; "ALE output
+_psen PIN 63;
+_rd PIN 65;
+_wr PIN 62;
+a11 PIN 57; "Address line
+a10 PIN 55; "Address line
+a9 PIN 53; "Address line
+a8 PIN 51; "Address line
+a7 PIN 47;  "Data/address bus line
+a6 PIN 45;  "Data/address bus line
+a5 PIN 43;  "Data/address bus line
+a4 PIN 41;  "Data/address bus line
+a3 PIN 39;  "Data/address bus line
+a2 PIN 38;  "Data/address bus line
+a1 PIN 37;  "Data/address bus line
+a0 PIN 36;  "Data/address bus line
+JTAG_debug_pin PIN 8; "JTAG debug pin
+Xtal1 PIN 48; "Xtal1
+Xtal2 PIN 49; "Xtal2
+_Reset_In PIN 68;
+VREF PIN 70; "VREF input
+psel0 node;
+rs0 node;
+csiop node;
+fs0 node;
+fs1 node;
+fs2 node;
+fs3 node;
+fs4 node;
+fs5 node;
+fs6 node;
+fs7 node;
+csboot0 node;
+csboot1 node;
+_reset node 543;
+a12 node 512;
+a13 node 513;
+a14 node 514;
+a15 node 515;
+pgr2..pgr0 node;
+En_counter0 NODE istype 'reg_D';
+En_PA NODE istype 'reg_D';
+En_PB NODE istype 'reg_D';
+En_Dir NODE istype 'reg_D';
+jtagsel node;
+
+X = .x.;
+address = [a15..a0];
+page = [pgr2..pgr0];
+Vcc = 1;
+Gnd = 0;
+
+
+// Begin user preserved declarations (not affected by iterations of DA usage) ===================
+
+//temp_pattern=[En_direction, En_counter2, En_counter1, En_counter0];
+WSIPSD PROPERTY 'DataBus_OMC D[0:0]:En_counter[0:0] MCELLAB';     
+                                                 
+//WSIPSD PROPERTY 'DataBus_OMC D[3:3]:En_direction[0:0] MCELLBC'; 
+
+DCOUNT = [En_counter0];				// 3-bit up-down counter
+Count = (DCOUNT == 0);
+
+// End user preserved declarations (not affected by iterations of DA usage) ===================
+
+
+
+equations
+
+jtagsel = !_reset;
+rs0 = ((address >= ^h0000) & (address <= ^h1FFF));
+csiop = ((address >= ^h7F00) & (address <= ^h7FFF));
+fs0 = ((page == 0) & (address >= ^h8000) & (address <= ^hFFFF));
+fs1 = ((page == 1) & (address >= ^h8000) & (address <= ^hFFFF));
+fs2 = ((page == 2) & (address >= ^h8000) & (address <= ^hFFFF));
+fs3 = ((page == 3) & (address >= ^h8000) & (address <= ^hFFFF));
+fs4 = ((page == 4) & (address >= ^h8000) & (address <= ^hFFFF));
+fs5 = ((page == 5) & (address >= ^h8000) & (address <= ^hFFFF));
+fs6 = ((page == 6) & (address >= ^h8000) & (address <= ^hFFFF));
+fs7 = ((page == 7) & (address >= ^h8000) & (address <= ^hFFFF));
+csboot0 = ((address >= ^h0000) & (address <= ^h1FFF));
+csboot1 = ((address >= ^h2000) & (address <= ^h3FFF));
+psel0 = ((address >= ^h7E00) & (address <= ^h7EFF) & (_psen));
+LCD_e = ((address >= ^h7E00) & (address <= ^h7EFF) & (!_wr))
+     # ((address >= ^h7E00) & (address <= ^h7EFF) & (!_rd));
+LCD_a1 = a1;
+LCD_a1.oe = Vcc;
+LCD_a0 = a0;
+LCD_a0.oe = Vcc;
+En_DirOut = En_Dir;
+En_DirOut.oe = Vcc;
+En_PulseOut = En_PA& En_PB;
+En_PulseOut.oe = Vcc;
+En_counter0.ck = !(En_PA & En_PB);
+En_counter0.re = !_reset;
+En_counter0.pr = Gnd;
+En_PA := Vcc;
+En_PA.ck = Vcc;
+En_PA.re = !(En_EA #( !En_EB));
+En_PA.pr = En_EA &( !En_EB);
+En_PB := Vcc;
+En_PB.ck = Vcc;
+En_PB.re = !(En_EA # En_EB);
+En_PB.pr = En_EA & En_EB;
+En_Dir := En_EB;
+En_Dir.ck = !(En_PA & En_PB);
+En_Dir.re = !_reset;
+En_Dir.pr = Gnd;
+
+
+// Begin user preserved equations (not affected by iterations of DA usage) ===================
+//when(En_PulseA==0)
+//then
+//{
+//	En_direction0.D=0;
+//	En_direction0.C=En_PulseB;
+//}
+//when(En_PulseB==0)
+//then
+//{
+//	En_direction0.D=1;
+//	En_direction0.C=En_PulseA;
+//}
+
+//	En_direction.D=!En_direction&!En_PulseB			#En_direction	&En_PulseA;
+//	En_direction.C=!En_direction&!En_PulseB&En_PulseA	#En_direction	&!En_PulseA&En_PulseB;
+//	En_Pulse.D=En_direction&!En_PulseB#!En_direction&!En_PulseA;
+//	En_Pulse.C=En_direction&(!En_PulseB&En_PulseA#En_PulseB&!En_PulseA) #!En_direction&
+//			(!En_PulseB&En_PulseA#En_PulseB&!En_PulseA);
+	
+
+
+when Count then DCOUNT := DCOUNT + 1;			"Count up
+
+
+/////////////////////////////////////////////////////////////////////
+
+// End user preserved equations (not affected by iterations of DA usage) ===================
+
+
+end project

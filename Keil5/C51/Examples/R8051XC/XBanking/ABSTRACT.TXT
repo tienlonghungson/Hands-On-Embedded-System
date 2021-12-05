@@ -1,0 +1,51 @@
+*** IMPORTANT NOTE ***
+    Far Memory Support is only available in the PK51 package.
+    If you have an CA51, DK51, or Evaluation Package the far memory
+    support is not available and this example will not work.
+
+
+The following example program shows you how to use xdata banking with
+the Evatronix R8051XC core.
+
+In this example we are using 7 memory banks for xdata variables.
+Refer to the "Linker/Locater User's Guide - Bank Switching - Configuration"
+for more information.
+
+C51 provides you with the 'far' memory type that can be used to
+access large memory.  The memory accesses routines are part of the
+XBANKING.A51 configuration file.  The example includes a configured
+version of the XBANKING.A51 file.
+
+You may use the 'far' memory banking together with code banking 
+to expand the program code memory. 
+
+The 'far' memory type is handled at LX51 linker/locater level with 
+the memory class:
+    HDATA   memory class for the 'banked' xdata memory.
+
+To configure the LX51 Linker/Locater you the following options
+under Options for Target - LX51 Locate:
+
+Disable: Use Memory Layout from Target Dialog.
+
+Enter under User Classes:
+XDATA (X:0x0-X:0x7FFF), CODE (C:0x0-C:0x7FFF), 
+HDATA (X:0x018000-X:0x01FFFF, X:0x028000-X:0x02FFFF, X:0x038000-X:0x03FFFF, X:0x048000-X:0x04FFFF,
+       X:0x058000-X:0x05FFFF, X:0x068000-X:0x06FFFF, X:0x078000-X:0x07FFFF)
+
+
+The simulator is also configured to simulate xdata banking using the -XB 95 parameter under
+Project - Options - Debug - CPU DLL Parameter.
+
+The logical memory regions defined with the linker are mapped to physical memory as shown below:
+
+LOGICAL VIEW (TOOLS)                      PHYSICAL VIEW (HARDWARE)
+------------------------------------------------------------------
+X:0        - X:0x007FFF (common area)     0        - 0x007FFF
+X:0x008000 - X:0x00FFFF (bank 0)          0x008000 - 0x00FFFF  !do not use bank 0!
+X:0x018000 - X:0x01FFFF (bank 1)          0x008000 - 0x00FFFF
+X:0x028000 - X:0x02FFFF (bank 2)          0x010000 - 0x017FFF
+    :          :                            :         :
+X:0x078000 - X:0x07FFFF (bank 7)          0x038000 - 0x03FFFF
+
+

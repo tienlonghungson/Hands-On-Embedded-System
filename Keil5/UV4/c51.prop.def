@@ -1,0 +1,91 @@
+#------------------------------------------------------------------------------
+# Define uVision settings for C51 and CX51 source code files
+#
+# Copyright : (c) 2012 - 2016 ARM Ltd. and ARM Germany GmbH
+# Version   : 1.0.0
+# Product   : uVision
+# Author    : EG
+#
+#
+#   (A) Cx51 Keyword sections
+#        1) Cx51 ANSI C Keywords
+#        2) Cx51 Operator
+#        3) Cx51 Listing Directive
+#        4) Cx51 Object Directive
+#        5) Cx51 Source Directive
+#        6) Cx51 New Keyword
+#        7) Cx51 Memory Areas
+#        8) Cx51 Memory Models
+#        9) Cx51 Memory Type
+#       10) Cx51 Data Types
+#       11) Cx51 Storage Classes
+#       12) Cx51 Predefined Macros
+#       13) Cx51 Directive
+#       14) Cx51 Optimizer Options
+#
+#   (B) Cx51 Keyword assignement
+#
+#
+#------------------------------------------------------------------------------
+
+
+
+# (A) Cx51 Keyword sections
+#
+# Nr 1) Cx51 ANSI C Keywords
+cx51_ansi_c_keyword=auto break case char const continue default do double else enum extern float for goto \
+if int long register return short signed sizeof static struct switch typedef \
+union unsigned void volatile while
+
+# Nr 2) Cx51 Operator
+# cx51_operator=( ) [ ] . -> - ! ++ -- - + * .. sizeof / % << >> < > <= > >= \
+# == != & ^ | && || ?:  = *= /= %= += -= <<= >>= &= |= ^= , 
+
+# Nr 3) Cx51 Listing Directive
+cx51_listing_directive=CODE1 COND1 EJECT LISTINCLUDE NOCOND1 NOPRINT1 PAGELENGTH1 \ 
+PAGEWIDTH1 PREPRINT1 PRINT1 SYMBOLS1 TABS1 WARNINGLEVEL1 
+
+# Nr 4) Cx51 Object Directive
+cx51_object_directive=AREGS BROWSE1 COMPACT1 DEBUG1 DISABLE FARWARNING FIXXC800 \
+FLOATFUZZY INTERVAL1 INTPROMOTE1 INTVECTOR1 LARGE1 MAXARGS1 MOD517 \
+MODA2 MODAB2 MODDA MODDP2 MODP2 NOAMAKE1 NOAREGS NOINTPROMOTE1 \
+NOINTVECTOR1 NOMOD517 NOMODA2 NOMODAB2 NOMODDA NOMODDP2 MODP2 \
+NOOBJECT1 NOREGPARMS OBJECT1 OBJECTADVANCED1 OBJECTEXTEND1 \
+OMF21 ONEREGBANK OPTIMIZE ORDER1 PSOC1 REGPARMS RESTORE RET_PSTK1 \
+RET_XSTK1 ROM1 SAVE SMALL1 SRC1 STRING1 USERCLASS1 VARBANKING1 XCROM1 
+
+# Nr 5) Cx51 Source Directive
+cx51_source_directive=ASM DEFINE2 ENDASM INCDIR1 NOEXTEND1     
+
+# Nr 6) Cx51 New Keyword
+cx51_new_keyword=_at_ alien interrupt \
+_priority_ reentrant _task_ using  
+
+# Nr 7) Cx51 Memory Areas
+cx51_memory_area=code data idata bdata xdata pdata far sfr
+
+# Nr 8) Cx51 Memory Models
+cx51_memory_model=small compact large
+
+# Nr 9) Cx51 Memory Type
+cx51_memory_type=code data idata bdata xdata pdata far
+
+# Nr 10) Cx51 Data Types
+cx51_data_type=bit char enum int float double sbit sfr sfr16
+
+# Nr 11) Cx51 Storage Classes
+cx51_storage_class=auto register static extern
+
+# Nr 12) Cx51 Predefined Macros
+cx51_predefined_macro=__c51__ __cx51__ __date__ __date2__ __file__ __line__ __model__ __time__ __stdc__
+
+# Nr 13) Cx51 Directive
+cx51_directive=
+
+# Nr 14) Cx51 Optimizer Options
+cx51_optimizer_option=noaregs noregparms optimize size objectadvanced
+
+
+# (B) Keyword assignement for A51
+keywords6.$(file.patterns.cpp)=$(cx51_new_keyword) $(cx51_optimizer_option) $(cx51_storage_class) $(cx51_data_type) $(cx51_memory_type) $(cx51_memory_model) \
+$(cx51_directive) $(ext_instruction) $(cx51_source_directive) $(cx51_listing_directive) $(cx51_object_directive) $(cx51_predefined_macro)

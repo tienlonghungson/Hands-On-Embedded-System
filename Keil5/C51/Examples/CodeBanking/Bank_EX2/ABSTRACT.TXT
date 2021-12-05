@@ -1,0 +1,2 @@
+This program shows how you can store data (like strings or tables)
+in several code banks.

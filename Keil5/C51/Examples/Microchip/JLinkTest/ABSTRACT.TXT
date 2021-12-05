@@ -1,0 +1,4 @@
+The JLinkTest program is a very simple program toggeling all
+bits on all ports. If there are LEDs connected they will blink.
+
+This example uses the JLink-Plus adapter from Segger.

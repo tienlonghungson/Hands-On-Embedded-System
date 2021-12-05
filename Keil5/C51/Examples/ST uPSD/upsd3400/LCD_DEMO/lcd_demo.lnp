@@ -1,0 +1,7 @@
+"STARTUP34.obj",
+"upsd3400_timer.obj",
+"LCD_demo.obj",
+"upsd3400_lcd.obj" 
+TO "lcd_demo" 
+RAMSIZE(256) 
+XDATA( 0X0000-0X1FFF )

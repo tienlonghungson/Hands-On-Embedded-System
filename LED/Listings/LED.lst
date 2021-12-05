@@ -1,0 +1,72 @@
+A51 MACRO ASSEMBLER  LED                                                                  11/01/2021 09:05:11 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\LED.obj
+ASSEMBLER INVOKED BY: E:\Long\Keil5\C51\BIN\A51.EXE LED.a51 SET(SMALL) DEBUG PRINT(.\Listings\LED.lst) OBJECT(.\Objects\
+                      LED.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 000h
+0000 747E              2             MOV A, #07Eh
+                       3     
+0002                   4     BLINK:
+0002 F580              5             MOV P0, A
+0004 120030            6             LCALL ONE_MILLI_SUB
+0007 74BD              7             MOV A,#0BDh
+0009 F580              8             MOV P0, A
+000B 120030            9             LCALL ONE_MILLI_SUB
+000E 74DB             10             MOV A,#0DBh
+0010 F580             11             MOV P0,A
+0012 120030           12             LCALL ONE_MILLI_SUB
+0015 74E7             13             MOV A,#0E7h
+0017 F580             14             MOV P0,A
+0019 120030           15             LCALL ONE_MILLI_SUB
+001C 74DB             16             MOV A,#0DBh
+001E F580             17             MOV P0,A
+0020 120030           18             LCALL ONE_MILLI_SUB
+0023 74BD             19             MOV A,#0BDh
+0025 F580             20             MOV P0, A
+0027 120030           21             LCALL ONE_MILLI_SUB
+002A 747E             22             MOV A,#07Eh
+002C 80D4             23             JMP BLINK 
+                      24     
+002E                  25     LOOP:
+002E 80FE             26             JMP LOOP
+                      27     
+                      28     ;================
+                      29     ; ONE_MILLI_SUB
+                      30     ; Subroutine to delay 1ms
+                      31     ; Use and preserve R7
+                      32     ;================
+0030                  33     ONE_MILLI_SUB:
+0030 C007             34             PUSH 07h                                        ; save R7 to stack
+0032 7FFA             35             MOV R7, #250d
+0034                  36     LOOP_1_MILLI:                                   ; loop for 250 times
+0034 00               37             NOP
+0035 00               38             NOP
+0036 DFFC             39             DJNZ R7, LOOP_1_MILLI 
+0038 D007             40             POP 07h                                         ; restore
+003A 22               41             RET
+                      42     
+                      43     END
+A51 MACRO ASSEMBLER  LED                                                                  11/01/2021 09:05:11 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BLINK. . . . . . .  C ADDR   0002H   A   
+LOOP . . . . . . .  C ADDR   002EH   A   
+LOOP_1_MILLI . . .  C ADDR   0034H   A   
+ONE_MILLI_SUB. . .  C ADDR   0030H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

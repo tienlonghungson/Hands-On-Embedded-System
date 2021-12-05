@@ -1,0 +1,181 @@
+/*--------------------------------------------------------------------------
+REG1200.H
+
+Header file for TI MSC1200 microcontroller.
+Copyright 2003 Texas Instruments Inc as an unpublished work.
+Created By:  Ritu Ghosh
+Version 1.0 Initial Version 12/03/2003
+--------------------------------------------------------------------------*/
+
+#ifndef __REG1200_H__
+#define __REG1200_H__
+
+/*  BYTE Registers  */
+sfr SP    = 0x81;
+sfr DPL   = 0x82;
+sfr DPL0  = 0x82;
+sfr DPH   = 0x83;
+sfr DPH0  = 0x83;
+sfr DPL1  = 0x84;
+sfr DPH1  = 0x85;
+sfr DPS   = 0x86;
+sfr PCON  = 0x87;
+sfr TCON  = 0x88;
+  sbit TF1   = TCON^7;
+  sbit TR1   = TCON^6;
+  sbit TF0   = TCON^5;
+  sbit TR0   = TCON^4;
+  sbit IE1   = TCON^3;
+  sbit IT1   = TCON^2;
+  sbit IE0   = TCON^1;
+  sbit IT0   = TCON^0;
+sfr TMOD  = 0x89;
+sfr TL0   = 0x8A;
+sfr TL1   = 0x8B;
+sfr TH0   = 0x8C;
+sfr TH1   = 0x8D;
+sfr CKCON = 0x8E;
+sfr MWS   = 0x8F;
+sfr P1    = 0x90;
+  sbit INT5  = P1^7;
+  sbit INT4  = P1^6;
+  sbit INT3  = P1^5;
+  sbit INT2  = P1^4;
+  sbit DIN   = P1^3;
+  sbit DOUT  = P1^2;
+sfr EXIF  = 0x91;
+sfr CADDR = 0x93;
+sfr CDATA = 0x94;
+sfr SCON  = 0x98;
+sfr SCON0 = 0x98;
+  sbit SM0_0   = SCON0^7;
+  sbit SM1_0   = SCON0^6;
+  sbit SM2_0   = SCON0^5;
+  sbit REN_0   = SCON0^4;
+  sbit TB8_0   = SCON0^3;
+  sbit RB8_0   = SCON0^2;
+  sbit TI      = SCON0^1;
+  sbit TI_0    = SCON0^1;
+  sbit RI      = SCON0^0;
+  sbit RI_0    = SCON0^0;
+sfr SBUF     = 0x99;
+sfr SBUF0    = 0x99;
+sfr SPICON   = 0x9A;
+sfr I2CCON   = 0x9A;
+sfr SPIDATA  = 0x9B;
+sfr I2CDATA  = 0x9B;
+sfr AIPOL  = 0xA4;
+sfr PAI    = 0xA5;
+sfr AIE    = 0xA6;
+sfr AISTAT = 0xA7;
+sfr IE     = 0xA8;
+  sbit EA    = IE^7;
+  sbit ES    = IE^4;
+  sbit ES0   = IE^4;
+  sbit ET1   = IE^3;
+  sbit EX1   = IE^2;
+  sbit ET0   = IE^1;
+  sbit EX0   = IE^0;
+sfr P1DDRL = 0xAE;
+sfr P1DDRH = 0xAF;
+sfr P3     = 0xB0;
+  sbit CLKS  = P3^6;
+  sbit T1    = P3^5;
+  sbit T0    = P3^4;
+  sbit INT1  = P3^3;
+  sbit INT0  = P3^2;
+  sbit TXD   = P3^1;
+  sbit TXD0  = P3^1;
+  sbit RXD   = P3^0;
+  sbit RXD0  = P3^0;
+sfr P3DDRL = 0xB3;
+sfr P3DDRH = 0xB4;
+sfr IDAC   = 0xB5;
+sfr IP     = 0xB8;
+  sbit PS    = IP^4;
+  sbit PS0   = IP^4;
+  sbit PT1   = IP^3;
+  sbit PX1   = IP^2;
+  sbit PT0   = IP^1;
+  sbit PX0   = IP^0;
+sfr EWU    = 0xC6;
+sfr SYSCLK = 0xC7;
+sfr PSW    = 0xD0;
+  sbit CY    = PSW^7;
+  sbit AC    = PSW^6;
+  sbit F0    = PSW^5;
+  sbit RS1   = PSW^4;
+  sbit RS0   = PSW^3;
+  sbit OV    = PSW^2;
+  sbit F1    = PSW^1;
+  sbit P     = PSW^0;
+sfr OCL    = 0xD1;
+sfr OCM    = 0xD2;
+sfr OCH    = 0xD3;
+sfr GCL    = 0xD4;
+sfr GCM    = 0xD5;
+sfr GCH    = 0xD6;
+sfr ADMUX  = 0xD7;
+sfr EICON  = 0xD8;
+  sbit EAI   = EICON^5;
+  sbit AI    = EICON^4;
+  sbit WDTI  = EICON^3;
+sfr16 ADC16 = 0xd9;
+sfr ADRESL = 0xD9;
+sfr ADRESM = 0xDA;
+sfr ADRESH = 0xDB;
+sfr ADCON0 = 0xDC;
+sfr ADCON1 = 0xDD;
+sfr ADCON2 = 0xDE;
+sfr ADCON3 = 0xDF;
+sfr ACC    = 0xE0;
+sfr SSCON  = 0xE1;
+sfr SUMR0  = 0xE2;
+sfr SUMR1  = 0xE3;
+sfr SUMR2  = 0xE4;
+sfr SUMR3  = 0xE5;
+sfr ODAC   = 0xE6;
+sfr LVDCON = 0xE7;
+sfr EIE    = 0xE8;
+  sbit EWDI  = EIE^4;
+  sbit EX5   = EIE^3;
+  sbit EX4   = EIE^2;
+  sbit EX3   = EIE^1;
+  sbit EX2   = EIE^0;
+sfr HWPC0  = 0xE9;
+sfr HWPC1  = 0xEA;
+sfr HWVER  = 0xEB;
+sfr FMCON  = 0xEE;
+sfr FTCON  = 0xEF;
+sfr B      = 0xF0;
+sfr PDCON  = 0xF1;
+sfr PASEL  = 0xF2;
+sfr PLLL   = 0xF4;
+sfr PLLH   = 0xF5;
+sfr ACLK   = 0xF6;
+sfr SRST   = 0xF7;
+sfr EIP    = 0xF8;
+  sbit PWDI  = EIP^4;
+  sbit PX5   = EIP^3;
+  sbit PX4   = EIP^2;
+  sbit PX3   = EIP^1;
+  sbit PX2   = EIP^0;
+sfr SECINT = 0xF9;
+sfr MSINT  = 0xFA;
+sfr USEC   = 0xFB;
+sfr MSECL  = 0xFC;
+sfr MSECH  = 0xFD;
+sfr HMSEC  = 0xFE;
+sfr WDTCON = 0xFF;
+
+/*-----------------*/
+/*  Word Registers  */
+/*-----------------*/
+sfr16 DECIMATION = 0xde;
+sfr16 HWPC       = 0xe9;
+sfr16 MSEC       = 0xfc;
+sfr16 P1DDR      = 0xae;
+sfr16 P3DDR      = 0xb3;
+sfr16 PLL        = 0xf4;
+
+#endif

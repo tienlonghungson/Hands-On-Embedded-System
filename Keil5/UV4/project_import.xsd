@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:simpleType name="switcher">
+    <!--one bit value: 0|1 -->
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name='UserAction'>
+    <xs:simpleContent>
+      <xs:extension base='xs:string'>
+        <!--flag to execute the action -->
+        <xs:attribute name="run" type="xs:boolean" use="optional" default="1"/>
+        <!--flag to execute the action in DOS16 mode-->
+        <xs:attribute name="Dos16Mode" type="xs:boolean" use="optional" default="0"/>
+        <!--stop build on Exit Code (only for Before Compilation actions)-->
+        <xs:attribute name="StopOnExitCode" type="xs:decimal" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+    
+  <xs:element name="Project">
+    <xs:complexType>
+      <xs:all>
+        <!--Toolset name : "ARM", "GCC", "MCS-51","MCS-251","166/167"-->
+        <xs:element name="ToolsetName" type="xs:string" minOccurs="0"/>
+        <!--Device name as it is given in uVision device database -->
+        <xs:element name="Device" type="xs:string" />
+        <!--Output file -->
+        <xs:element name="Output" minOccurs="0" maxOccurs="1" >
+          <xs:complexType>
+            <!--Executable or library name -->
+            <xs:attribute name="name" type="xs:string" use="optional"/>
+            <!--output directory path -->
+            <xs:attribute name="path" type="xs:string" use="optional"/>
+            <!--flag to create library instead of executable -->
+            <xs:attribute name="CreateLib"  type="xs:boolean" use="optional" default="0"/>
+          </xs:complexType>
+        </xs:element>
+        <!--User Actions -->
+        <xs:element name="User" minOccurs="0" maxOccurs="1" >
+          <xs:complexType>
+            <xs:all>
+              <!--Before compile action 1 -->
+              <xs:element name="BeforeCompile1" type="UserAction" minOccurs="0" maxOccurs="1"/>
+              <xs:element name="BeforeCompile2" type="UserAction" minOccurs="0" maxOccurs="1"/>
+              <xs:element name="BeforeBuild1" type="UserAction" minOccurs="0" maxOccurs="1"/>
+              <xs:element name="BeforeBuild2" type="UserAction" minOccurs="0" maxOccurs="1"/>
+              <xs:element name="AfterBuild1" type="UserAction" minOccurs="0" maxOccurs="1"/>
+              <xs:element name="AfterBuild2" type="UserAction" minOccurs="0" maxOccurs="1"/>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+
+        <!--Include paths can be absolute or relative to created project file -->
+        <xs:element name="IncludePath" type="xs:string" minOccurs="0" maxOccurs="1" />
+        <!--User-defined Scatter file  -->
+        <xs:element name="ScatterFile" type="xs:string" minOccurs="0" maxOccurs="1" />
+        <!--SFR file  -->
+        <xs:element name="SFDFile" type="xs:string" minOccurs="0" maxOccurs="1" />
+        <!--Deprecated, use COptions instead -->
+        <xs:element name="MiscControls" type="xs:string" minOccurs="0" maxOccurs="1" />
+        <!--C preprocessor definitions (without -D)-->
+        <xs:element name="CDefines" type="xs:string" minOccurs="0" maxOccurs="1" />
+        <!--Assembler preprocessor definitions using C syntax: MYDEF, not 'MYDEF SETA 1' -->
+        <xs:element name="AsmDefines" type="xs:string" minOccurs="0" maxOccurs="1" />
+        <!--Additional compiler options -->
+        <xs:element name="COptions" type="xs:string" minOccurs="0" maxOccurs="1" />
+        <!--Additional assembler options -->
+        <xs:element name="AsmOptions" type="xs:string" minOccurs="0" maxOccurs="1" />
+        <!--Additional linker options -->
+        <xs:element name="LinkOptions" type="xs:string" minOccurs="0" maxOccurs="1" />
+        <!--Common option to use MicroLib (0/1)-->
+        <xs:element name="useUlib" type="switcher" minOccurs="0" maxOccurs="1" />
+
+        <!--Debug Settings (Simulation and/or Target) -->
+        <xs:element name="Simulator" minOccurs="0" maxOccurs="1" >
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="UseSimulator" type="switcher" minOccurs="0" maxOccurs="1"/>
+              <xs:element name="LoadApplicationAtStartup" type="switcher" minOccurs="0" maxOccurs="1"/>
+              <xs:element name="RunToMain" type="switcher" minOccurs="0" maxOccurs="1" />
+              <xs:element name="InitializationFile" type="xs:string" minOccurs="0" maxOccurs="1" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Target" minOccurs="0" maxOccurs="1" >
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="UseTarget" type="switcher" minOccurs="0" maxOccurs="1"/>
+              <xs:element name="LoadApplicationAtStartup" type="switcher" minOccurs="0" maxOccurs="1"/>
+              <xs:element name="RunToMain" type="switcher" minOccurs="0" maxOccurs="1" />
+              <xs:element name="InitializationFile" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <!--Driver pathname as it appeas in TOOLS.INI, e.g. "BIN\UL2ARM.DLL" -->
+              <xs:element name="Driver" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+
+        <!--Files -->
+        <xs:element name="Groups" minOccurs="0" maxOccurs="1" >
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="1" maxOccurs="unbounded" name="Group">
+                <!--one or more groups contained in the target-->
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="GroupName" type="xs:string" minOccurs="0" maxOccurs="1" />
+                    <xs:element name="Files" minOccurs="0" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <!--file description-->
+                          <xs:element minOccurs="1" maxOccurs="unbounded" name="File">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <!--filename without path-->
+                                <xs:element name="FileName" type="xs:string"/>
+                                <!--file type: 1 - C source; 2 - ASM source; 3 - obj; 4 - lib; 5 - header or text; 7 - custom; 8 - C++ source -->
+                                <xs:element name="FileType" type="xs:byte"/>
+                                <!--filename with path (absolute or relative to project)-->
+                                <xs:element name="FilePath" type="xs:string"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

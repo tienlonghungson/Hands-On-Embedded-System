@@ -1,0 +1,278 @@
+LX51 LINKER/LOCATER V4.00 BETA                                                          08/31/2005  15:30:50  PAGE 1
+
+
+
+
+
+ASSEMBLER CODE PACKING OF MODULE:  loadapp (MAIN_B)
+
+
+----- FUNCTION ?L?COM0001 (BEGIN) -----
+80000C E4                CLR     A
+80000D F0                MOVX    @DPTR,A
+80000E F5B0              MOV     P3,A
+800010 75B0FF            MOV     P3,#0FFH
+800013         ?L?COM0002:
+800013 F5B0              MOV     P3,A
+800015 75B0FF            MOV     P3,#0FFH
+800018 F5B0              MOV     P3,A
+80001A 75B0FF            MOV     P3,#0FFH
+80001D 22                RET     
+----- FUNCTION ?L?COM0001 (END) -------
+
+
+----- FUNCTION ?L?COM0003 (BEGIN) -----
+80001E E4                CLR     A
+80001F F590              MOV     P1,A
+800021 7590FF            MOV     P1,#0FFH
+800024 900000            MOV     DPTR,#t2_ind
+800027 04                INC     A
+800028 F0                MOVX    @DPTR,A
+800029 22                RET     
+----- FUNCTION ?L?COM0003 (END) -------
+
+
+80002B 2130              AJMP    0800130H
+----- FUNCTION ?L?COM0004 (BEGIN) -----
+8000E0 85CACC            MOV     TL2,RCAP2L
+8000E3 85CBCD            MOV     TH2,RCAP2H
+8000E6 D2AD              SETB    ET2
+8000E8 D2CA              SETB    TR2
+8000EA 22                RET     
+----- FUNCTION ?L?COM0004 (END) -------
+
+
+----- FUNCTION ?L?COM0005 (BEGIN) -----
+8000EB C2AD              CLR     ET2
+8000ED E4                CLR     A
+8000EE F5C9              MOV     T2MOD,A
+8000F0 F5C8              MOV     T2CON,A
+8000F2 22                RET     
+----- FUNCTION ?L?COM0005 (END) -------
+
+
+----- FUNCTION main (BEGIN) -----
+ FILE: 'main_b.c'
+   16: main()
+   17: {
+   18: 	int_off();
+   19: 	t2_ini_load();
+8000F3 312A              ACALL   int_off
+   20: 	t2_ind = 0;
+8000F5 311F              ACALL   t2_ini_load
+   21: 	int_on();
+8000F7 E4                CLR     A
+8000F8 900000            MOV     DPTR,#t2_ind
+8000FB F0                MOVX    @DPTR,A
+   22: 	P2 = 0xFF;
+8000FC 311C              ACALL   int_on
+   23: 	while(1)
+LX51 LINKER/LOCATER V4.00 BETA                                                        08/31/2005  15:30:50  PAGE 2
+
+
+8000FE 75A0FF            MOV     P2,#0FFH
+800101         ?C0001?MAIN_B:
+   24: 		{
+   25: 		if (P2 != 0xFF)
+   26: 			{
+800101 E5A0              MOV     A,P2
+800103 F4                CPL     A
+800104 600B              JZ      ?C0003?MAIN_B
+   27: 			stsys = 1;
+   28: 			main_app();
+800106 900001            MOV     DPTR,#stsys
+800109 7401              MOV     A,#01H
+80010B F0                MOVX    @DPTR,A
+   29: 			}
+80010C A512870000        ECALL   main_app
+   30: 		if (t2_ind == 1)
+800111         ?C0003?MAIN_B:
+   31: 			{
+800111 900000            MOV     DPTR,#t2_ind
+800114 E0                MOVX    A,@DPTR
+800115 B401E9            CJNE    A,#01H,?C0001?MAIN_B
+   32: 			t2_ind = 0;
+   33: 			P3 = 0x00;
+800118 110C              ACALL   ?L?COM0001
+   34: 			P3 = 0xFF;
+   35: 			P3 = 0x00;
+   36: 			P3 = 0xFF;
+   37: 			P3 = 0x00;
+   38: 			P3 = 0xFF;
+   39: 			}
+   40: 		}
+80011A 80E5              SJMP    ?C0001?MAIN_B
+----- FUNCTION main (END) -------
+
+
+----- FUNCTION int_on (BEGIN) -----
+ FILE: 'main_b.c'
+   63: void int_on(void)  {
+   64: 	EA = 1;
+   65: }
+80011C D2AF              SETB    EA
+   66: 
+80011E 22                RET     
+----- FUNCTION int_on (END) -------
+
+
+----- FUNCTION t2_ini_load (BEGIN) -----
+ FILE: 'main_b.c'
+   44: void t2_ini_load(void)
+   45: {
+   46: 	ET2 = 0;
+   47: 	T2MOD = 0x00;			//T2 is in 16 bit autoreload mode
+80011F 11EB              ACALL   ?L?COM0005
+   48: 	T2CON = 0x00;
+   49: 	RCAP2L = 0xFF;			//genereating interrupts on 10 ms|22.1184 MHz clock
+800121 75CAFF            MOV     RCAP2L,#0FFH
+   50: 	RCAP2H = 0x6f;
+800124 75CB6F            MOV     RCAP2H,#06FH
+   51: 	TL2 = RCAP2L;
+800127 11E0              ACALL   ?L?COM0004
+   52: 	TH2 = RCAP2H;
+   53: 	ET2 = 1;
+   54: 	TR2 = 1;				//T2 is on
+   55: }
+800129 22                RET     
+LX51 LINKER/LOCATER V4.00 BETA                                                        08/31/2005  15:30:50  PAGE 3
+
+
+----- FUNCTION t2_ini_load (END) -------
+
+
+----- FUNCTION int_off (BEGIN) -----
+ FILE: 'main_b.c'
+   67: void int_off(void)  {
+   68: 	EA = 0;
+   69: }
+80012A C2AF              CLR     EA
+   70: 
+80012C 22                RET     
+----- FUNCTION int_off (END) -------
+
+
+----- FUNCTION t2_isr_load (BEGIN) -----
+ FILE: 'main_b.c'
+   57: void t2_isr_load(void)  {
+   58: 	P1 = 0x00;				//signal t2 ISR activity (bootloader)
+   59: 	P1 = 0xFF;
+80012D 111E              ACALL   ?L?COM0003
+   60: 	t2_ind = 1;
+   61: }
+80012F 22                RET     
+----- FUNCTION t2_isr_load (END) -------
+
+
+----- FUNCTION timer2 (BEGIN) -----
+ FILE: 'int.c'
+    8: void timer2(void) interrupt 5 using 1 
+800130 C0E0              PUSH    ACC
+800132 C0F0              PUSH    B
+800134 C083              PUSH    DPH
+800136 C082              PUSH    DPL
+800138 C0D0              PUSH    PSW
+80013A 75D008            MOV     PSW,#08H
+    9: {
+   10: 	TF2 = 0;
+80013D C2CF              CLR     TF2
+   11: 	if (stsys == 0)
+80013F 900001            MOV     DPTR,#stsys
+800142 E0                MOVX    A,@DPTR
+800143 7004              JNZ     ?C0001?INT
+   12: 		t2_isr_load();
+800145 312D              ACALL   t2_isr_load
+800147 8005              SJMP    ?C0003?INT
+800149         ?C0001?INT:
+   13: 	else
+   14: 		t2_isr_app();
+800149 A512870030        ECALL   t2_isr_app
+   15: }
+80014E         ?C0003?INT:
+80014E D0D0              POP     PSW
+800150 D082              POP     DPL
+800152 D083              POP     DPH
+800154 D0F0              POP     B
+800156 D0E0              POP     ACC
+800158 32                RETI    
+----- FUNCTION timer2 (END) -------
+
+
+----- FUNCTION main_app (BEGIN) -----
+ FILE: 'main_a.c'
+   16: void main_app(void)
+   17: {
+   18: 	int_off();
+LX51 LINKER/LOCATER V4.00 BETA                                                        08/31/2005  15:30:50  PAGE 4
+
+
+   19: 	t2_ini_app();
+870000 A51280012A        ECALL   int_off
+   20: 	int_on();
+870005 111F              ACALL   t2_ini_app
+   21: 	while(1)
+870007 A51280011C        ECALL   int_on
+87000C         ?C0001?MAIN_A:
+   22: 		{
+   23: 		if (t2_ind == 1)
+   24: 			{
+87000C 900000            MOV     DPTR,#t2_ind
+87000F E0                MOVX    A,@DPTR
+870010 B401F9            CJNE    A,#01H,?C0001?MAIN_A
+   25: 			t2_ind = 0;
+   26: 			P3 = 0x00;
+870013 A51280000C        ECALL   ?L?COM0001
+   27: 			P3 = 0xFF;
+   28: 			P3 = 0x00;
+   29: 			P3 = 0xFF;
+   30: 			P3 = 0x00;
+   31: 			P3 = 0xFF;
+   32: 			P3 = 0x00;
+870018 A512800013        ECALL   ?L?COM0002
+   33: 			P3 = 0xFF;
+   34: 			P3 = 0x00;
+   35: 			P3 = 0xFF;
+   36: 			}
+   37: 		}
+87001D 80ED              SJMP    ?C0001?MAIN_A
+----- FUNCTION main_app (END) -------
+
+
+----- FUNCTION t2_ini_app (BEGIN) -----
+ FILE: 'main_a.c'
+   41: void t2_ini_app(void)
+   42: {
+   43: 	ET2 = 0;
+   44: 	T2MOD = 0x00;			//T2 is in 16 bit autoreload mode
+87001F A5128000EB        ECALL   ?L?COM0005
+   45: 	T2CON = 0x00;
+   46: 	RCAP2L = 0x98;			//genereating interrupts on 16 ms|22.1184 MHz clock
+870024 75CA98            MOV     RCAP2L,#098H
+   47: 	RCAP2H = 0x19;
+870027 75CB19            MOV     RCAP2H,#019H
+   48: 	TL2 = RCAP2L;
+87002A A5128000E0        ECALL   ?L?COM0004
+   49: 	TH2 = RCAP2H;
+   50: 	ET2 = 1;
+   51: 	TR2 = 1;				//T2 is on
+   52: }
+87002F 22                RET     
+----- FUNCTION t2_ini_app (END) -------
+
+
+----- FUNCTION t2_isr_app (BEGIN) -----
+ FILE: 'main_a.c'
+   54: void t2_isr_app(void)
+   55: {
+   56: 	P1 = 0x00;				//signal t2 ISR activity (bootloader)
+   57: 	P1 = 0xFF;
+870030 A51280001E        ECALL   ?L?COM0003
+   58: 	t2_ind = 1;
+   59: }
+870035 22                RET     
+----- FUNCTION t2_isr_app (END) -------
+LX51 LINKER/LOCATER V4.00 BETA                                                        08/31/2005  15:30:50  PAGE 5
+
+
+
+

@@ -1,0 +1,97 @@
+#------------------------------------------------------------------------------
+# Define uVision editor settings for A251 Assembler files
+#
+# Copyright : (c) 2012 - 2016 ARM Ltd. and ARM Germany GmbH
+# Version   : 1.0.0
+# Product   : uVision
+# Author    : EG
+#
+#
+#   (A) A251 Keyword sections
+#         1) A251 Instructions
+#         2) A251 Operator
+#         3) A251 Dircectives 
+#         4) A251 Dircectives Operand
+#         5) A251 Assembler Statements
+#         6) A251 Assembler Macro Processor Statements
+#         7) A251 Assembler Macro Processor Operators 
+#         8) A251 Predefined Macros
+#         9) A251 Register
+#        10) A251 Linker Relocation
+#        11) A251 Linker Alignment
+#
+#   (B) A251 Keyword assignement
+#
+#------------------------------------------------------------------------------
+
+
+
+# (A) A251 Keyword sections
+#
+# 1) A251 Instructions
+a251_instruction=acall add addc ajmp anl cjne clr cpl da dec div djnz \
+inc jb jbc jc jmp jnb jnc jnz jz lcall ljmp \
+mov movc movx mul nop orl pop push \
+ret reti rl rlc rr rrc setb sjmp subb swap xch xchd xrl \
+jsle jsg jle jg jsl jsge je jne movs movz bit trap ejmp ecall eret cmp sra srl sll
+
+# 2) A251 Operators
+a251_operator=() * + - / < <= <> == >= \
+and byte0 byte1 byte2 byte3 eq ge gt high le low lt mbyte mod ne not or shl shr word0 word2 xor
+
+# 3) A251 Directives
+a251_directive=$case $cond $date $debug $define $eject $else $elseif $endif $errorprint \
+$fixdrk $gen $genonly $if $incdir $include $intr2 $list $macro $modsrc $mpl $noamake \
+$nocase $nocond $nodebug $noerrorprint $nogen $nolines $nolist $nomacro $nompl $noobject \
+$noprint $noregisterbank $nosymbols $nosymlist $noxref $object $pagelength $pagewidth \
+$print $registerbank $reguse $reset $restore $save $set $symbols $symlist $title $xref
+
+# 4) A251 Directives Operand
+a251_directive_operand=$
+
+# 5) A251 Assembler Statements
+a251_statement=__error__ __warning__ bit bseg code const cseg data db dbit dd ds dsb dsd dseg dsw dw \
+ebit edata else elseif end endif endp equ esfr even extern extrn \
+hdata hconst idata if iseg label lit name org proc public rseg \
+sbit segment set sfr sfr16 using xdata xseg
+
+# 6) A251 Assembler Macro Processor Statements
+a251_macro=macro exitm endm local rept irp irpc
+
+# 7) A251 Assembler Macro Processor Operators
+a251_macro_operator=nul & < > % ;; !
+
+# 8) A251 Predefined Macros
+a251_predef_macro=__a251__  __date__ __date2__ __file__ __keil__ __line__ __mod_src__ __time__ 
+
+# 9) A251 Register
+a251_register=a b ab dptr r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 r10 r11 r12 r13 r14 r15 \
+wr0 wr2 wr4 wr8 wr10 wr12 wr14 wr16 wr18 wr20 wr22 wr24 wr26 wr28 wr30 \
+dr0 dr4 dr8 dr12 dr16 dr20 dr24 dr28 dr56 dr60 \
+pc psw sp 
+
+# 10) A251 Linker Relocation
+a251_linker_relocation=at bitaddressable inblock inpage inseg offs overlayable
+
+# 11) A251 Linker Alignment
+a251_linker_alignment=bit byte word dword page block seg align
+
+
+# (B) A251 Keyword assignement
+#
+keywords.$(file.patterns.asm)=$(a251_instruction) $(a251_operator)
+keywords2.$(file.patterns.asm)=
+keywords3.$(file.patterns.asm)=$(a251_register)
+keywords4.$(file.patterns.asm)=$(a251_directive) $(a251_directive_operand) $(a251_statement) $(a251_linker_relocation) $(a251_linker_alignment)
+keywords5.$(file.patterns.asm)=$(a251_macro) $(a251_predef_macro) $(a251_macro_operator)
+keywords6.$(file.patterns.asm)=$(ext_instruction) 
+
+
+# (C)
+#
+comment.block.asm=;
+command.compile.$(file.patterns.asm)=masm $(FileNameExt)
+command.name.0.*.asm=Link
+command.0.*.asm=link $(FileName)
+
+statement.indent.$(file.patterns.asm)=9 .if

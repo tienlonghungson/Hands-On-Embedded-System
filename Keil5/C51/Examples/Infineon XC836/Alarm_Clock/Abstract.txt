@@ -1,0 +1,16 @@
+
+This application example of an alarm clock demonstrates how the user can interact
+with the RTC module via the touch pads and LED display on the XC836 Easy Kit 
+board.
+
+The touchpads have the following function:
+‘*’ (TP12) : Enter/Exit Setup mode
+‘#’ (TP9) : Switch submode (Clock, Date, Alarm)
+‘0’-‘9’ (TP1-TP8, TP10, TP11): Input digit
+‘0’ (TP5) : Turn off buzzer
+
+This application is configured for the on-chip flash of the XC836MT controller.
+It must be downloaded before testing or debugging.
+
+For more information, please refer to the Infineon Getting Started manual 
+for the EasyKit XC836 board.

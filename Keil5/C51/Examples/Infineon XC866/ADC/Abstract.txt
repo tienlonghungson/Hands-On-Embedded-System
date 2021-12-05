@@ -1,0 +1,11 @@
+The ADC project outputs the voltage on the A/D converter input 
+AIN6 (which is the potentiometer on the MCBXC866 Board) as 
+binary value to the LEDs on P3.0 - P3.7.
+
+
+The ADC program is available in different targets:
+  Simulator:           runs in software Simulator and uses a simulation
+                       script that provides the input
+
+  Target via ULINK:    is configured for debugging with Keil ULINK
+  

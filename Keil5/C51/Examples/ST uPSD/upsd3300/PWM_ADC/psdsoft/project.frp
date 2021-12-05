@@ -1,0 +1,288 @@
+******************************************************************************************
+                               PSDsoft Express Version 8.30
+                                   Output of PSD Fitter
+******************************************************************************************
+  PROJECT    : project                          DATE : 09/28/2004
+  DEVICE     : uPSD3334D                        TIME : 17:24:28
+  FIT OPTION : Keep Current
+  DESCRIPTION: PWM ADC Example.
+Example design for uPSD3334D in Application 
+               Note AN1943. 
+Runs on the DK3300 board.
+ 
+******************************************************************************************
+     ==== Pin Layout for U (80-Pin TQFP) Package Type ====
+
+                                               -----------------------------
+                                              |                             |
+                                              |1 ] pd2             adio4 [41| Address Bus a4/Data Port d4, ad4
+                                              |2 ] p3_3             p3_5 [42|  
+                                              |3 ] pd1             adio5 [43| Address Bus a5/Data Port d5, ad5
+                                          ale |4 ] pd0              p3_6 [44|  
+                                              |5 ] pc7             adio6 [45| Address Bus a6/Data Port d6, ad6
+                                     tdo, TDO |6 ] pc6/TDO          p3_7 [46|  
+                                     tdi, TDI |7 ] pc5/TDI         adio7 [47| Address Bus a7/Data Port d7, ad7
+                               JTAG_debug_pin |8 ] debug           Xtal1 [48| Xtal1
+                                              |9 ] pc4/TERR        Xtal2 [49| Xtal2
+                                              |10] 3.3V VCC     5.0V VCC [50|  
+                                              |11] N/C             adio8 [51| Address Bus a8, a8
+                                              |12] 5.0V VCC         p1_0 [52|  
+                                              |13] GND             adio9 [53| Address Bus a9, a9
+                                              |14] pc3/TSTAT        p1_1 [54|  
+                                              |15] pc2            adio10 [55| Address Bus a10, a10
+                                     tck, TCK |16] pc1/TCK          p1_2 [56|  
+                                              |17] N/C            adio11 [57| Address Bus a11, a11
+                                              |18] p4_7             p1_3 [58|  
+                                              |19] p4_6             p1_4 [59|  
+                                     tms, TMS |20] pc0/TMS          p1_5 [60|  
+                     pa7 ,Peripheral I/O Mode |21] pa7              p1_6 [61|  
+                     pa6 ,Peripheral I/O Mode |22] pa6             cntl0 [62| _wr
+                                              |23] p4_5            cntl2 [63| _psen
+                     pa5 ,Peripheral I/O Mode |24] pa5              p1_7 [64| ADC_Ch7
+                                              |25] p4_4            cntl1 [65| _rd
+                     pa4 ,Peripheral I/O Mode |26] pa4               pb7 [66| LCD_e
+                                              |27] p4_3              pb6 [67| LCD_a1
+                     pa3 ,Peripheral I/O Mode |28] pa3          Reset_In [68| _Reset_In
+                                              |29] GND               GND [69|  
+                                              |30] p4_2             Vref [70| VREF
+                                              |31] p4_1              pb5 [71| LCD_a0
+                     pa2 ,Peripheral I/O Mode |32] pa2              AVcc [72|  
+                                         PWM0 |33] p4_0              pb4 [73|  
+                     pa1 ,Peripheral I/O Mode |34] pa1               pb3 [74|  
+                     pa0 ,Peripheral I/O Mode |35] pa0              p3_0 [75| UART0_RxD
+             ad0, Address Bus a0/Data Port d0 |36] adio0             pb2 [76|  
+             ad1, Address Bus a1/Data Port d1 |37] adio1            p3_1 [77| UART0_TxD
+             ad2, Address Bus a2/Data Port d2 |38] adio2             pb1 [78|  
+             ad3, Address Bus a3/Data Port d3 |39] adio3            p3_2 [79|  
+                                              |40] p3_4              pb0 [80| term_count
+                                              |                             |
+                                               -----------------------------
+     ==== Global Configuration ====
+
+Data Bus                                                         : 8-Bit
+Address/Data Mode                                                : Multiplexed
+ALE/AS Signal                                                    : Active High
+Control Signals                                                  : /WR, /RD, /PSEN
+Main PSD flash memory will reside in this space at power-up      : Program space
+Secondary PSD flash memory will reside in this space at power-up : Data space
+Enable Chip-Select Input(/CSI)                                   : OFF
+Standby Voltage Input (PC2)                                      : OFF
+Standby-on Indicator (PC4)                                       : OFF
+RDY/Busy function (PC3)                                          : OFF
+Load Micro-Cell on                                               : edge
+Security Protection                                              : OFF 
+
+     ==== DataBus_IMC access information ====
+
+                  CSIOP
+Location     Address Offset     Register Name           Signals
+--------------------------------------------------------
+
+     ===== Resource Usage Summary =====
+
+Total Product Terms Used:  64
+
+Device Resources                    used / total
+------------------------------------------------
+Port A: (pins 35 34 32 28 26 24 22 21)
+I/O Pins :                           8   /  8 
+   GP I/O or Address Out        :    0 
+   Peripheral I/O               :    8 
+   Logic Inputs                 :    0 
+   Address Latch Inputs         :    0 
+   PT Dependent Latch Inputs    :    0 
+   PT Dependent Register Inputs :    0 
+   Combinatorial Outputs        :    0 
+   Registered Outputs           :    0 
+Other Information
+   Microcells                   :    8   /  8 
+     Micro-Cells AB :
+      Buried Microcells         :    8 
+      Output Microcells         :    0 
+   Product Terms                :    15  /  24
+   Control Product Terms        :    24  /  34
+
+Port B: (pins 80 78 76 74 73 71 67 66)
+I/O Pins :                           4   /  8 
+   GP I/O or Address Out        :    0 
+   Logic Inputs                 :    0 
+   Address Latch Inputs         :    0 
+   PT Dependent Latch Inputs    :    0 
+   PT Dependent Register Inputs :    0 
+   Combinatorial Outputs        :    4 
+   Registered Outputs           :    0 
+Other Information
+   Microcells                   :    8   /  8 
+     Micro-Cells AB :
+      Buried Microcells         :    4 
+      Output Microcells         :    0 
+     Micro-Cells BC :
+      Buried Microcells         :    0 
+      Output Microcells         :    4 
+   Product Terms                :    10  /  28
+   Control Product Terms        :    16  /  34
+
+Port C: (pins 20 16 15 14 9 7 6 5)
+I/O Pins :                           4   /  8 
+   GP I/O or Address Out        :    0 
+   Logic Inputs                 :    0 
+   Address Latch Inputs         :    0 
+   PT Dependent Latch Inputs    :    0 
+   PT Dependent Register Inputs :    0 
+   JTAG signals                 :    4 
+   Standby Voltage Input        :    0 
+   Rdy/Bsy signal               :    0 
+   Standby On Indicator         :    0 
+   Combinatorial Outputs        :    0 
+   Registered Outputs           :    0 
+Other Information
+   Microcells                   :    4   /  8 
+     Micro-Cells BC :
+      Buried Microcells         :    4 
+      Output Microcells         :    0 
+   Product Terms                :    5   /  32
+   Control Product Terms        :    0   /  34
+
+Port D: (pins 4 3 1)
+I/O Pins :                           1   /  3 
+   GP I/O or Address Out        :    0 
+   Logic Inputs                 :    0 
+   Chip-Select Input            :    0 
+   Clock Input                  :    0 
+   Control Signal Input         :    1 
+   Fast Decoding Outputs        :    0 
+Other Information
+   Product Terms                :    0   /  3 
+   Control Product Terms        :    0   /  3 
+
+
+     ==== OMC Resource Assignment ====
+
+  Resources           PT             User
+  Used                Allocation     Name
+ ---------------------------------------------------------
+Micro-Cell AB :
+  Micro-Cells 0        -             init_count0 => Register
+  Micro-Cells 1        -             init_count1 => Register
+  Micro-Cells 2        -             init_count2 => Register
+  Micro-Cells 3        -             init_count3 => Register
+  Micro-Cells 4        -             down_count0 => Register
+  Micro-Cells 5        -             down_count1 => Register
+  Micro-Cells 6        -             down_count2 => Register
+  Micro-Cells 7        -             down_count3 => Register
+
+Micro-Cell BC :
+  Micro-Cells 0        -             term_count (mcellbc0)  => Combinatorial
+  Micro-Cells 5        -             LCD_a0 (mcellbc5)  => Combinatorial
+  Micro-Cells 6        -             LCD_a1 (mcellbc6)  => Combinatorial
+  Micro-Cells 7        -             LCD_e (mcellbc7)  => Combinatorial
+
+External Chip Select :
+
+
+     ========= Equations =========
+
+DPLD          EQUATIONS :
+=======================
+     fs0 = !pdn & !a15;
+
+     fs1 = !pdn & !pgr2 & !pgr1 & !pgr0 & a15;
+
+     fs2 = !pdn & !pgr2 & !pgr1 & pgr0 & a15;
+
+     fs3 = !pdn & !pgr2 & pgr1 & !pgr0 & a15;
+
+     fs4 = !pdn & !pgr2 & pgr1 & pgr0 & a15;
+
+     fs5 = !pdn & pgr2 & !pgr1 & !pgr0 & a15;
+
+     fs6 = !pdn & pgr2 & !pgr1 & pgr0 & a15;
+
+     fs7 = !pdn & pgr2 & pgr1 & !pgr0 & a15;
+
+     csboot0 = !pdn & a15 & !a14 & !a13;
+
+     csboot1 = !pdn & a15 & !a14 & a13;
+
+     csboot2 = !pdn & a15 & a14 & !a13;
+
+     csboot3 = !pdn & a15 & a14 & a13;
+
+     csiop = !pdn & !a15 & a14 & a13 & a12 & a11 & a10 & a9 & a8;
+
+     rs0 = !pdn & !a15 & !a14 & !a13;
+
+     psel0 = !pdn & _psen & !a15 & a14 & a13 & a12 & a11 & a10 & a9 & !a8;
+
+     jtagsel = !_reset;
+
+PORTA         EQUATIONS :
+=======================
+     init_count0.D := 0;
+     init_count0.PR = 0;
+     init_count0.RE = !_reset;
+     init_count0.C = 0;
+
+     init_count1.D := 0;
+     init_count1.PR = 0;
+     init_count1.RE = !_reset;
+     init_count1.C = 0;
+
+     init_count2.D := 0;
+     init_count2.PR = 0;
+     init_count2.RE = !_reset;
+     init_count2.C = 0;
+
+     init_count3.D := 0;
+     init_count3.PR = 0;
+     init_count3.RE = !_reset;
+     init_count3.C = 0;
+
+     down_count0.D := (!down_count0.Q & !term_count.PIN)
+          # (init_count0 & term_count.PIN);
+     down_count0.PR = 0;
+     down_count0.RE = !_reset;
+     down_count0.C = ale;
+
+     down_count1.D := (down_count1.Q & down_count0.Q & !term_count.PIN)
+          # (!down_count1.Q & !down_count0.Q & !term_count.PIN)
+          # (init_count1 & term_count.PIN);
+     down_count1.PR = 0;
+     down_count1.RE = !_reset;
+     down_count1.C = ale;
+
+     down_count2.T := (!down_count1.Q & !down_count0.Q & !term_count.PIN)
+          # (!down_count2.Q & init_count2 & term_count.PIN)
+          # (down_count2.Q & !init_count2 & term_count.PIN);
+     down_count2.PR = 0;
+     down_count2.RE = !_reset;
+     down_count2.C = ale;
+
+     down_count3.T := (!down_count3.Q & init_count3 & term_count.PIN)
+          # (down_count3.Q & !init_count3 & term_count.PIN)
+          # (!down_count2.Q & !down_count1.Q & !down_count0.Q & !term_count.PIN);
+     down_count3.PR = 0;
+     down_count3.RE = !_reset;
+     down_count3.C = ale;
+
+PORTB         EQUATIONS :
+=======================
+     term_count = !down_count3.Q & !down_count2.Q & !down_count1.Q & !down_count0.Q;
+     term_count.OE = 1;
+     term_count.LE = 1;
+
+     LCD_a0 = a0;
+     LCD_a0.OE = 1;
+
+     LCD_a1 = a1;
+     LCD_a1.OE = 1;
+
+     LCD_e = (!_wr & !a15 & a14 & a13 & a12 & a11 & a10 & a9 & !a8)
+          # (!_rd & !a15 & a14 & a13 & a12 & a11 & a10 & a9 & !a8);
+     LCD_e.OE = 1;
+
+PORTC         EQUATIONS :
+=======================
+PORTD         EQUATIONS :
+=======================
+                                      ---  End  ---

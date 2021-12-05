@@ -1,0 +1,128 @@
+***********************************************************************
+                         PSDsoft Express Version 8.30
+                         Summary of Design Assistant
+***********************************************************************
+PROJECT    : project                       DATE : 11/30/2004
+DEVICE     : uPSD3334D                     TIME : 21:12:47
+MCU/DSP    : uPSD33XX    
+***********************************************************************
+
+Initial setting for Program and Data Space:
+===========================================
+
+  Main PSD flash memory will reside in this space at power-up:      Both Program and Data Space
+  Secondary PSD flash memory will reside in this space at power-up: Program Space Only
+
+Pin Definitions:
+================
+
+Pin          Signal                    Pin
+Name         Name                      Type
+------------ ------------------------- ------------
+pa7          pa7                       Peripheral I/O mode
+pa6          pa6                       Peripheral I/O mode
+pa5          pa5                       Peripheral I/O mode
+pa4          pa4                       Peripheral I/O mode
+pa3          pa3                       Peripheral I/O mode
+pa2          pa2                       Peripheral I/O mode
+pa1          pa1                       Peripheral I/O mode
+pa0          pa0                       Peripheral I/O mode
+pb7          pb7                       GP I/O mode 
+pb6          En_EA                     Logic or address
+pb5          En_EB                     Logic or address
+pb4          LCD_E2                    External chip select - Active Hi
+pb3          LCD_E1                    External chip select - Active Hi
+pb2          LCD_RW                    Combinatorial
+pb1          LCD_A0                    Combinatorial
+tdo          tdo                       Dedicated JTAG - TDO
+tdi          tdi                       Dedicated JTAG - TDI
+tck          tck                       Dedicated JTAG - TCK
+tms          tms                       Dedicated JTAG - TMS
+pd2          pd2                       GP I/O mode 
+pd1          pd1                       GP I/O mode 
+ale          ale                       ALE output  
+_psen        _psen                     Bus control output
+_rd          _rd                       Bus control output
+_wr          _wr                       Bus control output
+a11          a11                       Address line
+a10          a10                       Address line
+a9           a9                        Address line
+a8           a8                        Address line
+ad7          a7                        Data/Address line
+ad6          a6                        Data/Address line
+ad5          a5                        Data/Address line
+ad4          a4                        Data/Address line
+ad3          a3                        Data/Address line
+ad2          a2                        Data/Address line
+ad1          a1                        Data/Address line
+ad0          a0                        Data/Address line
+debug        JTAG_debug_pin            JTAG debug pin
+Xtal1        Xtal1                     Xtal1       
+Xtal2        Xtal2                     Xtal2       
+_Reset_In    _Reset_In                 Reset In    
+Vref         VREF                      VREF input  
+
+User defined nodes:
+===================
+
+Node         Node
+Name         Type
+------------ ------------
+En_counter0  D-type register
+En_PA        D-type register
+En_PB        D-type register
+En_Dir       D-type register
+
+Page Register settings:
+=======================
+
+pgr0 is used for paging
+pgr1 is used for paging
+pgr2 is used for paging
+pgr3 is not used
+pgr4 is not used
+pgr5 is not used
+pgr6 is not used
+pgr7 is not used
+
+Equations:
+==========
+
+rs0 = ((address >= ^h0000) & (address <= ^h1FFF));
+csiop = ((address >= ^h7F00) & (address <= ^h7FFF));
+fs0 = ((page == 0) & (address >= ^h8000) & (address <= ^hFFFF));
+fs1 = ((page == 1) & (address >= ^h8000) & (address <= ^hFFFF));
+fs2 = ((page == 2) & (address >= ^h8000) & (address <= ^hFFFF));
+fs3 = ((page == 3) & (address >= ^h8000) & (address <= ^hFFFF));
+fs4 = ((page == 4) & (address >= ^h8000) & (address <= ^hFFFF));
+fs5 = ((page == 5) & (address >= ^h8000) & (address <= ^hFFFF));
+fs6 = ((page == 6) & (address >= ^h8000) & (address <= ^hFFFF));
+fs7 = ((page == 7) & (address >= ^h8000) & (address <= ^hFFFF));
+csboot0 = ((address >= ^h0000) & (address <= ^h1FFF));
+csboot1 = ((address >= ^h2000) & (address <= ^h3FFF));
+csboot2 = ((address >= ^h4000) & (address <= ^h5FFF));
+csboot3 = ((address >= ^h6000) & (address <= ^h7FFF));
+psel0 = ((address >= ^h7E00) & (address <= ^h7EFF) & (_psen));
+LCD_E2 = ((address >= ^h7E04) & (address <= ^h7E07) & (!_wr))
+     # ((address >= ^h7E04) & (address <= ^h7E07) & (!_rd));
+LCD_E1 = ((address >= ^h7E00) & (address <= ^h7E03) & (!_wr))
+     # ((address >= ^h7E00) & (address <= ^h7E03) & (!_rd));
+LCD_RW = a0;
+LCD_RW.oe = Vcc;
+LCD_A0 = a1;
+LCD_A0.oe = Vcc;
+En_counter0.ck = !(En_PA & En_PB);
+En_counter0.re = !_reset;
+En_counter0.pr = Gnd;
+En_PA := Vcc;
+En_PA.ck = Vcc;
+En_PA.re = !(En_EA #( !En_EB));
+En_PA.pr = En_EA &( !En_EB);
+En_PB := Vcc;
+En_PB.ck = Vcc;
+En_PB.re = !(En_EA # En_EB);
+En_PB.pr = En_EA & En_EB;
+En_Dir := En_EB;
+En_Dir.ck = !(En_PA & En_PB);
+En_Dir.re = !_reset;
+En_Dir.pr = Gnd;

@@ -1,0 +1,69 @@
+A51 MACRO ASSEMBLER  EXTINTERRUPT                                                         11/08/2021 08:40:57 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ExtInterrupt.obj
+ASSEMBLER INVOKED BY: E:\Long\Keil5\C51\BIN\A51.EXE ExtInterrupt.a51 SET(SMALL) DEBUG PRINT(.\Listings\ExtInterrupt.lst)
+                       OBJECT(.\Objects\ExtInterrupt.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;=================================================================
+                       2     ;NGO LAM TRUNG 2020
+                       3     ;Skeleton code for external interrupts ISR
+                       4     ;=================================================================
+                       5     ;Interrupt table
+0000                   6     ORG 0000h               ; entry address for 8051 RESET
+0000 020100            7             LJMP MAIN       ; move MAIN away from interrupt vector table
+0003                   8     ORG 0003h               ; vector address for interrupt 0
+0003 02010E            9             LJMP ISR0       ; jump to ISR0
+0013                  10     ORG 0013h               ; vector address for interrupt 1
+0013 020111           11             LJMP ISR1       ; jump to ISR1
+                      12     ;=================================================================
+                      13     ;Code segment
+                      14     ;=================================================================
+0100                  15     ORG 0100h                               ; MAIN starts here
+0100                  16     MAIN:
+0100 75A885           17             MOV  IE, #10000101B ; enable external interrupts IE0, IE1
+0103 D288             18             SETB IT0                        ; negative edge trigger for interrupt 0
+0105 D28A             19             SETB IT1                        ; negative edge trigger for interrupt 1
+0107 74C0             20             MOV A, #0C0h ;
+0109 F580             21             MOV P0,A
+010B                  22     LOOP:
+010B 02010B           23             LJMP LOOP                       ; end loop 
+                      24     ;==================================================================
+                      25     ; ISR0 
+                      26     ;==================================================================
+010E                  27     ISR0:
+010E D287             28             SETB P0.7                       ; LED OFF
+0110 32               29             RETI                            ; return from interrupt
+                      30     ;==================================================================
+                      31     ; ISR1 
+                      32     ;==================================================================
+0111                  33     ISR1:
+0111 C287             34             CLR P0.7                        ; LED ON
+0113 32               35             RETI                            ; return from interrupt
+                      36     ;==================================================================
+                      37     END                                     ; end of program
+A51 MACRO ASSEMBLER  EXTINTERRUPT                                                         11/08/2021 08:40:57 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+IE . . . . . . . .  D ADDR   00A8H   A   
+ISR0 . . . . . . .  C ADDR   010EH   A   
+ISR1 . . . . . . .  C ADDR   0111H   A   
+IT0. . . . . . . .  B ADDR   0088H.0 A   
+IT1. . . . . . . .  B ADDR   0088H.2 A   
+LOOP . . . . . . .  C ADDR   010BH   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

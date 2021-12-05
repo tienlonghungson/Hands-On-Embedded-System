@@ -1,0 +1,12 @@
+﻿#------------------------------------------------------------------------------
+# Define uVision settings for carm source code files
+#
+# Copyright : (c) 2012 - 2016 ARM Ltd. and ARM Germany GmbH
+# Version   : 1.0.0
+# Product   : uVision
+# Author    : EG
+#
+#------------------------------------------------------------------------------
+
+
+# Define settings for C++, C, C#, Ch, Java, IDL, JavaScript, Flash (ActionScript 2) files.

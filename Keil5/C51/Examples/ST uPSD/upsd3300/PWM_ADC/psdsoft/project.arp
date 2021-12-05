@@ -1,0 +1,26 @@
+***************************************************************************
+                         PSDsoft Express Version 8.30
+                    Output of Address Translation
+***************************************************************************
+  PROJECT    : project                                  DATE : 09/28/2004
+  DEVICE     : uPSD3334D                                TIME : 17:24:37
+***************************************************************************
+
+  Record  Type  : Intel Hex Record 
+  Mapping Mode  : Direct 
+
+  Memory                      Start        Stop        Memory
+  Block                      Address      Address    Data   File 
+--------------------------------------------------------------------------
+  FS0   [00000 - 07FFF]          0         7FFF      ..\pwm_adc.hex
+  FS1   [08000 - 0FFFF]       8000         FFFF      
+  FS2   [10000 - 17FFF]       8000         FFFF      
+  FS3   [18000 - 1FFFF]       8000         FFFF      
+  FS4   [20000 - 27FFF]       8000         FFFF      
+  FS5   [28000 - 2FFFF]       8000         FFFF      
+  FS6   [30000 - 37FFF]       8000         FFFF      
+  FS7   [38000 - 3FFFF]       8000         FFFF      
+  CSBOOT0[40000 - 41FFF]       8000         9FFF      
+  CSBOOT1[42000 - 43FFF]       A000         BFFF      
+  CSBOOT2[44000 - 45FFF]       C000         DFFF      
+  CSBOOT3[46000 - 47FFF]       E000         FFFF      

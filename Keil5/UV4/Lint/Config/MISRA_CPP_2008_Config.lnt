@@ -1,0 +1,1349 @@
+/*----------------------------------------------------------------------------
+ MISRA_CPP_2008_Config
+ MISRA CPP 2008 rule configuration file for PC-lint
+ *----------------------------------------------------------------------------*/
+
+// include MISRA CPP 2008 PC-lint file
+au-misra-cpp.lnt
+
+//<<< Use Configuration Wizard in Context Menu >>>
+
+//<h> Checker for Misra CPP 2008 rules
+
+//<h> Rules 0-1-x: Unnecessary constructs
+  //<!c> Rule 0-1-1 (Required): A project shall not contain unreachable code.
+    //-e527                /* unreachable */
+    //-elib(527)
+    //-e506                /* constant value boolean */
+    //-elib(506)
+    //-e681                /* loop not entered */
+    //-elib(681)
+    //-e827                /* loop not reachable */
+    //-elib(827)
+    //-e685                /* relational operator always evaluates to true/false */
+    //-elib(685)
+    //-e774                /* boolean always evaluates to true/false */
+    //-elib(774)
+    //-e944                /* argument always evaluates to ... */
+    //-elib(944)
+  //</c>
+
+  //<!c> Rule 0-1-2 (Required): A project shall not contain infeasible paths.
+    //-e685                /* relational operator always evaluates to true/false */
+    //-elib(685)
+    //-e774                /* boolean always evaluates to true/false */
+    //-elib(774)
+    //-e827                /* loop not reachable */
+    //-elib(827)
+    //-e944                /* argument always evaluates to ... */
+    //-elib(944)
+  //</c>
+
+  //<!c> Rule 0-1-3 (Required): A project shall not contain unused variables.
+    //-e528                /* symbol not referenced */
+    //-elib(528)
+    //-e529                /* symbol not referenced */
+    //-elib(529)
+    //-e714                /* symbol not referenced */
+    //-elib(714)
+    //-e752                /* local declarator not referenced */
+    //-elib(752)
+    //-e757                /* global declarator not referenced */
+    //-elib(757)
+  //</c>
+
+  //<!c> Rule 0-1-4 (Required): A project shall not contain non-volatile POD variables having only one use.
+    //-e528                /* symbol not referenced */
+    //-elib(528)
+    //-e529                /* symbol not referenced */
+    //-elib(529)
+    //-e550                /* symbol not accessed */
+    //-elib(550)
+    //-e551                /* symbol not accessed */
+    //-elib(551)
+    //-e552                /* symbol not accessed */
+    //-elib(552)
+  //</c>
+
+  //<!c> Rule 0-1-5 (Required): A project shall not contain unused type declarations.
+    //-e751                /* local typedef not referenced */
+    //-elib(751)
+    //-e753                /* local tag not referenced */
+    //-elib(753)
+    //-e756                /* global typedef not referenced */
+    //-elib(756)
+    //-e758                /* global tag not referenced */
+    //-elib(758)
+  //</c>
+
+  //<!c> Rule 0-1-6 (Required): A project shall not contain instances of non-volatile variables being given values that are never subsequently used.
+    //-e438                /* variable's last value not used */
+    //-elib(438)
+  //</c>
+
+  //<!c> Rule 0-1-7 (Required): The value returned by a function having a non-void return type that is not an overloaded operator shall always be used.
+    //-e534                /* return value ignored */
+    //-elib(534)
+  //</c>
+
+  //<!c> Rule 0-1-8 (Required): All functions with void return type shall have external side effect(s).
+    //-estring(1960,0-1-8)
+  //</c>
+
+  //<!c> Rule 0-1-9 (Required): There shall be no dead code.
+    //-e438                /* variable's last value not used */
+    //-elib(438)
+    //-e587                /* predicate always evaluates to ... */
+    //-elib(587)
+    //-e685                /* relational operator always evaluates to true/false */
+    //-elib(685)
+    //-e774                /* boolean always evaluates to true/false */
+    //-elib(774)
+    //-e838                /* previous value not used */
+    //-elib(838)
+    //-e944                /* argument always evaluates to ... */
+    //-elib(944)
+    //-e948                /* operator always evaluates to ... */
+    //-elib(948)
+  //</c>
+
+  //<!c> Rule 0-1-10 (Required): Every defined function shall be called at least once.
+    //-e528                /* symbol not referenced */
+    //-elib(528)
+    //-e714                /* symbol not referenced */
+    //-elib(714)
+    //-e1714               /* member function not referenced */
+    //-elib(1714)
+    //-e1716               /* virtual member function not referenced */
+    //-elib(1716)
+    //-e1914               /* default constructor not referenced */
+    //-elib(1914)
+  //</c>
+
+  //<!c> Rule 0-1-11 (Required): There shall be no unused parameters (named or unnamed) in non-virtual functions.
+    //-e715                /* symbol not referenced */
+    //-elib(715)
+  //</c>
+
+  //<!c> Rule 0-1-12 (Required): There shall be no unused parameters (named or unnamed) in the set of parameters for a virtual function and all the functions that override it.
+    //-e715                /* symbol not referenced */
+    //-elib(715)
+  //</c>
+//</h>
+
+
+//<h> Rules 0-2-x: Storage
+  //<n> Rule 0-2-1 (Required): An object shall not be assigned to an overlapping object.
+    //<i> *** NOT CHECKED *** use Rule 9-5-1
+//</h>
+
+//<h> Rules 0-3-x: Runtime failures
+  //<n> Rule 0-3-1 (Document): Minimization of run-time failures shall be ensured by the use of at least method.
+    //<i> *** CHECKED *** Static Analysis is provided by using PC-lint
+
+  //<!c> Rule 0-3-2 (Required): If a function generates error information, then that error information shall be tested.
+    //-e534                /* return value ignored */
+    //-elib(534)
+  //</c>
+//</h>
+
+//<h> Rules 0-4-x: Arithmetic
+  //<n> Rule 0-4-1 (Document): Use of scaled-integer or fixed-point arithmetic shall be documented.
+    //<i> *** NOT CHECKED *** not statically checkable
+
+  //<n> Rule 0-4-2 (Document): Use of floating-point arithmetic shall be documented.
+    //<i> *** NOT CHECKED *** not statically checkable
+
+  //<n> Rule 0-4-3 (Document): Floating-point implementations shall comply with a defined floating-point standard.
+    //<i> *** NOT CHECKED *** not statically checkable
+//</h>
+
+//<h> Rules 1-0-x: Language
+  //<!c> Rule 1-0-1 (Required): All code shall conform to ISO/IEC 14882:2003 "The C++ Standard Incorporating Technical Corrigendum 1".
+  //</c>
+
+  //<n> Rule 1-0-2 (Document): Multiple compilers shall only be used if they have a common, defined interface.
+    //<i> *** NOT CHECKED *** not statically checkable
+
+  //<n> Rule 1-0-3 (Document): The implementation of integer division in the chosen compiler shall be determined and documented.
+    //<i> *** NOT CHECKED *** not statically checkable
+//</h>
+
+//<h> Rules 2-2-x: Character sets
+  //<n> Rule 2-2-1 (Document): The character set and the corresponding encoding shall be documented.
+    //<i> *** NOT CHECKED *** not statically checkable
+//</h>
+
+//<h> Rules 2-3-x: Trigraph sequences
+  //<!c> Rule 2-3-1 (Required): Trigraphs shall not be used.Alternative tokens
+    //-e584                /* trigraph sequence detected */
+    //-elib(584)
+    //-e739                /* trigraph sequence in literal */
+    //-elib(739)
+  //</c>
+//</h>
+
+//<h> Rules 2-5-x: Alternative tokens
+  //<!c> Rule 2-5-1 (Advisory): Digraphs should not be used.
+    //-estring(1963,2-5-1)
+  //</c>
+//</h>
+
+//<h> Rules 2-7-x: Comments
+  //<!c> Rule 2-7-1 (Required): The character sequence /* shall not be used within a C-style comment.
+    //-e602                /* comment within comment */
+    //-elib(602)
+  //</c>
+
+  //<n> Rule 2-7-2 (Required): Sections of code shall not be "commented out" using C-style comments.
+    //<i> *** NOT CHECKED *** not statically checkable
+
+  //<n> Rule 2-7-3 (Advisory): Sections of code should not be "commented out" using C++ comments.
+    //<i> *** NOT CHECKED *** not statically checkable
+//</h>
+
+//<h> Rules 2-10-x: Identifiers
+  //<!c> Rule 2-10-1 (Required): Different identifiers shall be typographically unambiguous.
+    //-e620                /* suspicious constant */
+    //-elib(620)
+  //</c>
+
+  //<!c> Rule 2-10-2 (Required): Identifiers declared in an inner scope shall not hide an identifier declared in an outer scope.
+    //-e578                /* declaration hides symbol */
+    //-elib(578)
+    //-e1411               /* hidden virtual member */
+    //-elib(1411)
+    //-e1511               /* hidden non-virtual member */
+    //-elib(1511)
+    //-e1516               /* member hides member */
+    //-elib(1516)
+    //-e1737               /* hidden operator new */
+    //-elib(1737)
+    //-e1761               /* hidden overloaded function */
+    //-elib(1761)
+  //</c>
+
+  //<!c> Rule 2-10-3 (Required): A typedef name (including qualification, if any) shall be a uniqueidentifier.
+    //-estring(1960,2-10-3)
+  //</c>
+
+  //<!c> Rule 2-10-4 (Required): A class, union or enum name (including qualification, if any) shall be a unique identifier.
+    //-estring(1960,2-10-4)
+  //</c>
+
+  //<!c> Rule 2-10-5 (Advisory): The identifier name of a non-member object or function with static storage duration should not be reused.
+    //-estring(1963,2-10-5)
+  //</c>
+
+  //<!c> Rule 2-10-6 (Required): If an identifier refers to a type, it shall not also refer to an object or a function in the same scope.
+    //-e18                 /* redeclaration */
+    //-elib(18)
+  //</c>
+//</h>
+
+//<h> Rules 2-13-x: Literals
+  //<!c> Rule 2-13-1 (Required): Only those escape sequences that are defined in ISO/IEC 14882:2003 shall be used.
+    //-e606                /* non-ANSI escape sequence */
+    //-elib(606)
+  //</c>
+
+  //<!c> Rule 2-13-2 (Required): Octal constants (other than zero) and octal escape sequences (other than "\0") shall not be used.
+    //-estring(1960,2-13-2)
+  //</c>
+
+  //<!c> Rule 2-13-3 (Required): A "U" suffix shall be applied to all octal or hexadecimal integer literals of unsigned type.
+    //-estring(1960,2-13-3)
+  //</c>
+
+  //<!c> Rule 2-13-4 (Required): Literal suffixes shall be upper case.
+    //-e620                /* suspicious constant */
+    //-elib(620)
+    //-estring(1960,2-13-4)
+  //</c>
+
+  //<!c> Rule 2-13-5 (Required): Narrow and wide string literals shall not be concatenated.
+    //-e707                /* mixing narrow and wide string literals in concatenation */
+    //-elib(707)
+  //</c>
+//</h>
+
+//<h> Rules 3-1-x: Declarations and definitions
+  //<!c> Rule 3-1-1 (Required): It shall be possible to include any header file in multiple translation units without violating the One Definition Rule.
+    //-estring(1960,3-1-1)
+  //</c>
+
+  //<!c> Rule 3-1-2 (Required): Functions shall not be declared at block scope.
+    //-estring(1960,3-1-2)
+  //</c>
+
+  //<!c> Rule 3-1-3 (Required): When an array is declared, its size shall either be stated explicitly or defined implicitly by initialization.
+    //-e85                 /* zero-dimensioned array */
+    //-elib(85)
+    //-estring(1960,3-1-3)
+  //</c>
+//</h>
+
+//<h> Rules 3-2-x: One Definition Rule
+  //<!c> Rule 3-2-1 (Required): All declarations of an object or function shall have compatible types.
+    //-e18                 /* redeclaration */
+    //-elib(18)
+    //-e31                 /* redefinition */
+    //-elib(31)
+  //</c>
+
+  //<!c> Rule 3-2-2 (Required): The One Definition Rule shall not be violated.
+    //-e15                 /* redeclaration */
+    //-elib(15)
+    //-e31                 /* redefinition */
+    //-elib(31)
+  //</c>
+
+  //<!c> Rule 3-2-3 (Required): A type, object or function that is used in multiple translation units shall be declared in one and only one file.
+    //-estring(1960,3-2-3)
+  //</c>
+
+  //<!c> Rule 3-2-4 (Required): An identifier with external linkage shall have exactly one definition.
+    //-e15                 /* redeclaration */
+    //-elib(15)
+    //-e31                 /* redefinition */
+    //-elib(31)
+  //</c>
+//</h>
+
+//<h> Rules 3-3-x: Declarative regions and scope
+  //<!c> Rule 3-3-1 (Required): Objects or functions with external linkage shall be declared in a header file.
+    //-e759                /* could move declaration to module */
+    //-elib(759)
+    //-e765                /* could be made static */
+    //-elib(765)
+  //</c>
+
+  //<!c> Rule 3-3-2 (Required): If a function has internal linkage then all re-declarations shall include the static storage class specifier.
+    //-e401                /* not previously declared static */
+    //-elib(401)
+    //-e512                /* previously used as static */
+    //-elib(512)
+  //</c>
+//</h>
+
+//<h> Rules 3-4-x: Name lookup
+  //<n> Rule 3-4-1 (Required): An identifier declared to be an object or type shall be defined in a block that minimizes its visibility.
+   //<i> *** NOT CHECKED *** currently not supported
+//</h>
+
+//<h> Rules 3-9-x: Types
+  //<n> Rule 3-9-1 (Required): The types used for an object, a function return type, or a function parameter shall be token-for-token identical in all declarations and re-declarations.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<!c> Rule 3-9-2 (Advisory): typedefs that indicate size and signedness should be used in place of the basic numerical types.
+    //-e970                /* type or modifier outside of typedef */
+    //-elib(970)
+    //+esym(970,wchar_t)
+    //+esym(970,bool)
+  //</c>
+
+  //<!c> Rule 3-9-3 (Required): The underlying bit representations of floating-point values shall not be used.
+    //-estring(1960,3-9-3)
+  //</c>
+//</h>
+
+//<h> Rules 4-5-x: Integral promotions
+  //<!c> Rule 4-5-1 (Required): Expressions with type bool shall not be used as operands to built-in operators other than the assignment operator =, the logical operators &&, ||, !, the equality operators == and !=, the unary & operator, and the conditional operator.
+    //-estring(1960,4-5-1)
+  //</c>
+
+  //<n> Rule 4-5-2 (Required): Expressions with type enum shall not be used as operands to built-in operators other than the subscript operator [ ], the assignment operator =, the equality operators == and !=, the unary & operator, and the relational operators LT, LTE, GT, GTE.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<!c> Rule 4-5-3 (Required): Expressions with type (plain) char and wchar_t shall not be used as operands to built-in operators other than the assignment operator =, the equality operators == and !=, and the unary & operator.
+    //-estring(1960,4-5-3)
+  //</c>
+//</h>
+
+//<h> Rules 4-10-x: Pointer conversions
+  //<n> Rule 4-10-1 (Required): NULL shall not be used as an integer value.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<!c> Rule 4-10-2 (Required): Literal zero (0) shall not be used as the null-pointer-constant.
+    //-e910                /* conversion from 0 to pointer */
+    //-elib(910)
+    //+emacro((910), NULL) /*  explicit exception  */
+  //</c>
+//</h>
+
+//<h> Rules 5-0-x: Expressions
+  //<!c> Rule 5-0-1 (Required): The value of an expression shall be the same under any order of evaluation that the standard permits.
+    //-e564                /* order of evaluation */
+    //-elib(564)
+    //-e864                /* order of evaluation */
+    //-elib(864)
+  //</c>
+
+  //<!c> Rule 5-0-2 (Advisory) Limited dependence should be placed on C++ operator precedence rules in expressions.
+    //-e834                /* confusing operator sequence (same precedence) */
+    //-elib(834)
+    //-estring(1963,5-0-2)
+  //</c>
+
+  //<!c> Rule 5-0-3 (Required): A cvalue expression shall not be implicitly converted to a differentunderlying type.
+    //-estring(1960,5-0-3)
+  //</c>
+
+  //<!c> Rule 5-0-4 (Required): An implicit integral conversion shall not change the signedness of the underlying type.
+    //-estring(1960,5-0-4)
+  //</c>
+
+  //<!c> Rule 5-0-5 (Required): There shall be no implicit floating-integral conversions.
+    //-estring(1960,5-0-5)
+  //</c>
+
+  //<!c> Rule 5-0-6 (Required): An implicit integral or floating-point conversion shall not reduce the size of the underlying type.
+    //-estring(1960,5-0-6)
+  //</c>
+
+  //<!c> Rule 5-0-7 (Required): There shall be no explicit floating-integral conversions of a cvalueexpression.
+    //-estring(1960,5-0-7)
+  //</c>
+
+  //<!c> Rule 5-0-8 (Required): An explicit integral or floating-point conversion shall not increase the size of the underlying type of a cvalue expression.
+    //-estring(1960,5-0-8)
+  //</c>
+
+  //<!c> Rule 5-0-9 (Required): An explicit integral conversion shall not change the signedness of the underlying type of a cvalue expression.
+    //-estring(1960,5-0-9)
+  //</c>
+
+  //<!c> Rule 5-0-10 (Required): If the bitwise operators ~ and << are applied to an operand with an underlying type of unsigned char or unsigned short,the result shall be immediately cast to the underlying type of the operand.
+    //-estring(1960,5-0-10)
+  //</c>
+
+  //<!c> Rule 5-0-11 (Required): The plain char type shall only be used for the storage and use of character values.
+    //-estring(1960,5-0-11)
+  //</c>
+
+  //<!c> Rule 5-0-12 (Required): signed char and unsigned char type shall only be used for the storage and use of numeric values.
+    //-estring(1960,5-0-12)
+  //</c>
+
+  //<!c> Rule 5-0-13 (Required): The condition of an if-statement and the condition of an iteration-statement shall have type bool.
+    //-e909                /* conversion to bool */
+    //-elib(909)
+  //</c>
+
+  //<!c> Rule 5-0-14 (Required): The first operand of a conditional-operator shall have type bool.
+    //-e909                /* conversion to bool */
+    //-elib(909)
+  //</c>
+
+  //<!c> Rule 5-0-15 (Required): Array indexing shall be the only form of pointer arithmetic.
+    //-e946                /* relational or subtract operator applied to pointers */
+    //-elib(946)
+    //-e947                /* subtract operator applied to pointers */
+    //-elib(947)
+    //-estring(1960,5-0-15)
+  //</c>
+
+  //<!c> Rule 5-0-16 (Required): A pointer operand and any pointer resulting from pointer arithmetic using that operand shall both address elements of the same array.
+    //-e415                /* out-of-bounds pointer */
+    //-elib(415)
+    //-e416                /* out-of-bounds pointer */
+    //-elib(416)
+    //-e661                /* out-of-bounds pointer */
+    //-elib(661)
+    //-e662                /* out-of-bounds pointer */
+    //-elib(662)
+    //-e796                /* out-of-bounds pointer */
+    //-elib(796)
+    //-e797                /* out-of-bounds pointer */
+    //-elib(797)
+  //</c>
+
+  //<!c> Rule 5-0-17 (Required): Subtraction between pointers shall only be applied to pointers that address elements of the same array.
+    //-e946                /* relational or subtract operator applied to pointers */
+    //-elib(946)
+    //-e947                /* subtract operator applied to pointers */
+    //-elib(947)
+  //</c>
+
+  //<!c> Rule 5-0-18 (Required): >, >=, <, <= shall not be applied to objects of pointer type, except where they point to the same array.
+    //-e946                /* relational or subtract operator applied to pointers */
+    //-elib(946)
+    //-e947                /* subtract operator applied to pointers */
+    //-elib(947)
+  //</c>
+
+  //<!c> Rule 5-0-19 (Required): The declaration of objects shall contain no more than two levels of pointer indirection.
+    //-estring(1960,5-0-19)
+  //</c>
+
+  //<n> Rule 5-0-20 (Required): Non-constant operands to a binary bitwise operator shall have the same underlying type.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<!c> Rule 5-0-21 (Required): Bitwise operators shall only be applied to operands of unsigned underlying type.
+    //-estring(1960,5-0-21)
+  //</c>
+//</h>
+
+//<h> Rules 5-2-x: Postfix expressions
+  //<!c> Rule 5-2-1 (Required): Each operand of a logical && or || shall be a postfix-expression.
+    //-estring(1960,5-2-1)
+  //</c>
+
+  //<!c> Rule 5-2-2 (Required): A pointer to a virtual base class shall only be cast to a pointer to a derived class by means of dynamic_cast.
+    //-e1774               /* could use dynamic_cast */
+    //-elib(1774)
+    //-e1939               /* down_cast used */
+    //-elib(1939)
+  //</c>
+
+  //<n> Rule 5-2-3 (Advisory): Casts from a base class to a derived class should not be performed on polymorphic types.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<!c> Rule 5-2-4 (Required): C-style casts (other than void casts) and functional notation casts (other than explicit constructor calls) shall not be used.
+    //-e1924               /* C-style cast */
+    //-elib(1924)
+  //</c>
+
+  //<!c> Rule 5-2-5 (Required): A cast shall not remove any const or volatile qualification from the type of a pointer or reference.
+    //-e1773               /* casting away const/volatile */
+    //-elib(1773)
+    //-estring(1960,5-2-5)
+  //</c>
+
+  //<!c> Rule 5-2-6 (Required): A cast shall not convert a pointer to a function to any other pointer type, including a pointer to function type.
+    //-e611                /* suspicious cast */
+    //-elib(611)
+    //-e740                /* unusual cast */
+    //-elib(740)
+  //</c>
+
+  //<!c> Rule 5-2-7 (Required): An object with pointer type shall not be converted to an unrelated pointer type, either directly or indirectly.
+    //-e740                /* unusual cast */
+    //-elib(740)
+    //-e916                /* pointer assignment conversion */
+    //-elib(916)
+    //-e918                /* prototype coercion */
+    //-elib(918)
+    //-esym(920,pointer)   /* implicit conversion */
+    //-elib(920)
+    //-e923                /* cast */
+    //-elib(923)
+    //-e926                /* pointer cast */
+    //-elib(926)
+    //-e927                /* pointer cast */
+    //-elib(927)
+    //-e928                /* pointer cast */
+    //-elib(928)
+    //-e929                /* pointer cast */
+    //-elib(929)
+    //-e930                /* cast */
+    //-elib(930)
+  //</c>
+
+  //<!c> Rule 5-2-8 (Required): An object with integer type or pointer to void type shall not be converted to an object with pointer type.
+    //-estring(64,ptrs to void/nonvoid)
+    //-e923                /* cast */
+    //-elib(923)
+    //-e925                /* cast */
+    //-elib(925)
+    //-esym(930,pointer)   /* cast */
+    //-elib(930)
+  //</c>
+
+  //<!c> Rule 5-2-9 (Advisory): A cast should not convert a pointer type to an integral type.
+    //-e925       /* cast */
+    //-elib(925)
+    //-e9091      /* cast */
+    //-elib(9091)
+  //</c>
+
+  //<!c> Rule 5-2-10 (Advisory): The increment (++) and decrement (--) operators should not be mixed with other operators in an expression.
+    //-e564       /* order of evaluation */
+    //-elib(564)
+    //-e591       /* order of evaluation */
+    //-elib(591)
+    //-e864       /* order of evaluation */
+    //-elib(864)
+    //-estring(1963,5-2-10)
+  //</c>
+
+  //<!c> Rule 5-2-11 (Required): The comma operator, && operator and the || operator shall not be overloaded.
+    //-e1753      /* operator overloaded */
+    //-elib(1753)
+  //</c>
+
+  //<!c> Rule 5-2-12 (Required): An identifier with array type passed as a function argument shall not decay to a pointer.
+    //-estring(1960,5-2-12)
+  //</c>
+//</h>
+
+//<h> Rules 5-3-x: Unary expressions
+  //<!c> Rule 5-3-1 (Required): Each operand of the ! operator, the logical && or the logical ||operators shall have type bool.
+    //-e909       /* conversion to bool */
+    //-elib(909)
+    //-estring(1960,5-3-1)
+  //</c>
+
+  //<!c> Rule 5-3-2 (Required): The unary minus operator shall not be applied to an expression whose underlying type is unsigned.
+    //-e501       /* expected signed type */
+    //-elib(501)
+    //-estring(1960,5-3-2)
+  //</c>
+
+  //<!c> Rule 5-3-3 (Required): The unary & operator shall not be overloaded.
+    //-estring(1960,5-3-3)
+  //</c>
+
+  //<!c> Rule 5-3-4 (Required): Evaluation of the operand to the sizeof operator shall not contain side effects.
+    //-estring(1960,5-3-4)
+  //</c>
+//</h>
+
+//<h> Rules 5-8-x: Shift operators
+  //<!c> Rule 5-8-1 (Required): The right hand operand of a shift operator shall lie between zero and one less than the width in bits of the underlying type of the left hand operand.
+    //-e572       /* excessive shift value */
+    //-elib(572)
+    //-estring(1960,5-8-1)
+  //</c>
+//</h>
+
+//<h> Rules 5-14-x: Logical AND operator
+  //<!c> Rule 5-14-1 (Required): The right hand operand of a logical && or || operator shall not contain side effects.
+    //-estring(1960,5-14-1)
+  //</c>
+//</h>
+
+//<h> Rules 5-17-x: Assignment operators
+  //<n> Rule 5-17-1 (Required): The semantic equivalence between a binary operator and its assignment operator form shall be preserved.
+   //<i> *** NOT CHECKED *** currently not supported
+//</h>
+
+//<h> Rules 5-18-x: Comma operator
+  //<!c> Rule 5-18-1 (Required): The comma operator shall not be used.
+    //-estring(1960,5-18-1)
+  //</c>
+//</h>
+
+//<h> Rules 5-19-x: Constant expressions
+  //<!c> Rule 5-19-1 (Advisory): Evaluation of constant unsigned integer expressions should not lead to wrap-around.
+    //-e648       /* overflow in computing constant */
+    //-elib(648)
+  //</c>
+//</h>
+
+//<h> Rules 6-2-x: Expression statement
+  //<!c> Rule 6-2-1 (Required): Assignment operators shall not be used in sub-expressions.
+    //-e720       /* Boolean test of assignment */
+    //-elib(720)
+    //-e820       /* boolean test of parenthesized assignment */
+    //-elib(820)
+    //-estring(1960,6-2-1)
+  //</c>
+
+  //<!c> Rule 6-2-2 (Required): Floating-point expressions shall not be directly or indirectly tested for equality or inequality.
+    //-e777       /* testing floats for equality */
+    //-elib(777)
+    //-estring(1960,6-2-2)
+  //</c>
+
+  //<!c> Rule 6-2-3 (Required): Before preprocessing, a null statement shall only occur on a line by itself; it may be followed by a comment, provided that the first character following the null statement is a white-space character.
+    //-estring(1960,6-2-3)
+  //</c>
+//</h>
+
+//<h> Rules 6-3-x: Compound statement
+  //<!c> Rule 6-3-1 (Required): The statement forming the body of a switch, while, do... while or forstatement shall be a compound statement.
+    //-estring(1960,6-3-1)
+  //</c>
+//</h>
+
+//<h> Rules 6-4-x: Selection statements
+  //<!c> Rule 6-4-1 (Required): An if ( condition ) construct shall be followed by a compound statement. The else keyword shall be followed by either a compound statement, or another if statement.
+    //-estring(1960,6-4-1)
+  //</c>
+
+  //<!c> Rule 6-4-2 (Required): All if ... else if constructs shall be terminated with an else clause.
+    //-estring(1960,6-4-2)
+  //</c>
+
+  //<!c> Rule 6-4-3 (Required): A switch statement shall be a well-formed switch statement.
+    //-estring(1960,6-4-3)
+  //</c>
+
+  //<!c> Rule 6-4-4 (Required): A switch-label shall only be used when the most closely-enclosing compound statement is the body of a switch statement.
+    //-estring(1960,6-4-4)
+  //</c>
+
+  //<!c> Rule 6-4-5 (Required): An unconditional throw or break statement shall terminate every non-empty switch-clause.
+    //-e616       /* control flows into case/default */
+    //-elib(616)
+    //-e825       /* control flows into case/default without -fallthrough */
+    //-elib(825)
+    //-estring(1960,6-4-5)
+  //</c>
+
+  //<!c> Rule 6-4-6 (Required): The final clause of a switch statement shall be the default-clause.
+    //-e744                         /* switch statement has no default */
+    //-elib(744)
+    //-estring(1960,6-4-6)
+  //</c>
+
+  //<!c> Rule 6-4-7 (Required): The condition of a switch statement shall not have bool type.
+    //-estring(1960,6-4-7)
+  //</c>
+
+  //<!c> Rule 6-4-8 (Required): Every switch statement shall have at least one case-clause.
+    //-e764       /* no case */
+    //-elib(764)
+  //</c>
+//</h>
+
+//<h> Rules 6-5-x: Iteration statements
+  //<n> Rule 6-5-1 (Required): A for loop shall contain a single loop-counter which shall not have floating type.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<n> Rule 6-5-2 (Required): If loop-counteris not modified by -- or ++, then, within condition, the loop-counter shall only be used as an operand to LTE, LT, GT or GTE.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<!c> Rule 6-5-3 (Required): The loop-countershall not be modified within condition or statement.
+    //-e850       /* loop variable modified in body */
+    //-elib(850)
+  //</c>
+
+  //<n> Rule 6-5-4 (Required): The loop-countershall be modified by one of: --, ++, -=n, or +=n; where n remains constant for the duration of the loop.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<n> Rule 6-5-5 (Required): A loop-control-variable other than the loop-counter shall not be modified within condition or expression.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<n> Rule 6-5-6 (Required): A loop-control-variable other than the loop-counter which is modified in statement shall have type bool.
+   //<i> *** NOT CHECKED *** currently not supported
+//</h>
+
+//<h> Rules 6-6-x: Jump statements
+  //<n> Rule 6-6-1 (Required): Any label referenced by a goto statement shall be declared in the same block, or in a block enclosing the goto statement.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<!c> Rule 6-6-2 (Required): The goto statement shall jump to a label declared later in the same function body.
+    //-e107       /* label not defined */
+    //-elib(107)
+    //-estring(1960,6-6-2)
+  //</c>
+
+  //<!c> Rule 6-6-3 (Required): The continue statement shall only be used within a well-formed for loop.
+    //-estring(1960,6-6-3)
+  //</c>
+
+  //<!c> Rule 6-6-4 (Required): For any iteration statement there shall be no more than one break or goto statement used for loop termination.
+    //-estring(1960,6-6-4)
+  //</c>
+
+  //<!c> Rule 6-6-5 (Required): A function shall have a single point of exit at the end of the function.
+    //-e904       /* return before function end */
+    //-elib(904)
+  //</c>
+//</h>
+
+//<h> Rules 7-1-x: Specifiers
+  //<!c> Rule 7-1-1 (Required): A variable which is not modified shall be const qualified.
+    //-e952       /* use const on paramaters where appropriate */
+    //-elib(952)
+  //</c>
+
+  //<!c> Rule 7-1-2 (Required): A pointer or reference parameter in a function shall be declared as pointer to constor reference to const if the corresponding object is not modified.
+    //-e818       /* use const on paramaters where appropriate */
+    //-elib(818)
+  //</c>
+//</h>
+
+//<h> Rules 7-2-x: Enumeration declarations
+  //<n> Rule 7-2-1 (Required): An expression with enumunderlying type shall only have values corresponding to the enumerators of the enumeration.
+   //<i> *** NOT CHECKED *** currently not supported
+//</h>
+
+//<h> Rules 7-3-x: Namespaces
+  //<!c> Rule 7-3-1 (Required): The global namespace shall only contain main, namespace declarations and extern "C" declarations.
+    //-estring(1960,7-3-1)
+  //</c>
+
+  //<!c> Rule 7-3-2 (Required): The identifier main shall not be used for a function other than the global function main.
+    //-estring(1960,7-3-2)
+  //</c>
+
+  //<!c> Rule 7-3-3 (Required): There shall be no unnamed namespaces in header files.
+    //-estring(1960,7-3-3)
+  //</c>
+
+  //<!c> Rule 7-3-4 (Required): using-directives shall not be used.
+    //-estring(1960,7-3-4)
+  //</c>
+
+  //<n> Rule 7-3-5 (Required): Multiple declarations for an identifier in the same namespace shall not straddle a using-declaration for that identifier.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<!c> Rule 7-3-6 (Required): using-directives and using-declarations (excluding class scope or function scope using-declarations) shall not be used in header files.
+    //-estring(1960,7-3-6)
+  //</c>
+//</h>
+
+//<h> Rules 7-4-x: The asm declaration
+  //<n> Rule 7-4-1 (Document): All usage of assembler shall be documented.
+    //<i> *** NOT CHECKED *** not statically checkable
+
+  //<!c> Rule 7-4-2 (Required): Assembler instructions shall only be introduced using the asm declaration.
+    //+rw(_asm)
+    //+rw(__asm)
+    //+pragma(asm)
+    //+pragma(endasm)
+    //+ppw(asm)
+    //+ppw(endasm)
+  //</c>
+
+  //<n> Rule 7-4-3 (Required): Assembly language shall be encapsulated and isolated.
+   //<i> *** NOT CHECKED *** currently not supported
+//</h>
+
+//<h> Rules 7-5-x: Linkage specifications
+  //<!c> Rule 7-5-1 (Required): A function shall not return a reference or a pointer to an automatic variable (including parameters), defined within the function.
+    //-e604       /* returning address of auto variable */
+    //-elib(604)
+  //</c>
+
+  //<!c> Rule 7-5-2 (Required): The address of an object with automatic storage shall not be assigned to another object that may persist after the first object has ceased to exist.
+    //-e789       /* assigning auto address to static */
+    //-elib(789)
+    //-e604       /* returning address of auto variable */
+    //-elib(604)
+  //</c>
+
+  //<!c> Rule 7-5-3 (Required): A function shall not return a reference or a pointer to a parameter that is passed by reference or const reference.
+    //-e1780      /*  returning address of reference to a const parameter */
+    //-elib(1780)
+    //-e1940      /*  address of reference parameter transferred outside of function */
+    //-elib(1940)
+  //</c>
+
+  //<!c> Rule 7-5-4 (Advisory): Functions should not call themselves, either directly or indirectly.
+    //-stack()
+    //-e974
+    //-estring(974,*recursive*)   /* worst case stack usage */
+  //</c>
+//</h>
+
+//<h> Rules 8-0-x: Declarators - General
+  //<!c> Rule 8-0-1 (Required): An init-declarator-list or a member-declarator-list shall consist of a single init-declarator or member-declarator respectively.
+    //-estring(1960,8-0-1)
+  //</c>
+//</h>
+
+//<h> Rules 8-3-x: Meaning of declarators
+  //<!c> Rule 8-3-1 (Required): Parameters in an overriding virtual function shall either use the same default arguments as the function they override, or else shall not specify any default arguments.
+    //-e1735      /* virtual function has default parameter */
+    //-elib(1735)
+  //</c>
+//</h>
+
+//<h> Rules 8-4-x: Function definitions
+  //<!c> Rule 8-4-1 (Required): Functions shall not be defined using the ellipsis notation.
+    //-e1916      /* ellipsis */
+    //-elib(1916)
+    //-estring(1960,8-4-1)
+  //</c>
+
+  //<!c> Rule 8-4-2 (Required): The identifiers used for the parameters in a re-declaration of a function shall be identical to those in the declaration.
+    //-estring(1960,8-4-2)
+  //</c>
+
+  //<!c> Rule 8-4-3 (Required): All exit paths from a function with non-void return type shall have an explicit return statement with an expression.
+    //-e533       /* missing/extraneous return value */
+    //-elib(533)
+  //</c>
+
+  //<!c> Rule 8-4-4 (Required): A function identifier shall either be used to call the function or it shall be preceded by &.
+    //-estring(1960,8-4-4)
+  //</c>
+//</h>
+
+//<h> Rules 8-5-x: Declarators - Initializers
+  //<!c> Rule 8-5-1 (Required): All variables shall have a defined value before they are used.
+    //-e530       /* symbol not initialized */
+    //-elib(530)
+    //-e1744      /* possibly not initialized */
+    //-elib(1744)
+    //-e1401      /* member not initialized */
+    //-elib(1401)
+  //</c>
+
+  //<!c> Rule 8-5-2 (Required): Braces shall be used to indicate and match the structure in the non-zero initialization of arrays and structures.
+    //-e940       /* omitted braces */
+    //-elib(940)
+  //</c>
+
+  //<!c> Rule 8-5-3 (Required): In an enumerator list, the = construct shall not be used to explicitly initialize members other than the first, unless all items are explicitly initialized.
+    //-estring(1960,8-5-3)
+  //</c>
+//</h>
+
+//<h> Rules 9-3-x: Member functions
+  //<!c> Rule 9-3-1 (Required): const member functions shall not return non-const pointers or references to class-data.
+    //-e605       /* increase in pointer capability */
+    //-elib(605)
+    //-e1536      /* exposing member */
+    //-elib(1536)
+    //-e1763      /* const function modifies member */
+    //-elib(1763)
+  //</c>
+
+  //<!c> Rule 9-3-2 (Required): Member functions shall not return non-const handles to class-data.
+    //-e1536      /* exposing member */
+    //-elib(1536)
+  //</c>
+
+  //<!c> Rule 9-3-3 (Required): If a member function can be made static then it shall be made static, otherwise if it can be made const then it shall be made const.
+    //-e1762      /* member could be const */
+    //-elib(1762)
+  //</c>
+//</h>
+
+//<h> Rules 9-5-x: Unions
+  //<!c> Rule 9-5-1 (Required): Unions shall not be used.
+    //-estring(1960,9-5-1)
+  //</c>
+//</h>
+
+//<h> Rules 9-6-x: Bit-fields
+  //<n> Rule 9-6-1 (Document): When the absolute positioning of bits representing a bit-field is required, then the behaviour and packing of bit-fields shall be documented.
+    //<i> *** NOT CHECKED *** not statically checkable
+
+  //<!c> Rule 9-6-2 (Required): Bit-fields shall be either bool type or an explicitly unsigned or signed integral type.
+    //-e46          /* bit field should be int */
+    //-elib(46)
+    //-estring(1960,9-6-2)
+  //</c>
+
+  //<!c> Rule 9-6-3 (Required): Bit-fields shall not haveenum type.
+    //-e46          /* bit field should be int */
+    //-elib(46)
+  //</c>
+
+  //<!c> Rule 9-6-4 (Required): Named bit-fields with signed integer type shall have a length of more than one bit.
+    //-e806   /* signed small bit field */
+    //-elib(806)
+    //-estring(1960,9-6-4)
+  //</c>
+//</h>
+
+//<h> Rules 10-1-x: Multiple base classes
+  //<!c> Rule 10-1-1 (Advisory): Classes should not be derived from virtual bases.
+    //-e1749      /* base class need not be virtual */
+    //-elib(1749)
+  //</c>
+
+  //<n> Rule 10-1-2 (Required): A base class shall only be declared virtual if it is used in a diamond hierarchy.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<!c> Rule 10-1-3 (Required): An accessible base class shall not be both virtual and non-virtual in the same hierarchy.
+    //-e1748      /* multiple inclusion of non-virtual base class */
+    //-elib(1748)
+  //</c>
+//</h>
+
+//<h> Rules 10-2-x: Member name lookup
+  //<n> Rule 10-2-1 (Advisory): All accessible entity names within a multiple inheritance hierarchy should be unique.
+   //<i> *** NOT CHECKED *** currently not supported
+//</h>
+
+//<h> Rules 10-3-x: Virtual functions
+  //<n> Rule 10-3-1 (Required): There shall be no more than one definition of each virtual function on each path through the inheritance hierarchy.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<!c> Rule 10-3-2 (Required): Each overriding virtual function shall be declared with the virtual keyword.
+    //-e1909      /* 'virtual' assumed */
+    //-elib(1909)
+  //</c>
+
+  //<n> Rule 10-3-3 (Required): A virtual function shall only be overridden by a pure virtual function if it is itself declared as pure virtual.
+   //<i> *** NOT CHECKED *** currently not supported
+//</h>
+
+//<h> Rules 11-0-x: Member access control - General
+  //<!c> Rule 11-0-1 (Required): Member data in non-POD class types shall be private.
+    //-estring(1960,11-0-1)
+  //</c>
+//</h>
+
+//<h> Rules 12-1-x: Constructors
+  //<!c> Rule 12-1-1 (Required): An object’s dynamic type shall not be used from the body of its constructor or destructor.
+    //-e1506      /* virtual function called inside constructor */
+    //-elib(1506)
+  //</c>
+
+  //<!c> Rule 12-1-2 (Advisory): All constructors of a class should explicitly call a constructor for all of its immediate base classes and all virtual base classes.
+    //-e1928      /* symbol not in constructor initializer list */
+    //-elib(1928)
+  //</c>
+
+  //<n> Rule 12-1-3 (Required): All constructors that are callable with a single argument of fundamental type shall be declared explicit.
+   //<i> *** NOT CHECKED *** currently not supported
+//</h>
+
+//<h> Rules 12-8-x: Copying class objects
+  //<!c> Rule 12-8-1 (Required): A copy constructor shall only initialize its base classes and the non-static members of the class of which it is a member.
+    //-e1938      /* constructor access global data */
+    //-elib(1938)
+  //</c>
+
+  //<!c> Rule 12-8-2 (Required): The copy assignment operator shall be declared protected or privatein an abstract class.
+    //-estring(1960,12-8-2)
+  //</c>
+//</h>
+
+//<h> Rules 14-5-x: Template declarations
+  //<!c> Rule 14-5-1 (Required): A non-member generic function shall only be declared in a namespace that is not an associated namespace.
+    //-e1573      /* generic function template declared in namespace associated with type */
+    //-elib(1573)
+  //</c>
+
+  //<!c> Rule 14-5-2 (Required): A copy constructor shall be declared when there is a template constructor with a single parameter that is a generic parameter.
+    //-e1789      /* template constructor cannot be copy constructor */
+    //-elib(1789)
+  //</c>
+
+  //<!c> Rule 14-5-3 (Required): A copy assignment operator shall be declared when there is a template assignment operator with a parameter that is a generic parameter.
+    //-e1721      /* non-assignment operator=() */
+    //-elib(1721)
+  //</c>
+//</h>
+
+//<h> Rules 14-6-x: Name resolution
+  //<!c> Rule 14-6-1 (Required): In a class template with a dependent base, any name that may be found in that dependent base shall be referred to using a qualified-idor this->
+    //-e1942      /* possible missinterpretation of name */
+    //-elib(1942)
+  //</c>
+
+  //<n> Rule 14-6-2 (Required): The function chosen by overload resolution shall resolve to a function declared previously in the translation unit.
+   //<i> *** NOT CHECKED *** awaiting clarification from MISRA
+//</h>
+
+//<h> Rules 14-7-x: Template instantiation and specialization
+  //<!c> Rule 14-7-1 (Required): All class templates, function templates, class template member functions and class template static members shall be instantiated at least once.
+    //-e1795      /* template not instantiated */
+    //-elib(1795)
+  //</c>
+
+  //<n> Rule 14-7-2 (Required): For any given template specialization, an explicit instantiation of the template with the template-arguments used in the specialization shall not render the program ill-formed.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<!c> Rule 14-7-3 (Required): All partial and explicit specializations for a template shall be declared in the same file as the declaration of their primary template.
+    //-e1576      /* specialization occurs in different file than template definition */
+    //-elib(1576)
+    //-e1577      /* specialization occurs in different file than template definition */
+    //-elib(1577)
+  //</c>
+//</h>
+
+//<h> Rules 14-8-x: Function template specialization
+  //<!c> Rule 14-8-1 (Required): Overloaded function templates shall not be explicitly specialized.
+    //-estring(1960,14-8-1)
+  //</c>
+
+  //<!c> Rule 14-8-2 (Advisory): The viable function set for a function call should either contain no function specializations, or only contain function specializations.
+    //-estring(1963,14-8-2)
+  //</c>
+//</h>
+
+//<h> Rules 15-0-x: Exception handling - General
+  //<n> Rule 15-0-1 (Document): Exceptions shall only be used for error handling.
+    //<i> *** NOT CHECKED *** not statically checkable
+
+  //<!c> Rule 15-0-2 (Advisory): An exception object should not have pointer type.
+    //-estring(1963,15-0-2)
+  //</c>
+
+  //<!c> Rule 15-0-3 (Required): Control shall not be transferred into a try or catch block using a goto or a switch statement.
+    //-e646
+    //-elib(646)
+    //-estring(646,try, catch)
+  //</c>
+//</h>
+
+//<h> Rules 15-1-x: Throwing an exception
+  //<n> Rule 15-1-1 (Required): The assignment-expression of a throw statement shall not itself cause an exception to be thrown.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<!c> Rule 15-1-2 (Required): NULL shall not be thrown explicitly.
+    //-estring(1960,15-1-2)
+  //</c>
+
+  //<!c> Rule 15-1-3 (Required): An empty throw (throw;) shall only be used in the compound-statement of a catch handler.
+    //-estring(1960,15-1-3)
+  //</c>
+//</h>
+
+//<h> Rules 15-3-x: Handling an exception
+  //<!c> Rule 15-3-1 (Required): Exceptions shall be raised only after start-up and before termination of the program.
+    //-e1546      /* throw() inside destructor */
+    //-elib(1546)
+  //</c>
+
+  //<n> Rule 15-3-2 (Advisory): There should be at least one exception handler to catch all otherwise unhandled exceptions
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<n> Rule 15-3-3 (Required): Handlers of a function-try-block implementation of a class constructor or destructor shall not reference non-static members from this class or its bases.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<!c> Rule 15-3-4 (Required): Each exception explicitly thrown in the code shall have a handler of a compatible type in all call paths that could lead to that point.
+    //-e1560      /* uncaught exception */
+    //-elib(1560)
+  //</c>
+
+  //<!c> Rule 15-3-5 (Required): A class type exception shall always be caught by reference.
+    //-e1752      /* non-reference catch parameter */
+    //-elib(1752)
+  //</c>
+
+  //<n> Rule 15-3-6 (Required): Where multiple handlers are provided in a single try-catch statement or function-try-block for a derived class and some or all of its bases, the handlers shall be ordered most-derived to base class.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<!c> Rule 15-3-7 (Required): Where multiple handlers are provided in a single try-catch statement or function-try-block, any ellipsis (catch-all) handler shall occur last.
+    //-estring(1960,15-3-7)
+  //</c>
+//</h>
+
+//<h> Rules 15-4-x: Exception specifications
+  //<!c> Rule 15-4-1 (Required): If a function is declared with an exception-specification, then all declarations of the same function (in other translation units) shall be declared with the same set of type-ids.
+    //-e1548      /* conflicting exception specifications */
+    //-elib(1548)
+  //</c>
+//</h>
+
+//<h> Rules 15-5-x: Exception handling - Special functions
+  //<!c> Rule 15-5-1 (Required): A class destructor shall not exit with an exception.
+    //-e1546      /* throw() inside destructor */
+    //-elib(1546)
+    //-e1559      /* uncaught exception */
+    //-elib(1559)
+  //</c>
+
+  //<!c> Rule 15-5-2 (Required): Where a function’s declaration includes an exception-specification, the function shall only be capable of throwing exceptions of the indicated type(s).
+    //-e1549      /* exception thrown in no-throw function */
+    //-elib(1549)
+  //</c>
+
+  //<!c> Rule 15-5-3 (Required): The terminate() function shall not be called implicitly.
+    //-e1546      /* throw() inside destructor */
+    //-elib(1546)
+    //-e1560      /* uncaught exception */
+    //-elib(1560)
+    //-e1559      /* uncaught exception */
+    //-elib(1559)
+  //</c>
+//</h>
+
+//<h> Rules 16-0-x: Preprocessing directives - General
+  //<!c> Rule 16-0-1 (Required): #include directives in a file shall only be preceded by other preprocessor directives or comments.
+    //-estring(1960,16-0-1)
+  //</c>
+
+  //<!c> Rule 16-0-2 (Required): Macros shall only be #define’d or #undef’d in the global namespace.
+    //-estring(1960,16-0-2)
+  //</c>
+
+  //<!c> Rule 16-0-3 (Required): #undef shall not be used.
+    //-estring(1960,16-0-3)
+  //</c>
+
+  //<!c> Rule 16-0-4 (Required): Function-like macros shall not be defined.
+    //-estring(1960,16-0-4)
+  //</c>
+
+  //<!c> Rule 16-0-5 (Required): Arguments to a function-like macro shall not contain tokens that look like preprocessing directives.
+    //-e436        /* preprocessor directive in invocation of macro */
+    //-elib(436)
+  //</c>
+
+  //<!c> Rule 16-0-6 (Required): In the definition of a function-like macro, each instance of a parameter shall be enclosed in parentheses, unless it is used as the operand of # or ##.
+    //-e665        /* unparenthesized macro parameter */
+    //-elib(665)
+    //-estring(1960,16-0-6)
+  //</c>
+
+  //<!c> Rule 16-0-7 (Required): Undefined macro identifiers shall not be used in #if or #elifpreprocessor directives, except as operands to the defined operator.
+    //-e553        /* undefined preprocessor variable */
+    //-elib(553)
+  //</c>
+
+  //<!c> Rule 16-0-8 (Required): If the # token appears as the first token on a line, then it shall be immediately followed by a preprocessing token.
+    //-e16        /* # directive not followed by recognizable word */
+    //-elib(16)
+    //-e544       /* endif or else not followed by EOL */
+    //-elib(544)
+    //-estring(1960,16-0-8)
+  //</c>
+//</h>
+
+//<h> Rules 16-1-x: Conditional inclusion
+  //<!c> Rule 16-1-1 (Required): The defined preprocessor operator shall only be used in one of the two standard forms.
+    //-estring(1960,16-1-1)
+  //</c>
+
+  //<!c> Rule 16-1-2 (Required): All #else, #elif and #endif preprocessor directives shall reside in the same file as the #if or #ifdef directive to which they are related.
+    //-e405       /* #if not closed off */
+    //-elib(405)
+  //</c>
+//</h>
+
+//<h> Rules 16-2-x: Source file inclusion
+  //<n> Rule 16-2-1 (Required): The pre-processor shall only be used for file inclusion and include guards.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<!c> Rule 16-2-2 (Required): C++ macros shall only be used for: include guards, type qualifiers, or storage class specifiers.
+    //-e1923      /* macro could be const variable */
+    //-elib(1923)
+  //</c>
+
+  //<!c> Rule 16-2-3 (Required): Include guards shall be provided.
+    //-e967       /* no standard include guard */
+    //-elib(967)
+  //</c>
+
+  //<!c> Rule 16-2-4 (Required): The ',",/* or // characters shall not occur in a header file name.
+    //-estring(1960,16-2-4)
+  //</c>
+
+  //<!c> Rule 16-2-5 (Advisory): The \ character should not occur in a header file name.
+    //-estring(1963,16-2-5)
+  //</c>
+
+  //<!c> Rule 16-2-6 (Required): The #include directive shall be followed by either a <filename> or "filename" sequence.
+    //-e12        /* Need LT or " after #include */
+    //-elib(12)
+  //</c>
+//</h>
+
+//<h> Rules 16-3-x: Macro replacement
+  //<!c> Rule 16-3-1 (Required): There shall be at most one occurrence of the # or ## operators in a single macro definition.
+    //-estring(1960,16-3-1)
+  //</c>
+
+  //<!c> Rule 16-3-2 (Advisory): The # and ## operators should not be used.
+    //-estring(1963,16-3-2)
+  //</c>
+//</h>
+
+//<h> Rules 16-6-x: Pragma directive
+  //<n> Rule 16-6-1 (Document): All uses of the #pragma directive shall be documented.
+    //<i> *** NOT CHECKED *** not statically checkable
+//</h>
+
+//<h> Rules 17-0-x: Library introduction - General
+  //<!c> Rule 17-0-1 (Required): Reserved identifiers, macros and functions in the standard library shall not be defined, redefined or undefined.
+    //-e683       /* complain about #define standard functions */
+    //-elib(683)
+  //</c>
+
+  //<!c> Rule 17-0-2 (Required): The names of standard library macros and objects shall not be reused.
+    //-estring(1960,17-0-2)
+  //</c>
+
+  //<n> Rule 17-0-3 (Required): The names of standard library functions shall not be overridden.
+   //<i> *** NOT CHECKED *** currently not supported
+
+  //<n> Rule 17-0-4 (Document): All library code shall conform to MISRA C++.
+   //<i> *** NOT CHECKED *** set +elib options manually
+
+  //<!c> Rule 17-0-5 (Required): The setjmp macro and the longjmp function shall not be used.
+    //-esym(586, longjmp)
+    //-esym(586, setjmp)
+  //</c>
+//</h>
+
+//<h> Rules 18-0-x: Language support library - General
+  //<!c> Rule 18-0-1 (Required): The C library shall not be used.
+    //-efile(829, time.h)
+    //-efile(829, limits.h)
+    //-efile(829, float.h)
+    //-efile(829, stddef.h)
+    //-efile(829, errno.h)
+    //-efile(829, locale.h)
+    //-efile(829, stdio.h)
+    //-efile(829, ctype.h)
+    //-efile(829, string.h)
+    //-efile(829, math.h)
+    //-efile(829, stdlib.h)
+    //-efile(829, assert.h)
+    //-efile(829, stdarg.h)
+    //-efile(829, setjmp.h)
+    //-efile(829, signal.h)
+  //</c>
+
+  //<!c> Rule 18-0-2 (Required): The library functions atof, atoi and atol from library <cstdlib> shall not be used.
+    //-esym(586, atof)
+    //-esym(586, atoi)
+  //</c>
+
+  //<!c> Rule 18-0-3 (Required): The library functions abort, exit, getenv and system from library <cstdlib> shall not be used.
+    //-esym(586, abort)
+    //-esym(586, exit)
+    //-esym(586, getenv)
+    //-esym(586, system)
+  //</c>
+
+  //<!c> Rule 18-0-4 (Required): The time handling functions of library <ctime> shall not be used.
+    //-efile(829, ctime)
+  //</c>
+
+  //<!c> Rule 18-0-5 (Required): The unbounded functions of library <cstring> shall not be used.
+    //-esym(586, strcpy)
+    //-esym(586, strcmp)
+    //-esym(586, strcat)
+    //-esym(586, strchr)
+    //-esym(586, strspn)
+    //-esym(586, strcspn)
+    //-esym(586, strpbrk)
+    //-esym(586, strrchr)
+    //-esym(586, strstr)
+    //-esym(586, strtok)
+    //-esym(586, strlen)
+  //</c>
+//</h>
+
+//<h> Rules 18-2-x: Language support library - Implementation properties
+  //<!c> Rule 18-2-1 (Required): The macro offsetof shall not be used.
+    //-esym(586, offsetof)
+  //</c>
+//</h>
+
+//<h> Rules 18-4-x: Language support library - Dynamic memory management
+  //<!c> Rule 18-4-1 (Required): Dynamic heap memory allocation shall not be used.
+    ///*-deprecate( function, operator new, [MISRA C++ Rule 18-4-1] ) */
+    ///*-deprecate( function, operator delete, [MISRA C++ Rule 18-4-1] ) */
+    //-esym(586, calloc )
+    //-esym(586, malloc )
+    //-esym(586, realloc )
+    //-esym(586, free )
+  //</c>
+//</h>
+
+//<h> Rules 18-7-x: Language support library - Other runtime support
+  //<!c> Rule 18-7-1 (Required): The signal handling facilities of <csignal> shall not be used.
+    //-efile(829, csignal)
+  //</c>
+//</h>
+
+//<h> Rules 19-3-x: Diagnostics library - Error numbers
+  //<!c> Rule 19-3-1 (Required): The error indicator errno shall not be used.
+    //-esym(586, errno)
+  //</c>
+//</h>
+
+//<h> Rules 27-0-x: Input/output library - General
+  //<!c> Rule 27-0-1 (Required): The stream input/output library <cstdio> shall not be used.
+    //-efile(829, cstdio)
+  //</c>
+//</h>
+
+
+//</h>
+
+//<<< end of configuration section >>>

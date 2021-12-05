@@ -1,0 +1,63 @@
+Important Note and Terms of Use
+
+Please read the following important note as well as the following terms and conditions carefully. The extraction of the downloaded documents as well as the installation of the downloaded software is only possible if you agree to such terms and conditions. By choosing the check box “I accept the agreement” below, you agree to have read the important note set forth below and to be bound by the following terms of use. If you do not agree to the terms and conditions below, choose the check box “I do not accept the agreement” and the installation procedure will not be started. 
+
+
+1.	Important Note:
+
+a.	THE INFORMATION GIVEN IN THE DOWNLOADED DOCUMENTS (APPLICATION NOTE ETC.) IS GIVEN AS A HINT FOR THE IMPLEMENTATION OF THE INFINEON TECHNOLOGIES COMPONENT ONLY AND SHALL NOT BE REGARDED AS ANY DESCRIPTION OR WARRANTY OF A CERTAIN FUNCTIONALITY, CONDITION OR QUALITY OF THE INFINEON TECHNOLOGIES COMPONENT. YOU MUST VERIFY ANY FUNCTION DESCRIBED IN THE DOWNLOADED DOCUMENTS IN THE REAL APPLICATION. INFINEON TECHNOLOGIES AG HEREBY DISCLAIMS ANY AND ALL WARRANTIES AND LIABILITIES OF ANY KIND (INCLUDING WITHOUT LIMITATION WARRANTIES OF NON-INFRINGEMENT OF INTELLECTUAL PROPERTY RIGHTS OF ANY THIRD PARTY) WITH RESPECT TO ANY AND ALL INFORMATION GIVEN IN THE DOWNLOADED DOCUMENTS AND SOFTWARE.
+
+
+b.	The downloaded software (hereinafter referred to as “Software”) has been designed by Infineon Technologies AG (hereinafter “Infineon”) as 
+(i) a development tool for use on a PC and/or
+(ii) a development tool and software (can be either source code and/or executable code) which may be integrated into your other software (the integrated software, the derivative work of the Software or — in cases where the software will not be integrated — the original Software hereinafter referred to as “Derivative Software”) for evaluation purposes only. 
+
+c.	Software may include code that is not intended to be used for development or production purposes but for evaluation only. Such items of Software are marked as “Support Packages” in the release notes.
+Only the items listed in the “Released Items“ section of the release notes are intended to be used for development purposes.
+ 
+d.	Infineon is not and cannot be aware of the specific application of the Derivative Software and/or of the microcontroller products by each of its customers. However, Derivative Software and microcontroller products may from time to time be used by you and your customers in potentially harmful and/or life-endangering applications such as traffic, logistic, medical, nuclear or military applications or in any other applications where failure of the Derivative Software or the microcontroller product may predictably cause damage to persons’ life or health or to property (hereinafter referred to as “Critical Application”).  
+
+Please note that Infineon has not specifically designed or qualified Software for any such Critical Application, that Software may contain errors and bugs and that you yourself are required to qualify and have to require your customers to qualify Derivative Software and microcontroller products for any such Critical Application pursuant to the applicable local quality, safety and legal requirements before permitting or giving access to any such use.
+
+e.	Irrespective of the form and format of Software delivery (source and/or object code), Infineon treats ideas, concepts and information incorporated in Software as confidential information and as its trade secret that is protected by applicable intellectual property, trade secret and other laws.
+
+
+2.	Terms of Use:
+
+a.	You are granted no rights to Software other than the rights explicitly stated hereinafter. You shall treat ideas, concepts and information incorporated in Software as confidential information, unless you can prove that such information; (i) is received by you from a third party free to lawfully disclose such information to you; (ii) was in your lawful possession prior to receipt from Infineon as evidenced by written documentation; (iii) is independently developed by you without the benefit of any of the confidential information as evidenced by written documentation; (iv) is approved for release by Infineon; or (v) is required to be disclosed to comply with legal mandatory regulations, a judicial or official order or decree, provided that written advance notice of such judicial action was timely given to Infineon.
+
+b.	You are entitled to designate the right to use the Software only to such individuals within your organization which are acting in full compliance with these Terms of Use and are bound to confidentiality obligations that are similar to those under item a above.
+
+c.	Subject to the limitation set forth in these Terms of Use Infineon grants you a non-exclusive and non-transferable right to use and copy the documentation for internal evaluation purposes only and — to the extent the respective software package makes it technically feasible — to use the Software on PCs — and only in the field of automotive applications if  Software relates to AUTOSAR standards — for the sole execution on INFINEON devices for a maximum number of 50 units of your product samples (such as A-, B-, C-samples of electronic control units).
+Under such license you are specifically not permitted
+- to modify the Software, 
+- or distribute Software, either stand alone or as part of your products.
+
+You shall not (and shall not allow any third party to) translate, disassemble, reverse engineer, decompile, publicly display, publicly perform, distribute, publish, broadcast or otherwise make available the Software or assign or otherwise transfer any right in the Software, unless permitted by applicable mandatory law.  Except as expressly provided herein, Infineon does not grant to you any express or implied rights under any Infineon or third party patents, copyrights, trademarks, or trade secrets. If you violate any of these Terms of Usage, Infineon may immediately terminate these Terms of Usage and require that you stop using and delete all copies of the Software in your possession or control.
+
+d.	Your rights of use shall cease if and as soon any third party claims to have intellectual property or copy rights in Software and Infineon informs you or the public hereof via any suitable means.
+
+e.	In particular with respect to the fee free licensing of Software you agree that Infineon takes no liability and no responsibility for the operativeness and functionality of Software, especially not for its suitability to create a specific Derivative Software or for any use in connection with any relevant microcontroller product and/or operating system. Notwithstanding the above you accept that Software was developed and tested by Infineon solely in combination with the operating system as described in the respective documentation. Any change of or to the operating system may have adverse effect on the functionality of Software.
+
+f.	The Software and Infineon’s Service is provided on an “as is, as available” basis. You shall not rely on the availability of any software upgrade, update and/or documentation and You agree that Infineon makes no representations of or warranty with regard to the accuracy, quality, timeliness, availability, completeness, non-infringement of third party intellectual property rights of or by Software or Infineon’s Service, in particular not for any updates, upgrades or other materials or information available through Infineon’s Service.
+
+g.	You further agree that Infineon, its employees, distributors, directors and agents shall not be liable for any damage whatsoever (including but not limited to direct, indirect, incidental, special or consequential damages, loss of profits or loss of data), resulting from the use or attempt to use of the Software, the inability to use the Software, the bad performance, interruption or termination of Infineon’s Service. All liability of Infineon under this Agreement for consequential damage and/or indirect damages including but not limited to lost profits or stop of production shall be excluded. 
+
+h.	ITEM f. AND g. SHALL NOT APPLY IN THE CASE OF MANDATORY LIABILITY, e.g. IN THE CASE OF INTENT, GROSS NEGLIGENCE, LOSS OF LIFE, BODILY INJURY OR DAMAGE TO HEALTH, OR BREACH OF A CONDITION WHICH GOES TO THE ROOT OF THE AGREEMENT (“WESENTLICHE VERTRAGSPFLICHTEN”). HOWEVER, CLAIMS FOR DAMAGES ARISING FROM A BREACH OF A CONDITION WHICH GOES TO THE ROOT OF THE AGREEMENT, SHALL BE LIMITED TO THE FORESEEABLE DAMAGE WHICH IS INTRINSIC TO THE AGREEMENT, UNLESS CAUSED BY INTENT OR GROSS NEGLICENSE OR BASED ON LIABILITY FOR LOSS OF LIFE, BODILY INJURY OR DAMAGE TO HEALTH. THIS PROVISION DOES NOT IMPLY A CHANGE IN THE BURDEN OF PROOF TO THE DETRIMENT OF YOU.
+
+i.	Infineon is not obliged to provide any support, upgrades or new releases of the Software. If you wish, you may contact Infineon and report problems and provide suggestions regarding the Software. Infineon has no obligation whatsoever to respond in any way to such a problem report or suggestion. Infineon may make changes to the Software at any time, without any obligation to notify or provide updated versions of the Software to you.
+
+j.	You shall defend, indemnify and hold Infineon harmless against claims based on the allegation that the use of microcontroller products with Derivative Software or the Software licensed hereunder caused personal or property damages if these damages are caused by the improper use of microcontroller products or the Software by you. You agree to fully defend and indemnify Infineon from any and all claims, liabilities, and costs (including reasonable attorney’s fees) related to your violation of the terms and conditions of this Agreement. 
+
+k.	If any of the above provisions are void under governing law, the remaining provisions of this Agreement will remain valid and the parties undertake to replace this clause by an equivalent lawful provision whose implication in commercial terms shall be as similar as possible to the void clause. 
+
+l.	These provisions may not be modified, amended, nor waived, except by a written instrument duly executed by the Parties hereto. The requirement of written form itself can only be waived by mutual written agreement.
+
+m.	The substantive law of the Federal Republic of Germany shall be the choice of law for any issue arising out of or in connection with these Terms of Use without reference to its conflict of laws provisions. The UN Sales of Good Act (CISG) shall be excluded. Place of jurisdiction is Munich where admissible under applicable law. 
+
+
+If you agree to the Terms of Use please choose the check box “I accept the agreement” and click on the “Next” button.
+
+If you do not agree to the Terms of Use please choose the check box “I do not accept the agreement” and click on the “Cancel” button
+
+

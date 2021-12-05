@@ -1,0 +1,43 @@
+A51 MACRO ASSEMBLER  MAIN                                                                 10/31/2021 23:03:34 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\main.obj
+ASSEMBLER INVOKED BY: E:\Long\Keil5\C51\BIN\A51.EXE main.a51 SET(SMALL) DEBUG PRINT(.\Listings\main.lst) OBJECT(.\Object
+                      s\main.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 000
+0000                   2     AGAIN :
+0000 D290              3             SETB P1.0
+0002 110A              4             ACALL DELAY
+0004 C290              5             CLR P1.0
+0006 110A              6             ACALL DELAY
+0008 80F6              7             SJMP AGAIN
+000A                   8     DELAY :
+000A 79FF              9             MOV R1, #255            
+000C                  10     LOOP :
+000C D9FE             11             DJNZ R1, LOOP
+000E 22               12     RET
+                      13     END
+                                     
+                             ; so 0 <=> 01000000
+A51 MACRO ASSEMBLER  MAIN                                                                 10/31/2021 23:03:34 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   0000H   A   
+DELAY. . . . . . .  C ADDR   000AH   A   
+LOOP . . . . . . .  C ADDR   000CH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

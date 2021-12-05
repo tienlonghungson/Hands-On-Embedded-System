@@ -1,0 +1,290 @@
+{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil Times New Roman;}{\f4\fswiss\fprq2 Arial;}}
+{\colortbl\red0\green0\blue0;\red0\green0\blue128;\red255\green0\blue0;}
+\deflang1031\pard\plain\f4\fs28\cf0 DAvE's Project Documentation
+\par \plain\f4\fs22\cf0
+\par \plain\f4\fs22\cf0 Project: \tab\tab\b keiltest.DAV
+\par 
+\par \plain\f4\fs22\cf0 Controller: \tab\tab\b XC866-4FR
+\par \plain\f4\fs22\cf0 Compiler: \tab\tab\b Keil
+\par 
+\par \plain\f4\fs22\cf0 Date: \tab\tab\tab\b 10.02.2005 10:10:14
+\par 
+\par 
+\par \plain\f4\fs22\cf2\b Please read this document carefully and note
+\par \plain\f4\fs22\cf2\b the red-colored hints.
+\par 
+\par \plain\f4\fs22\cf2\b If you miss a file in the generated files list
+\par \plain\f4\fs22\cf2\b maybe you have forgotten to select the
+\par \plain\f4\fs22\cf2\b initialisation function of the related module.
+\par 
+\par \plain\f4\fs22\cf0 Generated Files:
+\plain\f4\fs20\cf0\b
+\par \tab\tab\tab MAIN.H
+\par \tab\tab\tab MAIN.C
+\par \tab\tab\tab START_XC.A51
+\par \tab\tab\tab IO.H
+\par \tab\tab\tab IO.C
+\par \tab\tab\tab UART.H
+\par \tab\tab\tab UART.C
+\par \tab\tab\tab T01.H
+\par \tab\tab\tab T01.C
+\par \tab\tab\tab KEILTEST.ASM
+\par 
+\par 
+\par \plain\f4\fs20\cf0
+\par \plain\f4\fs28\cf0\ul Project Settings
+\par
+\par \plain\f4\fs24\cf0 Macros:\f4\fs20\cf0
+\par \plain\f4\fs24\cf0 Functions:\f4\fs20\cf0
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void MAIN_vInit(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This function initializes the microcontroller. It is
+
+\par \tab \tab assumed that the SFRs are in their reset state.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void main(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the main function.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs24\cf0 Initialization:
+\par \plain\f4\fs20\cf0\b
+\par
+\tab Configuration of the System Clock:\par 
+\tab - External Osc is selected (configuration is done in the startup file\par 
+\tab 'START_XC.A51')\par 
+\tab - PLL Mode, NDIV = 11\par 
+\tab - input frequency is 5 MHz\par 
+\par 
+\tab Initialization of module 'GPIO'\par 
+\par 
+\tab Initialization of module 'UART (Serial Interface)'\par 
+\par 
+\tab Initialization of module 'Timer 0/1'\par 
+\par 
+
+\par \plain\f4\fs20\cf0
+\par \plain\f4\fs28\cf0\ul GPIO
+\par
+\par \plain\f4\fs24\cf0 Macros:\f4\fs20\cf0
+\par \plain\f4\fs24\cf0 Functions:\f4\fs20\cf0
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void IO_vInit(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the initialization function of the IO function
+
+\par \tab \tab library. It is assumed that the SFRs used by this library
+
+\par \tab \tab are in their reset state.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs24\cf0 Initialization:
+\par \plain\f4\fs20\cf0\b
+\par
+\tab Configuration of Port P0:\par 
+\tab - no pin of port P0 is used\par 
+\par 
+\tab Configuration of Port P1:\par 
+\tab P1.0:\par 
+\tab - is used as alternate input for the UART Receive Input\par 
+\tab - pull-up device is assigned\par 
+\tab P1.1:\par 
+\tab - is used as alternate output for the UART Transmit Output\par 
+\tab - push/pull output is selected\par 
+\tab - pull-up device is assigned\par 
+\par 
+\tab Configuration of Port P2:\par 
+\tab - no pin of port P2 is used\par 
+\par 
+\tab Configuration of Port P3:\par 
+\tab P3.0:\par 
+\tab - is used as general purpose output\par 
+\tab - push/pull output is selected\par 
+\tab - the pin status is low level\par 
+\tab - pull device is disabled (tristate)\par 
+\tab P3.1:\par 
+\tab - is used as general purpose output\par 
+\tab - push/pull output is selected\par 
+\tab - the pin status is low level\par 
+\tab - pull device is disabled (tristate)\par 
+\tab P3.2:\par 
+\tab - is used as general purpose output\par 
+\tab - push/pull output is selected\par 
+\tab - the pin status is low level\par 
+\tab - pull device is disabled (tristate)\par 
+\tab P3.3:\par 
+\tab - is used as general purpose output\par 
+\tab - push/pull output is selected\par 
+\tab - the pin status is low level\par 
+\tab - pull device is disabled (tristate)\par 
+\tab P3.4:\par 
+\tab - is used as general purpose output\par 
+\tab - push/pull output is selected\par 
+\tab - the pin status is low level\par 
+\tab - pull device is disabled (tristate)\par 
+\tab P3.5:\par 
+\tab - is used as general purpose output\par 
+\tab - push/pull output is selected\par 
+\tab - the pin status is low level\par 
+\tab - pull device is disabled (tristate)\par 
+\tab P3.6:\par 
+\tab - is used as general purpose output\par 
+\tab - push/pull output is selected\par 
+\tab - the pin status is low level\par 
+\tab - pull-down device is assigned\par 
+\tab P3.7:\par 
+\tab - is used as general purpose output\par 
+\tab - push/pull output is selected\par 
+\tab - the pin status is low level\par 
+\tab - pull device is disabled (tristate)\par 
+\par 
+
+\par \plain\f4\fs20\cf0
+\par \plain\f4\fs28\cf0\ul UART (Serial Interface)
+\par
+\par \plain\f4\fs24\cf0 Macros:\f4\fs20\cf0
+\par \plain\f4\fs24\cf0 Functions:\f4\fs20\cf0
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void UART_vInit(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the initialization function of the UART function
+
+\par \tab \tab library. It is assumed that the SFRs used by this library
+
+\par \tab \tab are in their reset state.
+
+\par \tab \tab The following SFR fields will be initialized:
+
+\par \tab \tab - register SCON
+
+\par \tab \tab - bits SMOD and ES
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs24\cf0 Initialization:
+\par \plain\f4\fs20\cf0\b
+\par
+\tab Pin TXD_0 (P1.1) is selected for transmission\par 
+\tab Pin RXD_0 (P1.0) is selected for reception\par 
+\tab Receiver enabled\par 
+\tab Mode 1: 8-bit data, 1 start bit, 1 stop bit, variable baud rate\par 
+\par 
+\tab Baudrate generator settings\par 
+\tab input clock = fPCLK\par 
+\tab baudrate = 9,5785 kbaud\par 
+\par 
+
+\par \plain\f4\fs20\cf0
+\par \plain\f4\fs28\cf0\ul Timer 0/1
+\par
+\par \plain\f4\fs24\cf0 Macros:\f4\fs20\cf0
+\par \plain\f4\fs24\cf0 Functions:\f4\fs20\cf0
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void T01_vInit(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the initialization function of the Timer 0/1
+
+\par \tab \tab function library. It is assumed that the SFRs used by this
+
+\par \tab \tab library are in their reset state.
+
+\par \tab \tab The following SFR fields will be initialized for both
+
+\par \tab \tab timers 0 and 1:
+
+\par \tab \tab T0M            - Timer 0 mode
+
+\par \tab \tab T1M            - Timer 1 mode
+
+\par \tab \tab GATE0/GATE1    - gating control
+
+\par \tab \tab TLx, THx       - timer low/high registers
+
+\par \tab \tab ETx            - interrupt enable
+
+\par \tab \tab TRx            - timer run control (this is the final
+
+\par \tab \tab action)
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void T01_viTmr0(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the service routine for the timer 0 interrupt. It
+
+\par \tab \tab is called
+
+\par \tab \tab - when TH0 overflows if timer 0 is in mode 0 or 1
+
+\par \tab \tab - when TL0 overflows if timer 0 is in mode 2 or 3
+
+\par \tab \tab Please note that you have to add application specific code
+
+\par \tab \tab to this function.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b none\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs24\cf0 Initialization:
+\par \plain\f4\fs20\cf0\b
+\par
+\tab Timer 0\par 
+\tab Mode 2: 8-bit timer (TL0) with 8-bit auto-reload (TH0)\par 
+\tab the timer 0 overflow, calculated from the reload-value, is 19,200 µs\par 
+\par 
+\tab Timer 1\par 
+\tab Mode 0: 8-bit timer (TH1) with a divide-by-32 prescaler (TL1)\par 
+\tab the timer 1 overflow is 614,400 µs\par 
+\par 
+\tab Enable Timer 0 interrupt\par 
+\par 
+\tab Start Timer 0\par 
+\par 
+
+}

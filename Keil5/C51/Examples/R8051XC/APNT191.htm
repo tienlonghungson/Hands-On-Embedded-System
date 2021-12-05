@@ -1,0 +1,549 @@
+<html>
+
+<head>
+<title>Application Note 191: Toolchain Exensions for R8051XC Core</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<style>
+<!--
+/*-----------------------------------------------------------
+Keil Software CHM Style Sheet
+-----------------------------------------------------------*/
+body         { color: #000000; background-color: #FFFFFF; font-size: 75%; font-family: 
+               Verdana, Arial, 'Sans Serif' }
+a:link       { color: #0000FF; text-decoration: underline }
+a:visited    { color: #0000FF; text-decoration: underline }
+a:active     { color: #FF0000; text-decoration: underline }
+a:hover      { color: #FF0000; text-decoration: underline }
+h1           { font-family: Verdana; font-size: 18pt; color: #000080; font-weight: bold; 
+               text-align: Center; margin-right: 3 }
+h2           { font-family: Verdana; font-size: 14pt; color: #000080; font-weight: bold; 
+               background-color: #CCCCCC; margin-top: 24; margin-bottom: 3; 
+               padding: 6 }
+h3           { font-family: Verdana; font-size: 10pt; font-weight: bold; background-color: 
+               #CCCCCC; margin-top: 24; margin-bottom: 3; padding: 6 }
+pre          { font-family: Courier New; font-size: 10pt; background-color: #CCFFCC; 
+               margin-left: 24; margin-right: 24 }
+ul           { list-style-type: square; margin-top: 6pt; margin-bottom: 0 }
+ol           { margin-top: 6pt; margin-bottom: 0 }
+li           { clear: both; margin-bottom: 6pt }
+table        { font-size: 100%; border-width: 0; padding: 0 }
+th           { color: #FFFFFF; background-color: #000080; text-align: left; vertical-align: 
+               bottom; padding-right: 6pt }
+tr           { text-align: left; vertical-align: top }
+td           { text-align: left; vertical-align: top; padding-right: 6pt }
+.ToolT       { font-size: 8pt; color: #808080 }
+.TinyT       { font-size: 8pt; text-align: Center }
+code         { color: #000000; background-color: #E0E0E0; font-family: 'Courier New', Courier; 
+               line-height: 120%; font-style: normal }
+/*-----------------------------------------------------------
+Notes
+-----------------------------------------------------------*/
+p.note       { font-weight: bold; clear: both; margin-bottom: 3pt; padding-top: 6pt }
+/*-----------------------------------------------------------
+Expanding/Contracting Divisions
+-----------------------------------------------------------*/
+#expand      { text-decoration: none; margin-bottom: 3pt }
+img.expand   { border-style: none; border-width: medium }
+div.expand   { display: none; margin-left: 9pt; margin-top: 0 }
+/*-----------------------------------------------------------
+Where List Tags
+-----------------------------------------------------------*/
+p.wh         { font-weight: bold; clear: both; margin-top: 6pt; margin-bottom: 3pt }
+table.wh     { width: 100% }
+td.whItem    { white-space: nowrap; font-style: italic; padding-right: 6pt; padding-bottom: 
+               6pt }
+td.whDesc    { padding-bottom: 6pt }
+/*-----------------------------------------------------------
+Keil Table Tags
+-----------------------------------------------------------*/
+table.kt     { border: 1pt solid #000000 }
+th.kt        { white-space: nowrap; border-bottom: 1pt solid #000000; padding-left: 6pt; 
+               padding-right: 6pt; padding-top: 4pt; padding-bottom: 4pt }
+tr.kt        {  }
+td.kt        { color: #000000; background-color: #E0E0E0; border-top: 1pt solid #A0A0A0; 
+               padding-left: 6pt; padding-right: 6pt; padding-top: 2pt; 
+               padding-bottom: 2pt }
+/*-----------------------------------------------------------
+-----------------------------------------------------------*/
+-->
+
+</style>
+</head>
+
+<body>
+
+<h1>Application Note 191<br>
+Toolchain Extensions for R8051XC/R8051XC2 Core</h1>
+
+<p align="center">Revision 4 - July 2009</p>
+
+<p align="center">This Application Note tells you how to configure the Keil 8051
+development tools for Evatronix R8051XC/R8051XC2 based devices. The R8051XC/R8051XC2 is a highly configurable
+IP core that provides many extensions such as configurable DPTR registers, MDU,
+and a flexible set of peripherals.</p>
+
+<p class="TinyT">Information in this file, the accompany manuals, and software is<br>
+Copyright © KEIL - An ARM Company.<br>All rights reserved.</p>
+
+<hr>
+
+<h2>Contents</h2>
+
+<ol>
+  <li class="LI2"><a href="#Overview">Overview</a></li>
+  <li class="LI2"><a href="#DD">Device Database Configuration</a></li>
+  <li class="LI2"><a href="#DPTR">Multiple DPTR Support</a> </li>
+  <li class="LI2"><a href="#Simulation">Simulator Configuration</a></li>
+  <li class="LI2"><a href="#Examples">Example Programs</a></li>
+  <li class="LI2"><a href="#TechnicalSupport">Technical Support</a></li>
+  <li class="LI2"><a href="#ContactDetails">Contact Details</a></li>
+</ol>
+
+<h2><a name="Overview"></a>Overview</h2>
+
+<p>This application note describes the configuration features for the <b> Evatronix
+R8051XC/R8051XC2</b> CPU core that are available in the <b> Keil PK51 Professional Developer's
+Kit</b>.</p>
+
+<ul>
+  <li>The <b>µVision<sup>®</sup> Device Database<sup>®</sup></b> allows to
+    define new devices that you have created with the <b>R8051XC/R8051XC2 </b>CPU core. Refer to the
+    article <a href="http://www.keil.com/support/docs/1421.htm" target="_blank">UVISION: ADDING CUSTOM PARTS TO THE
+    DEVICE DATABASE</a> for information on how to create a new device within the
+    µVision environment. The article <a href="http://www.keil.com/support/docs/1645.htm" target="_blank">UVISION: ADDING A USER-SPECIFIC
+    DEVICE DATABASE (CDB FILE)</a> explains how to organize new devices in a
+    custom device database.
+  </li>
+  <li>The <b>µVision Simulation DLLs</b> can be configured to cover several
+    aspects of the <b>R8051XC/R8051XC2</b> CPU core.</li>
+  <li>The standard <b>code banking</b> feature of <b>Keil PK51</b> allows you to
+    use the program memory banking feature of the <b>R8051XC/R8051XC2</b> CPU core</li>
+  <li>The <b>Keil C51 Compiler</b> provides extensions to use the multiple DPTR
+    registers and the MDU of the <b>R8051XC/R8051XC2</b> CPU core.</li>
+</ul>
+
+<p><b>NOTE:</b></p>
+
+<ul>
+  <li>The <b> R8051XC</b> extensions described in this application note
+are part of Keil PK51 Version 8.03 or higher. Previous versions do not support the
+R8051XC features.</li>
+	<li>The <b>R8051XC2</b> extensions are part of Keil PK51 Version 8.19 or 
+	higher.</li>
+</ul>
+
+<h2><a name="DD"></a>Device Database Configuration</h2>
+
+<p>The <b>µVision Device Database</b> allows you to create custom devices that
+simplifies the configuration tool configuration. The
+    article <a href="http://www.keil.com/support/docs/1421.htm" target="_blank">UVISION: ADDING CUSTOM PARTS TO THE
+    DEVICE DATABASE</a> explains the various configuration options.</p>
+
+<p>The string <b>CPU=</b> configures the memory sizes of the device and specific
+options such as MDU or multiple DPTR. The following options are relevant for the
+<b>R8051XC/R8051XC2</b>:</p>
+
+<ul>
+  <li><b>MODC2</b>: enable 2 DPTR registers in both the simulator and the C51
+    Compiler. For more information refer to the <b>C51 User's Guide - MODC2
+    Compiler Directive.</b></li>
+  <li><b>MOD517DP</b>: enable 8 DPTR registers in both the simulator and the C51
+    Compiler. For more information refer to the <b>C51 User's Guide - MOD517
+    Compiler Directive.</b></li>
+  <li><b>MDU_R515</b>: configure for Multiply/Devide Unit of Evatronix R8051XC.
+    Allows you to use the C51 extensions for MDU. For more information refer to
+    the <b>C51 User's Guide - MDU_R515 Compiler Directive.</b></li>
+</ul>
+<p>The string <b>SIM= </b>configures the CPU and Peripheral simulation DLLs. For
+the R8051XC/R8051XC2 device you need to use the DLL's <b>S8051.DLL </b>and<b> DCore51.DLL</b>
+with the parameter -<b>pR8051XC</b> or <b>-pR8051XC2</b>. Additional parameters 
+are described in the next
+section <a href="#Simulation">Simulator Configuration</a>.</p>
+
+<p><b>Sample configuration options:</b></p>
+
+<pre>CPU=IRAM(0-0x7F)  CLOCK(12000000) MOD517DP MDU_R515
+SIM=S8051.DLL(&quot;-PMW -DPC -BSE&quot;) DCore51.DLL(&quot;-pR8051XC&quot;)</pre>
+
+<h2><a name="DPTR"></a>Multiple DPTR Support</h2>
+
+<p>The R8051XC/R8051XC2 device provides auto-increment features and automatic saving of 
+the multiple DPTR register banks. When using the C51 directive BSE, the compiler 
+does no longer save the DPTR registers when switching register banks. When using 
+this feature together with the MOD517 directive, the C51 Compiler uses the 
+auto-increment features with the C51 library functions <strong>memcpy</strong>, 
+<strong>memcmp</strong>, <strong>memmove</strong>, 
+<strong>strcpy</strong>, and <strong>strcmp</strong>.</p>
+
+<h2><a name="Simulation"></a>Simulator Configuration</h2>
+
+<p>The R8051XC/R8051XC2 device is simulated with the CPU DLL <b>S8051.DLL</b> and the
+Dialog DLL <b>DCore51.DLL</b>. These DLL provide several parameters that provide
+configuration features for the device. The parameters may be entered in the
+µVision dialog page <b>Options for Target - Debug</b>. When you select a device
+from the device database, the DLL parameters are copied from the string <b>SIM=</b>
+as described in the previous section <a href="#DD">Device Database Configuration</a>.</p>
+
+<h3><b>S8051.DLL Parameters for R8051XC</b></h3>
+
+<ul>
+  <li><b>-PMW</b>: enable the PCON.PMW feature that allows to use MOVX 
+	instructions to write into the code space.</li>
+	<li><b>-DPC</b>: enable the data pointer control registers that provide
+    auto-increment features for the DPTR registers.</li>
+  <li><b>-BSE</b>: enable the Bank Switch Enable feature in the register
+    DPSEL.3.</li>
+	<li><strong>-XB 95</strong>: enable xdata banking register D_PAGESEL at SFR 
+	address 0x95 (the SFR address is configurable).</li>
+</ul>
+<h3><b>DCore51.DLL Parameters for R8051XC</b></h3>
+<ul>
+	<li><b>-pR8051XC</b>: configure for the R8051XC core.</li>
+	<li><b>-pR8051XC2</b>: configure for the R8051XC2 core.</li>
+	<li>-<b>oXXXXXXXXX</b>: specifies the implemented peripherals. XXXXXXXX is 
+	a 64-bit HEX number that is encoded as shown table below:<br>
+&nbsp;<table cellspacing="0" cellpadding="0" border="0" class="kt" id="table1">
+  <tr>
+    <th class="kt" style="text-align: center">Bit</th>
+    <th class="kt" align="left">Description</th>
+  </tr>
+  <tr>
+    <td class="kt" style="text-align: center">0</td>
+    <td class="kt" align="left">Port 0</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">1</td>
+    <td class="kt" align="left">Port 1</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">2</td>
+    <td class="kt" align="left">Port 2</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">3</td>
+    <td class="kt" align="left">Port 3</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">4</td>
+    <td class="kt" align="left">Timer 0</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">5</td>
+    <td class="kt" align="left">Timer 1</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">6</td>
+    <td class="kt" align="left">Timer 2</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">7</td>
+    <td class="kt" align="left">UART 0</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">8</td>
+    <td class="kt" align="left">UART1</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">9</td>
+    <td class="kt" align="left">PMU (Power Management Unit)</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">10</td>
+    <td class="kt" align="left">PMW (Program Memory Write)</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">11</td>
+    <td class="kt" align="left">MDU (Multiplication/Division Unit)</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">12</td>
+    <td class="kt" align="left">CKCON (Clock Control)</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">13</td>
+    <td class="kt" align="left">Watchdog</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">15-14</td>
+    <td class="kt" align="left">00: No Interrupt Controller<br>
+	01: 8051 compatible, 2-level<br>
+	10: 80515 compatible, 4 level<br>
+	11: invalid</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">17-16</td>
+    <td class="kt" align="left">00: no DPTR<br>
+	01: one DPTR<br>
+	10: two DPTR (implies device database string <b>CPU=MODC2)</b><br>
+	11: eight DPTR&nbsp; (implies device database string <b>CPU=MOD517DP)</b></td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">18</td>
+    <td class="kt" align="left">DPTR auto increment</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">19</td>
+    <td class="kt" align="left">I2C</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">20</td>
+    <td class="kt" align="left">SPI</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">24-21</td>
+    <td class="kt" align="left">0000: no external interrupt<br>
+	0001: 1 external interrupt<br>
+	0010: 2 external interrupts<br>
+	0011: 3 external interrupts<br>
+	:<br>
+	1100: 12 external interrupts<br>
+	1101: 13 external interrupts</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">25</td>
+    <td class="kt" align="left">Disable MUL instruction</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">26</td>
+    <td class="kt" align="left">Disable DIV instruction</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">27</td>
+    <td class="kt" align="left">Disable DA instruction</td>
+  </tr>
+  <tr>
+    <td class="kt" style="text-align: center">30-28</td>
+    <td class="kt" align="left">000: no additional address lines (16 bit 
+	address, no code banking)<br>
+	001: 1 additional address line<br>
+	010: 2 additional address line<br>
+	:<br>
+	111: 7 additional address line</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">31</td>
+    <td class="kt" align="left">Second I2C</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">32-35</td>
+    <td class="kt" align="left">Prescaler width for extended watchdog timer<br>
+	0000: no additional prescaler (standard watchdog timer)<br>
+	0001: 1-bit prescaler (divide by 2)<br>
+	0010: 2-bit prescaler (divide by 4)<br>
+	0011: 3-bit prescaler (divide by 8)<br>
+&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :<br>
+	0111: 7-bit prescaler (divide by 128)<br>
+	1000: 8-bit prescaler (divide by 256)<br>
+	other values are reserved</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">36-39</td>
+    <td class="kt" align="left">Number of DMA channels<br>
+	0000: DMA controller disabled<br>
+	0001: 1 DMA channel<br>
+	0010: 2 DMA channel<br>
+&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :<br>
+	0111: 7 DMA channel<br>
+	1000: 8 DMA channel<br>
+	other values are reserved</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">40</td>
+    <td class="kt" align="left">Software Reset</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">41</td>
+    <td class="kt" align="left">RTC (Real Time Clock)</td>
+  </tr>
+	<tr>
+    <td class="kt" style="text-align: center">42-63</td>
+    <td class="kt" align="left">unused</td>
+  </tr>
+</table>
+	<p>&nbsp;</li>
+</ul>
+<p>Configuration parameter examples for the DCore51.DLL:</p>
+<ul>
+	<li><b>-pR8051XC2 -o38081BFBFFF (default)</b>: enables port 0-3, timer 0/1/2, 
+	UART 0/1, PMU, PMW, MUL/DIV, CKCON, Watchdog timer, ISR515, eight DPTR, DPTR 
+	auto increment, I2C, SPI, 13 external interrupts, full instruction set, no 
+	additional address lines. second I2C, no watchdog prescaler, 8 DMA channels, 
+	software reset, RTC.</li>
+</ul>
+
+<p><b>NOTE:</b></p>
+
+<ul>
+  <li>The peripheral simulation components of the DCore51.DLL may be expanded by
+    using the AGSI Interface. Refer to 
+	<a target="_blank" href="http://www.keil.com/appnotes/docs/apnt_154.asp">
+	Application Note 154: Implementing DLLs for User-defined Simulation (AGSI)</a> 
+	for more information.</li>
+</ul>
+<h3><b>Evatronix R8051XC related Virtual Registers</b></h3>
+<p>The table below lists additional virtual registers (<a href="http://www.keil.com/support/man/docs/uv3/uv3_db_exp_periphlvar.htm">VTR</a>), their size, range, default 
+value and their meaning for the simulation.</p>
+<table cellspacing="0" cellpadding="0" border="0" class="kt" id="table2">
+	<tr>
+		<th class="kt" style="text-align: center">VTR</th>
+		<th class="kt" align="left">Size</th>
+		<th class="kt" align="left">Range</th>
+		<th class="kt" align="left">Default Value</th>
+		<th class="kt" align="left">Description</th>
+	</tr>
+	<tr>
+		<td class="kt" style="text-align: center">RTC_CLK</td>
+		<td class="kt" align="left">32 Bit</td>
+		<td class="kt" align="left">&nbsp;</td>
+		<td class="kt" align="left">32768 Hz</td>
+		<td class="kt" align="left">External Clock for RTC</td>
+	</tr>
+	<tr>
+		<td class="kt" style="text-align: center">RTC_SUBSEC</td>
+		<td class="kt" align="left">8 Bit</td>
+		<td class="kt" align="left">0 - 255</td>
+		<td class="kt" align="left">0</td>
+		<td class="kt" align="left">RTC Subsecond counter</td>
+	</tr>
+	<tr>
+		<td class="kt" style="text-align: center">RTC_SEC</td>
+		<td class="kt" align="left">8 Bit</td>
+		<td class="kt" align="left">0 - 59</td>
+		<td class="kt" align="left">0</td>
+		<td class="kt" align="left">RTC Second counter</td>
+	</tr>
+	<tr>
+		<td class="kt" style="text-align: center">RTC_MIN</td>
+		<td class="kt" align="left">8 Bit</td>
+		<td class="kt" align="left">0 - 59</td>
+		<td class="kt" align="left">0</td>
+		<td class="kt" align="left">RTC Minute counter</td>
+	</tr>
+	<tr>
+		<td class="kt" style="text-align: center">RTC_HOUR</td>
+		<td class="kt" align="left">8 Bit</td>
+		<td class="kt" align="left">0 - 23</td>
+		<td class="kt" align="left">0</td>
+		<td class="kt" align="left">RTC Hour counter</td>
+	</tr>
+	<tr>
+		<td class="kt" style="text-align: center">RTC_DOW</td>
+		<td class="kt" align="left">8 Bit</td>
+		<td class="kt" align="left">0 - 7</td>
+		<td class="kt" align="left">0</td>
+		<td class="kt" align="left">RTC Day of Week counter (0: off; 1 - 7: 
+		Monday - Sunday)</td>
+	</tr>
+	<tr>
+		<td class="kt" style="text-align: center">RTC_DAY</td>
+		<td class="kt" align="left">16 Bit</td>
+		<td class="kt" align="left">0 - 65536</td>
+		<td class="kt" align="left">0</td>
+		<td class="kt" align="left">RTC Day counter</td>
+	</tr>
+	<tr>
+		<td class="kt" style="text-align: center">RTC_RESET</td>
+		<td class="kt" align="left">8 Bit</td>
+		<td class="kt" align="left">0 - 1</td>
+		<td class="kt" align="left">0</td>
+		<td class="kt" align="left">Writing 1 to RTC_RESET causes a RTC reset</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<h2><a name="Examples"></a>Example Programs</h2>
+
+<p>Example programs in the folder <b>..\C51\EXAMPLES\R8051XC</b> demonstrate
+some features of the Evatronix R8051XC core. All programs can be fully simulated with the
+uVision Debugger.</p>
+
+<h2><a name="TechnicalSupport"></a>Technical Support</h2>
+
+<p>At Keil Software, we are dedicated to providing you with the best development
+tools and technical support. That's why we offer numerous ways you can get the
+technical support you need to complete your embedded projects.</p>
+
+<ul>
+  <li class="LI2"><a href="http://www.keil.com/support"><b>Technical Support
+    Knowledgebase</b></a><br>
+    More than 1500 technical support questions and answers are available in the
+    Support Solutions Knowledgebase. When a new question arises, it is added to
+    the knowledgebase which is continuously published to the Web. This enables
+    you to get technical support at times when our support staff is unavailable.</li>
+  <li class="LI2"><a href="http://www.keil.com/appnotes"><b>Application Notes</b></a><br>
+    Numerous Application Notes help you decipher complex features and implement
+    robust applications.</li>
+  <li class="LI2"><a href="http://www.keil.com/download"><b>Example Programs and
+    Files</b></a><br>
+    Utility programs, example code, and sample projects are regularly added to
+    the Download File section of the web site.</li>
+  <li class="LI2"><a href="http://www.keil.com/discuss"><b>Discussion Forum</b></a><br>
+    Post questions, comments, and suggestions to the Keil Software Discussion
+    Forum and interact with other Keil users around the world.</li>
+</ul>
+
+<p>Many of the features of our Technical Support Knowledgebase and Web Site are
+the results of your suggestions. If you have any ideas that will improve them,
+please <a href="http://www.keil.com/support/feedback.asp">give us your feedback</a>!</p>
+
+<h2><a name="ContactDetails"></a>Contact Details</h2>
+
+<p>If you experience any problems or have any questions about this Application
+Note, contact one of our <a href="http://www.keil.com/distis">distributors</a>
+or offices for assistance.</p>
+
+<div align="center">
+  <center>
+  <table border="0" cellpadding="5" cellspacing="0">
+    <tr>
+      <td valign="top" nowrap bgcolor="#FFFFCC" style="border: 1 solid #800000">
+
+        <p><b>In the USA...<br>
+        </b><br>
+        <b>KEIL - An ARM Company</b><br>
+        1501 10th Street, Suite 110<br>
+        Plano, TX&nbsp; 75074<br>
+        USA<br>
+        <br>
+        800-348-8051 - Sales<br>
+        972-312-1107 - Support<br>
+        972-312-1159 - Fax<br>
+        <a href="mailto:sales.us@keil.com"><br>
+        sales.us@keil.com</a> - Sales E-Mail<a href="mailto:E-Mailsupport.us@keil.com"><br>
+        support.us@keil.com</a> - Support E-mail&nbsp;<br>
+        &nbsp;&nbsp;</p>
+
+      </td>
+      <td valign="top" width="30" nowrap></td>
+      <td valign="top" nowrap style="border: 1 solid #800000" bgcolor="#FFFFCC">
+
+        <p><b>In Europe...<br>
+        </b><br>
+        <b>KEIL - An ARM Company<br>
+        </b>Bretonischer Ring 16<br>
+        D-85630 Grasbrunn<br>
+        Germany<br>
+        <br>
+        +49 89 456040-0 - Sales<br>
+        +49 89 456040-24 - Support<br>
+        +49 89 468162 - Fax<br>
+        <a href="mailto:sales.intl@keil.com"><br>
+        sales.intl@keil.com</a> - Sales E-Mail<a href="mailto:E-Mailsupport.intl@keil.com"><br>
+        support.intl@keil.com</a> - Support E-Mail<br>
+        &nbsp;&nbsp;</p>
+
+      </td>
+    </tr>
+  </table>
+  </center>
+</div>
+<hr>
+
+<p class="TinyT">Copyright © KEIL - An ARM Company.<br>
+All rights reserved.<br>
+Visit our web site at <a href="http://www.keil.com">www.keil.com</a>.</p>
+
+</body>
+
+</html>

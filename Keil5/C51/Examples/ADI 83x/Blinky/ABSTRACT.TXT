@@ -1,0 +1,14 @@
+The Blinky project is a simple program for the Analog Devices ADuC83x devices
+using the Analog Devices ADuC834 evaluation board. When you can successfully
+build and run this program, you have used the entire toolset including:
+
+The uVision integrated development environment.
+The C51 compiler, linker and the uVision simulator/debugger.
+
+It blinks the LEDs which is connected to P3.4.
+
+The Blinky program is available in different targets:
+  Simulator:           runs in software Simulator
+  Target Debugging:    is configured for debugging an ADuC83x evaluation board
+
+

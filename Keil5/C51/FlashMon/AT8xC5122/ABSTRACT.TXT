@@ -1,0 +1,27 @@
+This Flash Monitor Version is configured to use the 
+on-chip CRAM of an Atmel AT85C5122
+
+With this configuration the following on-chip memory
+is allocated: 
+
+C:0x0000 - C:0x6FFF    Flash available for application
+C:0x7000 - C:0x7FFF    Flash used by Flash Monitor
+
+X:0x0000 - X:0x00FF    XDATA available for application
+X:0x0100 - X:0x01FF    XDATA used by Flash Monitor
+
+The resulting Monitor.HEX file must be programmed into 
+the on-chip Flash with the Atmel FLIP utility.
+
+You may use Atmel BatchISP utility to integrate dynamic
+Monitor Download and Start into µVision3 for your project.
+Open 'Options for Target' - ' Utilities' and enter for 
+'Use External Tool for Flash Programming':
+
+Command: batchisp
+Arguments: -device $D -hardware USB -operation MEMORY FLASH ERASE 0  LOADBUFFER ..\..\MONITOR.HEX PROGRAM  START NORESET 0x7000
+
+It maybe required to adjust the path the MONITOR.HEX is
+located in. Using the above settings, the 'Load' button
+in the toolbar is used to download the Monitor before you
+start a debug session.

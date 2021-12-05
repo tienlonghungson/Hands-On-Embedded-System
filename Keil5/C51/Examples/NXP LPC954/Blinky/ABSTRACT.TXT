@@ -1,0 +1,17 @@
+The BLINKY program is a very simple program that blinks the LED's on
+connected to Port 5 of the MCB950.  When you can successfully build 
+and run this program, you have used the entire toolset including:
+
+The uVision integrated development environment.
+The C51 compiler, linker and the uVision simulator/debugger.
+
+This BLINKY program is available in several targets:
+
+  Simulator:           for uVision Debugger testing with simulator
+  ULINK2 NXP 95x:      for Debugging with Keil ULINK2 JTAG adapter
+  FS2 System Navigtor: for Debugging with the FS2 System Navigator
+
+Use the following jumper settings on the MCB900 board:
+  RUN: OFF   RESET: ON      for Download with Flash Magic
+  RUN: ON    RESET: OFF     for Program Run
+

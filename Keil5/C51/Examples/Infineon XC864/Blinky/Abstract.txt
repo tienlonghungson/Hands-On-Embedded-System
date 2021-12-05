@@ -1,0 +1,15 @@
+The Blinky project is a simple program for the Infineon XC864
+using the Infineon Easy Kit XC800 Evaluation Board.
+
+It blinks the LEDs prints HELLO to the UART interface.
+
+The Blinky program is available in different targets:
+  Simulator:           runs in software Simulator
+  Target via ULINK:    is configured for flash download / debugging with Keil ULINK
+                       Set the max. JTAG clock to 200 KHz for a reliable communication
+  Target via DAS:      is configured for flash download / debugging with the on-board DAS JTAG interface
+
+Note:
+Since the XC864 only has 2 pins on port 3, you will only see P3.0 and P3.1 blink. 
+All other LEDs are not connected to the XC164 device.
+ 

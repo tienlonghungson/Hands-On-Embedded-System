@@ -1,0 +1,7 @@
+The program "Quick_Test" is a short program to test the general functionality of the TLE9832.
+It is written for the Infineon TLE9834_EVB board.
+
+MON1 push-button: LS1/2 toggling
+MON2 push-button: HS1/2 toggling
+MON3 push-button: HALL_Supply toggling
+MON4 push-button: LS1/2 + HALL_Supply + HS1/2 toggling

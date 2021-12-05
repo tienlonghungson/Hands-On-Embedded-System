@@ -1,0 +1,37 @@
+..\banking.H00
+8000           8000           8000
+FFFF           FFFF           8000
+..\banking.H01
+8000           8000           8000
+FFFF           FFFF           8000
+..\banking.H02
+8000           8000           8000
+FFFF           FFFF           8000
+..\banking.H03
+8000           8000           8000
+FFFF           FFFF           8000
+0
+..\banking.H04
+8000           8000           8000
+FFFF           FFFF           8000
+..\English_font.hex
+0              8000           8000
+7FFF           FFFF           8000
+..\Chinese_font.hex
+0              8000           8000
+7FFF           FFFF           8000
+
+               8000           8000
+               FFFF           8000
+..\banking.H00
+0              0              E000
+1FFF           1FFF           E000
+..\banking.H00
+2000           2000           E000
+3FFF           3FFF           E000
+
+4000           4000           E000
+5FFF           5FFF           E000
+
+6000           6000           E000
+7FFF           7FFF           E000

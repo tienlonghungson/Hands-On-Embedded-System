@@ -1,0 +1,31 @@
+<begin>
+<version_begin> MA0_MI0_98 <end>
+<begin>
+<version_begin> MA0_MI0_98 <end>
+<total_item> 1 <end>
+<begin> <version_begin> MA1_MI4_03 <end> !uPSD3334D !PSD814S6 !1 !1 <t_begin> <t_end> <h_begin> 5 <h_end> !1 !3 <jtag_pin_begin> <end> <total_id_begin> !2 <begin> <version_begin> MA0_MI0_98 <end> !08140047 !814F6 !5 !PSD8X3_ <end>
+<begin> <version_begin> MA0_MI0_98 <end> !18140041 !814F6 !5 !PSD8X3_ <end>
+<end> <end>
+<begin>
+<version_begin> MA0_MI1_03 <end>
+!1 !C:\new projects\led_blink\raisonance\led_blink\PSDsoft\project.obj !2 !U <begin>
+<version_begin> MA0_MI0_98 <end>
+<begin>
+<version_begin> MA0_MI0_02 <end>
+<begin>
+<version_begin> MA1_MI0_98 <end>
+!uPSD3334D !0 !1 <total_id_begin> !0 <end> <end>
+<begin>
+<version_begin> MA0_MI1_03 <end>
+!1 !2 !2 !2 !2 !2 !2 !2 !2 !2 !2 !2 !2 !2 !2 !2 !2 !2 !2 !2 !2 !2 !2 !2 !1 !1 <end>
+<end>
+<end>
+<begin>
+<version_begin> MA0_MI0_98 <end>
+<begin>
+<version_begin> MA0_MI1_2000 <end>
+!0 !0 !0 !0 !1 !1 <end>
+<end>
+<end>
+<end>
+<end>

@@ -1,0 +1,144 @@
+AX51 MACRO ASSEMBLER  POOL                                                                  08/31/05 15:32:39 PAGE     1
+
+
+MACRO ASSEMBLER AX51 V3.00
+OBJECT MODULE PLACED IN POOL.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\AX51.EXE POOL.src PR(.\POOL.ls1) EP DEBUG
+
+LOC    OBJ             LINE     SOURCE
+
+                          1     ; .\POOL.SRC generated from: POOL.C
+                          2     ; COMPILER INVOKED BY:
+                          3     ;        C:\Keil\C51\BIN\CX51.EXE POOL.C BROWSE DEBUG SRC(.\POOL.SRC)
+                          4     
+                          5     $mod_mx51 
+                          6     
+                          7     NAME    POOL
+                          8     
+------                    9     ?PR?_pRecord?POOL    SEGMENT CODE 
+                         10             PUBLIC  _pRecord
+                         11     ; /* 
+                         12     ;  *  Fixed Pool Management for Philips 80C51MX
+                         13     ;  */
+                         14     ; 
+                         15     ; #include "record.h"
+                         16     ; 
+                         17     ; #pragma ASM
+                         18       
+                         19       
+                         20         ;#include "record.h"
+                    +1   21     
+                    +1   22     
+                    +1   23     
+                    +1   24     
+                    +1   25     
+                    +1          
+                    +1          
+                    +1            
+                    +1            
+                    +1            
+                    +1            
+                    +1          
+                    +1           
+                    +1          
+                    +1          
+                    +1          
+                    +1          
+                    +1          
+                         39     
+                         40       
+                         41       
+ 0CCC                    42       e_max   EQU 65535 / 20                 ; maximum records in a 64KB slot
+ 0005                    43       s64     EQU 19000 / e_max                   ; number of complete 64KB slots
+ 0A3C                    44       remain  EQU 19000 MOD e_max                 ; remaining rec. in last slot
+ 0005CCB0                45       segsiz  EQU (s64*65536) + (remain*20)  ; size of fixed pool
+                         46       
+------                   47       POOLSEG   SEGMENT HDATA
+------                   48                 RSEG POOLSEG
+                         49       
+000000                   50       POOLSTRT: DS      segsiz
+                         51                 PUBLIC  POOLSTRT
+                         52       
+                         53     ; #pragma ENDASM
+                         54     ; 
+                         55     ; /*
+                         56     ;  * Record a Pointer to Record 'n' in Memory Pool
+                         57     ;  */
+                         58     ; RECORD far *pRecord (unsigned int n)  {
+AX51 MACRO ASSEMBLER  POOL                                                                  08/31/05 15:32:39 PAGE     2
+
+                         59     
+------                   60             RSEG  ?PR?_pRecord?POOL
+000000                   61     _pRecord:
+                         62             USING   0
+                         63                             ; SOURCE LINE # 29
+                         64     ;---- Variable 'p?041' assigned to Register 'R1/R2/R3' ----
+                         65     ;---- Variable 'n?040' assigned to Register 'R6/R7' ----
+                         66     ;   void far *p;
+                         67     ; 
+                         68     ;   p = p;       // supress unused variable warning
+                         69                             ; SOURCE LINE # 32
+                         70     ;   n = n;       // supress unused variable warning
+                         71                             ; SOURCE LINE # 33
+                         72     ; 
+                         73     ; #pragma ASM
+                         74     ; EXTRN CODE (?C?UIDIV)
+                         75               EXTRN CODE (?C?UIDIV)
+                         76     ; 
+                         77               
+                         78     ;   MOV    R4,#HIGH e_max        ; seg  = n / e_max;
+000000 7C0C              79               MOV    R4,#HIGH e_max        ; seg  = n / e_max;
+                         80     ;   MOV    R5,#LOW  e_max        ; slot = n % e_max;
+000002 7DCC              81               MOV    R5,#LOW  e_max        ; slot = n  3.308033e-305_max;
+                         82     ;   CALL   ?C?UIDIV              ; gives seg in R4, slot in R6|R7
+000004 120000     E      83               CALL   ?C?UIDIV              ; gives seg in R4, slot in R6|R7
+                         84     ;   MOV    A,R7                  ; p = &POOLSTRT + (seg*65536) + slot
+000007 EF                85               MOV    A,R7                  ; p = &POOLSTRT + (seg*65536) + slot
+                         86     ;   ADD    A,#BYTE2 (POOLSTRT)
+000008 2400       F      87               ADD    A,#BYTE2 (POOLSTRT)
+                         88     ;   MOV    R3,A
+00000A FB                89               MOV    R3,A
+                         90     ;   MOV    A,R4
+00000B EC                91               MOV    A,R4
+                         92     ;   MOV    R2,A
+00000C FA                93               MOV    R2,A
+                         94     ;   MOV    A,R5
+00000D ED                95               MOV    A,R5
+                         96     ;   MOV    R1,A
+00000E F9                97               MOV    R1,A
+                         98     ; #pragma ENDASM
+                         99     ; 
+                        100     ;   return (p);
+                        101                             ; SOURCE LINE # 50
+                        102     ; }
+                        103                             ; SOURCE LINE # 51
+00000F                  104     ?C0001:
+00000F 22               105             RET     
+                        106     ; END OF _pRecord
+                        107     
+                        108             END
+AX51 MACRO ASSEMBLER  POOL                                                                  08/31/05 15:32:39 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E                            T Y P E  V A L U E     ATTRIBUTES
+
+?C0001. . . . . . . . . . . . . .  C  ADDR  000FH     R   SEG=?PR?_PRECORD?POOL
+?C?UIDIV. . . . . . . . . . . . .  C  ADDR  -------       EXT
+?PR?_PRECORD?POOL . . . . . . . .  C  SEG   000010H       REL=UNIT, ALN=BYTE
+_PRECORD. . . . . . . . . . . . .  C  ADDR  0000H     R   SEG=?PR?_PRECORD?POOL
+E_MAX . . . . . . . . . . . . . .  N  NUMB  0CCCH     A   
+POOL. . . . . . . . . . . . . . .  -- ----  -------       
+POOLSEG . . . . . . . . . . . . .  HD SEG   05CCB0H       REL=UNIT, ALN=BYTE
+POOLSTRT. . . . . . . . . . . . .  HD ADDR  0000H     R   SEG=POOLSEG
+REMAIN. . . . . . . . . . . . . .  N  NUMB  0A3CH     A   
+S64 . . . . . . . . . . . . . . .  N  NUMB  0005H     A   
+SEGSIZ. . . . . . . . . . . . . .  N  NUMB  0005CCB0H A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S).

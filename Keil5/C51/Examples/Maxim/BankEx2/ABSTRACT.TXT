@@ -1,0 +1,78 @@
++------------------------------------------------------------------------------
+Copyright (c) 2012 ARM Ltd and ARM Germany GmbH.
+All rights reserved.
+
+This program is a bank switching example that shows how you can
+run (simulate) code executing in up to 8 code banks for
+Maxim(Teridian) devices.
+
+
+ 0xFFFF   +----------+   +----------+   +----------+  +----------+   +----------+   +----------+   +----------+
+          |          |   |          |   |          |  |          |   |          |   |          |   |          |
+          |          |   |          |   |          |  |          |   |          |   |          |   |          |
+          |  BANK0   |   |  BANK1   |   |  BANK2   |  |  BANK3   |   |  BANK4   |   |  BANK5   |   |  BANK6   |
+          |          |   |          |   |          |  |          |   |          |   |          |   |          |
+          |          |   |          |   |          |  |          |   |          |   |          |   |          |
+          |          |   |          |   |          |  |          |   |          |   |          |   |          |
+ 0x8000   +----------+   +----------+   +----------+  +----------+   +----------+   +----------+   +----------+
+
+
+ 0x7FFF   +----------+
+          |          |
+          |          |
+          |  COMMON  |
+          |          |
+          |          |
+          |          |
+ 0x0000   +----------+
+
+
+
+Description:
+They are 6 function calls in main (located inside the common bank).
+
+Function: func0 is located in bank0 and calls the function func6() in bank6. 
+Function: func1 is located in bank1 and calls the function func6() in bank6. 
+Function: func2 is located in bank2 and calls the function func6() in bank6. 
+Function: func3 is located in bank3 and calls the function func6() in bank6. 
+Function: func4 is located in bank4 and calls the function func6() in bank6. 
+Function: func5 is located in bank5 and calls the function func6() in bank6. 
+
+								   
+
+Function callgraph:
+
+main 
+   |
+   +----> func0  /* Located in bank0 */
+   |          |
+   |          +----> func6  /* Located in bank6 */
+   |
+   |
+   +----> func1  /* Located in bank1 */
+   |          |
+   |          +----> func6  /* Located in bank6 */
+   |
+   |
+   +----> func2  /* Located in bank2 */
+   |          |
+   |          +----> func6  /* Located in bank6 */
+   |
+   |
+   +----> func3  /* Located in bank3 */
+   |          |
+   |          +----> func6  /* Located in bank6 */
+   |
+   |
+   +----> func4  /* Located in bank4 */
+   |          |
+   |          +----> func6  /* Located in bank6 */
+   |
+   |
+   +----> func5  /* Located in bank5 */
+              |
+              +----> func6  /* Located in bank6 */
+
+
+																			
++------------------------------------------------------------------------------

@@ -1,0 +1,156 @@
+C51 COMPILER V9.60.0.0   BAI4                                                              12/04/2021 22:57:06 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE BAI4
+OBJECT MODULE PLACED IN .\Objects\bai4.obj
+COMPILER INVOKED BY: E:\Long\Keil5\C51\BIN\C51.EXE bai4.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\b
+                    -ai4.lst) TABS(2) OBJECT(.\Objects\bai4.obj)
+
+line level    source
+
+   1          #include <at89x51.h>
+   2          #define TH0_50ms 0xD8; //0x3C;
+   3          #define TL0_50ms 0xF0; //0xB0;
+   4          #
+   5          //Buzzer (speaker) connects on P1^5 
+   6          sbit SPK  = P1^5; //Buzzer on/off
+   7          sbit LED7SEG_0 = P1^0;  //Led 7-seq 1 not
+   8          sbit LED7SEG_1 = P1^1;  //Led 7-seq 2 not
+   9          sbit LED7SEG_2 = P1^2;  //Led 7-seg 3 anot
+  10          sbit LED7SEG_3 = P1^3;  //Led 7-seg 4 anot
+  11          
+  12          int time = 0; // current time
+  13          
+  14          void init(){
+  15   1        // thiet lap ngat ngoai
+  16   1        P3_2 = 1; //3_2 input for interrupt 0
+  17   1        P3_3 = 1;
+  18   1        EX0 = 1; //Cho phep ngat ngoai 0
+  19   1        IT0 = 1; //Ngat theo suon
+  20   1        EX1 = 1;
+  21   1        IT1 = 1;
+  22   1        
+  23   1        EA   = 1;     //global interrupt enable
+  24   1      }
+  25          
+  26          
+  27          
+  28          void delay(unsigned int time){
+  29   1          int i,j;
+  30   1          for (i=0;i<100;++i){
+  31   2              for (j=0;j<time;++j);
+  32   2          }
+  33   1      }
+  34          
+  35          void display(unsigned int time){
+  36   1          unsigned char const mask[10]={0xC0, 0xF9, 
+  37   1          0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};
+  38   1          
+  39   1          unsigned char const mask_dot[10]={0x40, 0x79,
+  40   1          0x24, 0x30, 0x19, 0x12, 0x02, 0x78, 0x00, 0x10};
+  41   1          unsigned int digit, num=time;
+  42   1          
+  43   1          const unsigned int D_DISPLAY =10;
+  44   1          // SET LED 3
+  45   1          LED7SEG_3 = 0;
+  46   1          digit = num % 10;
+  47   1          num = num / 10;
+  48   1          P0 = mask[digit];
+  49   1          delay(D_DISPLAY);
+  50   1          LED7SEG_3 = 1;
+  51   1          
+  52   1          // SET LED 2
+  53   1          LED7SEG_2 = 0;
+  54   1          digit = num % 10;
+C51 COMPILER V9.60.0.0   BAI4                                                              12/04/2021 22:57:06 PAGE 2   
+
+  55   1          num = num / 10;
+  56   1          P0 = mask[digit];
+  57   1          delay(D_DISPLAY);
+  58   1          LED7SEG_2 = 1;
+  59   1      
+  60   1          // SET LED 1
+  61   1          LED7SEG_1 = 0;
+  62   1          digit = num % 10;
+  63   1          num = num / 10;
+  64   1          P0 = mask_dot[digit];
+  65   1          delay(D_DISPLAY);
+  66   1          LED7SEG_1 = 1;
+  67   1          
+  68   1          // SET LED 0
+  69   1          LED7SEG_0 = 0;
+  70   1          digit = num % 10;
+  71   1          num = num / 10;
+  72   1          P0 = mask[digit];
+  73   1          delay(D_DISPLAY);
+  74   1          LED7SEG_0 = 1;
+  75   1      }
+  76          
+  77          
+  78          
+  79          void EX0_Handler() interrupt IE0_VECTOR {
+  80   1          EA=0; //Cam ngat
+  81   1          
+  82   1          /*turn on timer 0*/
+  83   1          //timer 0
+  84   1          TMOD = TMOD & 0xF0; 
+  85   1          TMOD = TMOD | 0x01;
+  86   1          TH0  = TH0_50ms;    //Khoi tao T0
+  87   1          TL0  = TL0_50ms;    //Tuong duong 55536
+  88   1          TF0  = 0;       //Xoa co tran timer 0
+  89   1          TR0  = 1;       //Khoi dong timer 0
+  90   1          ET0  = 1;     //cho phep ngat
+  91   1          
+  92   1          
+  93   1          EA=1; //Cho phep ngat
+  94   1          
+  95   1      }
+  96          
+  97          void EX1_Handler() interrupt IE1_VECTOR {
+  98   1          EA=0; //Cam ngat
+  99   1        
+ 100   1          /*stop timer 0*/
+ 101   1          TF0  = 0;       //clear flag
+ 102   1          TR0  = 0;       //stop timer
+ 103   1          ET0  = 0;       //cam ngat
+ 104   1        
+ 105   1          EA=1; //Cho phep ngat
+ 106   1          
+ 107   1      }
+ 108          
+ 109          void TMR0_Handler() interrupt TF0_VECTOR{
+ 110   1        TF0  = 0;       //clear flag
+ 111   1        TR0  = 0;       //stop timer
+ 112   1        TH0  = TH0_50ms;  //reset T0 value
+ 113   1        TL0  = TL0_50ms;  
+ 114   1        
+ 115   1        time+= 1;
+ 116   1        
+C51 COMPILER V9.60.0.0   BAI4                                                              12/04/2021 22:57:06 PAGE 3   
+
+ 117   1        TR0  = 1;       //restart timer
+ 118   1      }
+ 119          
+ 120          
+ 121          void main(){
+ 122   1          SPK=0;
+ 123   1          init();
+ 124   1          
+ 125   1          while(1){
+ 126   2              display(time);
+ 127   2          }
+ 128   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    302    ----
+   CONSTANT SIZE    =     20    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2      24
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,7 @@
+"TRAFFIC.obj",
+"SERIAL.obj",
+"GETLINE.obj",
+"Conf_tny.obj",
+"START900.obj" 
+TO "traffic" Rtx51Tiny 
+RAMSIZE(256) 

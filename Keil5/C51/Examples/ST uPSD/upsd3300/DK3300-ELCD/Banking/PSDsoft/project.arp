@@ -1,0 +1,26 @@
+***************************************************************************
+                         PSDsoft Express Version 8.30
+                    Output of Address Translation
+***************************************************************************
+  PROJECT    : project                                  DATE : 11/30/2004
+  DEVICE     : uPSD3334D                                TIME : 21:05:18
+***************************************************************************
+
+  Record  Type  : Intel Hex Record 
+  Mapping Mode  : Relative 
+
+  Memory                      Start        Stop        Memory
+  Block                      Address      Address    Data   File 
+--------------------------------------------------------------------------
+  FS0   [00000 - 07FFF]       8000         FFFF      ..\banking.H00
+  FS1   [08000 - 0FFFF]       8000         FFFF      ..\banking.H01
+  FS2   [10000 - 17FFF]       8000         FFFF      ..\banking.H02
+  FS3   [18000 - 1FFFF]       8000         FFFF      ..\banking.H03
+  FS4   [20000 - 27FFF]       8000         FFFF      ..\banking.H04
+  FS5   [28000 - 2FFFF]          0         7FFF      ..\English_font.hex
+  FS6   [30000 - 37FFF]          0         7FFF      ..\Chinese_font.hex
+  FS7   [38000 - 3FFFF]                              
+  CSBOOT0[40000 - 41FFF]          0         1FFF      ..\banking.H00
+  CSBOOT1[42000 - 43FFF]       2000         3FFF      ..\banking.H00
+  CSBOOT2[44000 - 45FFF]       4000         5FFF      
+  CSBOOT3[46000 - 47FFF]       6000         7FFF      

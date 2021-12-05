@@ -1,0 +1,13 @@
+This Boost Converter example application can be used to control the high-power 
+LED module of an Infineon EasyKit XC822. 
+
+The touchpads have the following function:
+TP1: Increase brightness of LED module
+TP2: ON/OFF LED module
+TP3: Reduce brightness of LED module
+
+This application is configured for the on-chip flash of the XC822 controller.
+It must be downloaded before testing or debugging.
+
+For more information, please refer to the Infineon Getting Started manual 
+for the EasyKit XC822 board.

@@ -1,0 +1,111 @@
+#------------------------------------------------------------------------------
+# Define uVision editor settings for A51 Assembler files
+#
+# Copyright : (c) 2012 - 2016 ARM Ltd. and ARM Germany GmbH
+# Version   : 1.0.0
+# Product   : uVision
+# Author    : EG
+#
+#
+#   (A) A51 Keyword sections
+#        1) A51 Instructions
+#        2) A51 Operator
+#        3) A51 Dircectives 
+#        4) A51 Dircectives Operand
+#        5) A51 Assembler Statements
+#        6) Ax51 Memory Classes
+#        7) A51 Assembler Macro Processor Statements
+#        8) A51 Assembler Macro Processor Operators 
+#        9) A51 Predefined Macros
+#       10) A51 Register
+#       11) A51 Linker Relocation
+#       12) A51 Linker Alignment
+#
+#   (B) A51 Keyword assignement
+#
+#------------------------------------------------------------------------------
+
+
+# (A) A51 Keyword sections
+#
+# 1) A51 Instructions
+a51_instruction=acall add addc ajmp anl cjne clr cpl da dec div djnz \
+inc jb jbc jc jmp jnb jnc jnz jz lcall ljmp \
+mov movc movx mul nop orl pop push \
+ret reti rl rlc rr rrc setb sjmp subb swap xch xchd xrl
+
+
+# 2) A51 Operators
+a51_operator=() * + - / < <= <> == >= \
+AND BYTE0 BYTE1 BYTE2 BYTE3 EQ GT GTE HIGH LOW LT LTE MBYTE MOD NE NOT OR SHL SHR WORD0 WORD2 XOR
+
+
+# 3) A51 Directives
+a51_directive=$case $cond $date $debug $define $ecrm $eject $else $elseif $endif $errorprint \
+$gen $genonly $if $incdir $include $list $macro $mod_cont $mod_mx51 $mod51 $mpl $mx \
+$noamake $nocase $nocond $nodebug $noerrorprint $nogen $nolines $nolist $nomacro $nomod51 \
+$nompl $noobject $noprint $noregisterbank $nosymbols $nosymlist $noxref $object \
+$pagelength $pagewidth $print $registerbank $reguse $reset $restore $save $set $symbols $symlist $title $xref
+
+
+# 4) A51 Directives Operand
+a51_directive_operand=$
+
+
+# 5) A51 Assembler Statements
+a51_statement=__error__ __warning__ bseg const cseg edata db dbit dd ds dsb dsd dseg dsw dw \
+ebit econst else elseif end endif endp equ even extern extrn \
+hconst if iseg label lit name org proc public rseg \
+sbit segment set sfr sfr16 using xseg
+
+
+# 6) Ax51 Memory Classes
+a51_memory_class=bit data idata xdata code bank0 bank1 bank2 bank3 bank4 bank5 bank6 bank7 bank8 bank9 bank10 \
+bank11 bank12 bank13 bank14 bank15 bank16 bank17 bank18 bank19 bank20 bank21 bank22 bank23 bank24 \
+bank25 bank26 bank27 bank28 bank29 bank30 bank31
+a51_extended_memory_class=hdata ecode
+ax51_memory_class=hconst
+
+
+# 7) A51 Assembler Macro Processor Statements
+a51_macro=macro exitm endm local rept irp irpc
+
+
+# 8) A51 Assembler Macro Processor Operators
+a51_macro_operator=nul & < > % ;; !
+
+
+# 9) A51 Predefined Macros
+a51_predef_macro=__a51__ __ax51__ __date__ __date2__ __file__ __keil__ __line__ __mod_cont__ __time__ 
+
+
+# 10) A51 Register
+a51_register=a b r0 r1 r2 r3 r4 r5 r6 r7 dph dpl pc psw dptr sp 
+
+
+# 11) A51 Linker Relocation
+a51_linker_relocation=at bitaddressable inblock inpage inseg offs overlayable
+
+
+# 12) A51 Linker Alignment
+a51_linker_alignment=bit byte word dword page block seg
+
+
+# (B) Keyword assignement for A51
+#
+keywords.$(file.patterns.asm)=$(a51_instruction) $(ax51_instruction) $(a51_operator)
+keywords2.$(file.patterns.asm)=
+keywords3.$(file.patterns.asm)=$(a51_register)
+keywords4.$(file.patterns.asm)=$(a51_directive) $(a51_directive_operand) $(a51_statement) $(a51_linker_relocation) $(a51_linker_alignment) $(a51_memory_class) $(a51_extended_memory_class) $(ax51_memory_class)
+keywords5.$(file.patterns.asm)=$(a51_macro) $(a51_predef_macro) $(a51_macro_operator)
+keywords6.$(file.patterns.asm)=$(ext_instruction) 
+
+
+# (C)
+#
+comment.block.asm=;
+command.compile.$(file.patterns.asm)=masm $(FileNameExt)
+command.name.0.*.asm=Link
+command.0.*.asm=link $(FileName)
+
+statement.indent.$(file.patterns.asm)=9 .if

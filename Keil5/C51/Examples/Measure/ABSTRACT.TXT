@@ -1,0 +1,17 @@
+The MEASURE program uses the analog inputs of the P89LPC935
+to implement a datalogger.  This example shows how you can 
+use signal functions in uVision to simulate a signal coming
+into one of the analog inputs of the P89LPC935 controller.
+
+The MEASURE program is available in different targets:
+  Demo-Simulator:  for eval tools in SMALL model for Simulation
+  Simulator:       for full tools in SMALL model for Simulation
+  MCB900-RUN:      for MCB900 Eval Board in RUN Mode
+  EPM900-Emulator: for EPM900 Emulator for target testing
+
+Notes:
+- The target Demo-Simulator allows program run with Eval Tools.
+- The target Demo-Simulator loads a fixed program image that
+  cannot be modified.
+- The remaining targets (Simulator, MCB900-RUN, EPM900-Emulator)
+  require a full version of the Keil C51 Tool Chain.

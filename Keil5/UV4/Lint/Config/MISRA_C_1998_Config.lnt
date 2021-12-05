@@ -1,0 +1,876 @@
+/*----------------------------------------------------------------------------
+  MISRA_C_1998.lnt
+  MISRA C 1998 rule configuration file for PC-lint
+ *----------------------------------------------------------------------------*/
+
+// include MISRA C 1998 PC-lint file
+au-misra1.lnt
+
+// <<< Use Configuration Wizard in Context Menu >>>
+
+// <h> Checker for Misra C 1998 rules
+
+// <h> Rules 1 - 4: Environment
+/* Rule 1 (req) *************************************/
+// <!c> Rule 1 (required): All code shall conform to ISO 9899 standard C, with no extensions permitted.
+    //-e950                      /* flag non-ANSI word or construct */
+    //-elib(950)
+// </c>
+
+/* Rule 2 (adv) *************************************/
+// <n> Rule 2 (advisory): Code written in languages other than C should only be used if there is a defined interface standard for object code to which the compiler/assemblers for both languages conform.
+//  <i> *** NOT CHECKED *** not statically checkable
+
+/* Rule 3 (adv) *****************************************/
+// <!c> Rule 3 (advisory): Assembler language functions that are called from C should be written as C functions containing only inline assembler language, and inline assembler language should not be embedded in normal code.
+    ///*-rw( asm, _asm, __asm )*/     /* remove asm built-in's */
+    ///*-dasm=_ignore_init     */     /* define asm as a ... */
+    ///*+rw( _ignore_init )    */     /* function introduction */
+// </c>
+
+/* Rule 4 (adv) **********************************/
+// <n> Rule 4 (advisory): Provisions should be made for appropriate runtime checking.
+//  <i> *** NOT CHECKED *** not statically checkable
+// </h>
+
+// <h> Rules 5 - 8: Character sets
+/* Rule 5 (req) *********************************/
+// <!c> Rule 5 (required): Only those characters and escape sequences which are defined in the ISO C standard shall be used.
+    //-e606                       /* non-ANSI escape sequence */
+    //-elib(606)
+// </c>
+
+/* Rule 6 (req) **********************************/
+// <n> Rule 6 (required): Values of character types shall be restricted to a defined and documented subset of ISO 10646-1.
+//  <i> *** NOT CHECKED *** not statically checkable
+
+/* Rule 7 (req) ************************************/
+// <!c> Rule 7 (required): Trigraphs shall not be used.
+    //-e584                       /* trigraph sequence detected */
+    //-elib(584)
+    //-e739                       /* trigraph found in a string */
+    //-elib(739)
+// </c>
+
+/* Rule 8 (req) ****************************************/
+// <!c> Rule 8 (required): Multibyte characters and wide string literals shall not be used.
+    //-esym(960,8)
+// </c>
+// </h>
+
+// <h> Rules 9 - 10: Comments
+/* Rule 9 (req) **************************************/
+// <!c> Rule 9 (required): Comments shall not be nested.
+    //-e602                       /* comment within comment */
+    //-elib(602)
+// </c>
+
+/* Rule 10 (adv) ************************************/
+// <!c> Rule 10 (advisory): Sections of code should not be ‘commented out’.
+    //-e602                       /* comment within comment */
+    //-elib(602)
+// </c>
+// </h>
+
+// <h> Rules 11 - 12: Identifiers
+/* Rule 11 (req) ***********************************/
+// <!c> Rule 11 (required): Identifiers (internal and external) shall not rely on significance of more than 31 characters. Furthermore, the compiler/linker shall be checked to ensure that 31 character significance and case sensitivity are supported for external identifiers.
+    //-e621                       /* Identifier clash - length set by -idlen */
+    //-elib(621)
+// </c>
+
+/* Rule 12 (adv) ****************************************/
+// <!c> Rule 12 (advisory): No identifier in one namespace shall have the same spelling as an identifier in another namespace.
+    //-e578                         /* enable reports of name hiding */
+    //-elib(578)
+    //-e580                         /* enable reports of name hiding */
+    //-elib(580)
+    //-e652                         /* #define of previously declared symbol*/
+    //-elib(652)
+// </c>
+// </h>
+
+// <h> Rules 13 - 17: Types
+/* Rule 13 (adv) *****************************************/
+// <!c> Rule 13 (advisory): The basic types of char, int, short, long, float, and double should not be used, but specific-length equivalents should be typedef’d for the specific compiler, and these type names used in the code.
+    //-e970               /* flag modifiers used outside of typedefs */
+    //-elib(970)
+// </c>
+
+/* Rule 14 (req) ******************************************/
+// <!c> Rule 14 (required): The type char shall always be declared as unsigned char or signed char.
+    //-e971               /* flag char without signed or unsigned */
+    //-elib(971)
+// </c>
+
+/* Rule 15 (adv) ******************************************/
+// <n> Rule 15 (advisory): Floating point implementations should comply with a defined floating-point standard.
+//  <i> *** NOT CHECKED *** not statically checkable
+
+/* Rule 16 (req) *****************************************/
+// <!c> Rule 16 (required): The underlying bit representation of floating-point numbers shall not be used in any way by the programmer..
+    //-esym(960,16)
+// </c>
+
+/* Rule 17 (req) ******************************************/
+// <!c> Rule 17 (required): typedef names shall not be reused.
+    //-e578                         /* enable reports of name hiding */
+    //-elib(578)
+    //-e452               /* typedef symbol redeclared */
+    //-elib(452)
+    //-e623               /* redefining the storage class of symbol */
+    //-elib(623)
+    //-e624               /* typedef redeclared */
+    //-elib(624)
+// </c>
+// </h>
+
+// <h> Rules 18 - 19: Constants
+/* Rule 18  (adv) ********************************/
+// <!c> Rule 18 (advisory): Numeric constants should be suffixed to indicate type, where an appropriate suffix is available.
+    //-esym(961,18)
+// </c>
+
+/* Rule 19 (req) **************************************/
+// <!c> Rule 19 (required): Octal constants (other than zero) shall not be used.
+    //-esym(960,19)
+// </c>
+// </h>
+
+// <h> Rules 20 - 29: Declarations and definitions
+/* Rule 20 (req) **************************************/
+// <!c> Rule 20 (required): All object and function identifiers shall be declared before use.
+    //-e40                         /* undeclared identifier */
+    //-elib(40)
+    //-e718                        /* Symbol undeclared */
+    //-elib(718)
+    //-e746                        /* call not made in the presence of a prototype */
+    //-elib(746)
+// </c>
+
+/* Rule 21 (req) **************************************/
+// <!c> Rule 21 (required): Identifiers in an inner scope shall not use the same name as an identifier in an outer scope, and therefore hide the identifier.
+    //-e578                         /* enable reports of name hiding */
+    //-elib(578)
+// </c>
+
+/* Rule 22 (adv) ***************************************/
+// <!c> Rule 22 (advisory): Declaration of objects should be at function scope unless a wider scope is necessary.
+    //-esym(961,22)
+// </c>
+
+/* Rule 23 (adv)  **************************************/
+// <!c> Rule 23 (advisory): All declarations at file scope should be static where possible.
+    //-e765                       /* symbol could be made static */
+    //-elib(765)
+// </c>
+
+/* Rule 24 (req) **************************************/
+// <!c> Rule 24 (required): Identifiers shall not simultaneously have both internal and external linkage in the same translation unit.
+    //-e512                        /* symbol previously used as static */
+    //-elib(512)
+    //-e401                        /* symbol not previously declared static */
+    //-elib(401)
+// </c>
+
+/* Rule 25 (req) **************************************/
+// <!c> Rule 25 (required): An identifier with external linkage shall have exactly one external definition.
+    //-e14                          /* symbol previously defined */
+    //-elib(14)
+// </c>
+
+/* Rule 26 (req) ***************************************/
+// <!c> Rule 26 (required): If objects or functions are declared more than once, they shall have compatible declarations.
+    //-e15                          /* symbol redeclared */
+    //-elib(15)
+    //-e18                          /* symbol redeclared */
+    //-elib(18)
+// </c>
+
+/* Rule 27 (adv) **************************************/
+// <!c> Rule 27 (advisory): External objects should not be declared in more than one file.
+    //-e578                         /* enable reports of name hiding */
+    //-elib(578)
+    //-e762                         /* redundantly declared symbol */
+    //-elib(762)
+    //-esym(961,27)
+// </c>
+
+/* Rule 28 (adv) **************************************/
+// <!c> Rule 28 (advisory): The register storage class specifier should not be used.
+    //-esym(961,28)
+// </c>
+
+/* Rule 29 (req) **************************************/
+// <!c> Rule 29 (required): The use of a tag shall agree with its declaration.
+    //-e578                       /* enable reports of name hiding */
+    //-elib(578)
+// </c>
+// </h>
+
+// <h> Rules 30 - 32: Initialization
+/* Rule 30 (req) **************************************/
+// <!c> Rule 30 (required): All automatic variables shall be assigned a value before being used.
+    //-e644                   /* Symbol may not have been initialized */
+    //-elib(644)
+    //-e771                   /* Symbol conceivably not initialized */
+    //-elib(771)
+    //-e530                   /* Symbol not initialized */
+    //-elib(530)
+// </c>
+
+/* Rule 31 (req) **************************************/
+// <!c> Rule 31 (required): Braces shall be used to indicate and match the structure in the non-zero initialization of arrays and structures.
+    //-e940                        /* omitted braces within an initializer */
+    //-elib(940)
+// </c>
+
+/* Rule 32 (req) *****************************************/
+// <!c> Rule 32 (required): In an enumerator list, the = construct shall not be used to explicitly initialize members other than the first, unless all items are explicitly initialized.
+    //-esym(960,32)
+// </c>
+// </h>
+
+// <h> Rules 33 - 42: Operators
+/* Rule 33 (req) *****************************************/
+// <!c> Rule 33 (required): The right-hand operand of an && or || operator shall not contain side effects.
+    //-esym(960,33)
+// </c>
+
+/* Rule 34 (req) **************************************/
+// <!c> Rule 34 (required): The operands of a logical && or || shall be primary expressions.
+    //-esym(960,34)
+// </c>
+
+/* Rule 35 (req) **************************************/
+// <!c> Rule 35 (required): Assignment operators shall not be used in expressions which return Boolean values.
+    //-e720                        /* Boolean test of assignment */
+    //-elib(720)
+    //-e820                        /* Boolean test of assignment */
+    //-elib(820)
+    //-esym(960,35)
+// </c>
+
+/* Rule 36 (adv) ******************************************/
+// <!c> Rule 36 (advisory): Logical operators should not be confused with bitwise operators.
+    //-e514                        /* unusual use of Boolean */
+    //-elib(514)
+    //-esym(961,36)
+// </c>
+
+/* Rule 37 (req) ****************************************/
+// <!c> Rule 37 (required): Bitwise operations shall not be performed on signed integer types.
+    //-e502                        /* bitwise operation on signed quantity */
+    //-elib(502)
+    //-e701                        /* shift left of signed int */
+    //-elib(701)
+    //-e702                        /* shift right of signed int */
+    //-elib(702)
+    //-e703                        /* shift left of signed long */
+    //-elib(703)
+    //-e704                        /* shift right of signed long */
+    //-elib(704)
+// </c>
+
+/* Rule 38 (req) ******************************************/
+// <!c> Rule 38 (required): The right-hand operand of a shift operator shall lie between zero and one less than the width in bits of the left-hand operand (inclusive).
+    //-e572                       /* excessive shift value */
+    //-elib(572)
+    //-esym(960,38)
+// </c>
+
+/* Rule 39 (req) *****************************************/
+// <!c> Rule 39 (required): The unary minus operator shall not be applied to an unsigned expression.
+    //-e501                /* unary minus operator applied to an unsigned type */
+    //-elib(501)
+// </c>
+
+/* Rule 40 (adv) ****************************************/
+// <!c> Rule 40 (advisory): The sizeof operator should not be used on expressions that contain side effects.
+    //-esym(961,40)
+// </c>
+
+/* Rule 41 (adv) ********************************************/
+// <n> Rule 41 (advisory): The implementation of integer division in the chosen compiler should be determined, documented, and taken into account.
+//  <i> *** NOT CHECKED *** not statically checkable
+
+/* Rule 42 (req) ********************************************/
+// <!c> Rule 42 (required): The comma operator shall not be used, except in the control expression of a for loop.
+    //-esym(960,42)
+// </c>
+// </h>
+
+// <h> Rules 43 - 46: Conversions
+/* Rule 43 (req) ********************************************/
+// <!c> Rule 43 (required): Implicit conversions which may result in a loss of information shall not be used.
+    //-e524                                    /* loss of precision */
+    //-elib(524)
+    //-e653                                    /* possible loss of fraction */
+    //-elib(653)
+    //-e712                                    /* loss of precision */
+    //-elib(712)
+    //-e734                                    /* loss of precision */
+    //-elib(734)
+// </c>
+
+/* Rule 44 (adv) *******************************************/
+// <!c> Rule 44 (advisory): Redundant explicit casts should not be used.
+    //-esym(961,44)
+// </c>
+
+/* Rule 45 (req) *****************************************/
+// <!c> Rule 45 (required): Type casting from any type to or from pointers shall not be used.
+    //-e923                        /* cast pointer/non-pointer */
+    //-elib(923)
+    //-esym(960,45)
+// </c>
+
+/* Rule 46 (req) ****************************************/
+// <!c> Rule 46 (required): The value of an expression shall be the same under any order of evaluation that the standard permits.
+    //-e564                       /* order of evaluation */
+    //-elib(564)
+// </c>
+// </h>
+
+// <h> Rules 47 - 51: Expressions
+/* Rule 47 (adv) ****************************************/
+// <!c> Rule 47 (advisory): No dependence should be placed on C’s operator precedence rules in expressions.
+    //-e834                 /* confusing operator sequence (same precedence) */
+    //-elib(834)
+    //-esym(961,47)
+// </c>
+
+/* Rule 48 (adv) *****************************************/
+// <!c> Rule 48 (advisory): Mixed precision arithmetic should use explicit casting to generate the desired result.
+    //-e912                         /* implicit binary conversion */
+    //-elib(912)
+    //-e653                         /* possible loss of fraction */
+    //-elib(653)
+// </c>
+
+/* Rule 49 (adv) ******************************************/
+// <!c> Rule 49 (advisory): Tests of a value against zero should be made explicit, unless the operand is effectively Boolean.
+    //-e720                         /* Boolean test of assignment */
+    //-elib(720)
+// </c>
+
+/* Rule 50 (req) *****************************************/
+// <!c> Rule 50 (required): Floating-point variables shall not be tested for exact equality or inequality.
+    //-e777                        /* testing floats for equality */
+    //-elib(777)
+    //-esym(960,50)
+// </c>
+
+/* Rule 51 (adv) ****************************************/
+// <!c> Rule 51 (advisory): Evaluation of constant unsigned integer expressions should not lead to wrap-around.
+    //-e648                        /* overflow in computing constant */
+    //-elib(648)
+// </c>
+// </h>
+
+// <h> Rules 52 - 67: Control flow
+/* Rule 52 (req) *******************************************/
+// <!c> Rule 52 (required): There shall be no unreachable code.
+    //-e527                        /* unreachable */
+    //-elib(527)
+    //-e506                        /* constant value boolean */
+    //-elib(506)
+    //-e681                        /* loop is not entered */
+    //-elib(681)
+    //-e827                        /* loop not reachable  */
+    //-elib(827)
+// </c>
+
+/* Rule 53 (req) *****************************************/
+// <!c> Rule 53 (required): All non-null statements shall have a side-effect.
+    //-e505                        /* redundant left argument to comma */
+    //-elib(505)
+    //-e522                        /* operator or function lacks side-effects */
+    //-elib(522)
+// </c>
+
+/* Rule 54 (req) ****************************************/
+// <!c> Rule 54 (required): A null statement shall only occur on a line by itself, and shall not have any other text on the same line.
+    //-esym(960,54)
+// </c>
+
+/* Rule 55 (adv) ****************************************/
+// <!c> Rule 55 (advisory): Labels should not be used, except in switch statements.
+    //-esym(961,55)
+// </c>
+
+/* Rule 56 (req) ***************************************/
+// <!c> Rule 56 (required): The goto statement shall not be used.
+    //-e801                       /* do not use goto */
+    //-elib(801)
+// </c>
+
+/* Rule 57 (req) ***************************************/
+// <!c> Rule 57 (required): The continue statement shall not be used.
+    //-esym(960,57)
+// </c>
+
+/* Rule 58 (req) ***************************************/
+// <!c> Rule 58 (required): The break statement shall not be used (except to terminate the cases of a switch statement).
+    //-esym(960,58)
+// </c>
+
+/* Rule 59 (req) ****************************************/
+// <!c> Rule 59 (required): The statements forming the body of an if, else if, else, while, do … while or for statement shall always be enclosed in braces.
+    //-esym(960,59)
+// </c>
+
+/* Rule 60 (adv) ***************************************/
+// <!c> Rule 60 (advisory): All if, else if constructs should contain a final else clause.
+    //-esym(961,60)
+// </c>
+
+/* Rule 61 (req) **************************************/
+// <!c> Rule 61 (required): Every non-empty case clause in a switch statement shall be terminated with a break statement.
+    //-e616              /* control flows into case/default */
+    //-elib(616)
+    //-e825              /* control flows into case/default without -fallthrough */
+    //-elib(825)
+    //-esym(960,61)
+// </c>
+
+/* Rule 62 (req) *************************************/
+// <!c> Rule 62 (required): All switch statements should contain a final default clause.
+    //-e744                         /* switch statement has no default */
+    //-elib(744)
+    //-esym(960,62)
+// </c>
+
+/* Rule 63 (adv) **************************************/
+// <!c> Rule 63 (advisory): A switch expression should not represent a Boolean value.
+    //-esym(961,63)
+// </c>
+
+/* Rule 64 (req) *************************************/
+// <!c> Rule 64 (required): Every switch statement shall have at least one case.
+    //-e764                         /* switch does not have a case */
+    //-elib(764)
+// </c>
+
+/* Rule 65 (req) ************************************/
+// <!c> Rule 65 (required): Floating-point variables shall not be used as loop counters.
+    //-esym(960,65)
+// </c>
+
+/* Rule 66 (adv) *************************************/
+// <!c> Rule 66 (advisory): Only expressions concerned with loop control should appear within a for statement.
+    //-e440                         /* for clause irregularity */
+    //-elib(440)
+    //-e441                         /* for clause irregularity */
+    //-elib(441)
+    //-e443                         /* for clause irregularity */
+    //-elib(443)
+// </c>
+
+/* Rule 67 (adv) **************************************/
+// <!c> Rule 67 (advisory): Numeric variables being used within a for loop for iteration counting should not be modified in the body of the loop.
+    //-e850                         /* for clause irregularity */
+    //-elib(850)
+// </c>
+// </h>
+
+// <h> Rules 68 - 86: Functions
+/* Rule 68 (req) *************************************/
+// <!c> Rule 68 (required): Functions shall always be declared at file scope.
+    //-esym(960,68)
+// </c>
+
+/* Rule 69 (req) ************************************/
+// <!c> Rule 69 (required): Functions with variable number of arguments shall not be used.
+    //-e515                                /* argument count conflict */
+    //-elib(515)
+    //-efile(829, stdarg.h)
+    //-esym(960,69)
+// </c>
+
+/* Rule 70 (req) ***************************************/
+// <!c> Rule 70 (required): Functions shall not call themselves, either directly or indirectly.
+    //-estring(974,*recursive*)     /* do not use recursive functions */
+    //-esym(960,70)
+// </c>
+
+/* Rule 71 (req) ***************************************/
+// <!c> Rule 71 (required): Functions shall always have prototype declarations and the prototype shall be visible at both the function definition and call.
+    //-e718                     /* Symbol undeclared */
+    //-elib(718)
+    //-e746                     /* call not made in the presence of a prototype */
+    //-elib(746)
+    //-e937                     /* old-style function declaration */
+    //-elib(937)
+    //-e957                     /* function defined without a prototype in scope */
+    //-elib(957)
+    //-esym(960,71)
+// </c>
+
+/* Rule 72 (req) ***************************************/
+// <!c> Rule 72 (required): For each function parameter the type given in the declaration and definition shall be identical, and the return types shall also be identical.
+    //-e18                     /* symbol redeclared */
+    //-elib(18)
+    //-e516                    /* argument type conflict */
+    //-elib(516)
+    //-e532                    /* return mode of symbol inconsistent */
+    //-elib(532)
+// </c>
+
+/* Rule 73 (req) **************************************/
+// <!c> Rule 73 (required): Identifiers shall either be given for all the parameters in a function prototype declaration, or for none.
+    //-esym(960,73)
+// </c>
+
+/* Rule 74 (req) ***************************************/
+// <!c> Rule 74 (required): If identifiers are given for any of the parameters, then the identifiers used in the declaration and definition shall be identical.
+    //-esym(960,74)
+// </c>
+
+/* Rule 75 (req) ***************************************/
+// <!c> Rule 75 (required): Every function shall have an explicit return type.
+    //-e745                /* function has no explicit type */
+    //-elib(745)
+    //-e939                /* return type defaults to int */
+    //-elib(939)
+// </c>
+
+/* Rule 76 (req) **************************************/
+// <!c> Rule 76 (required): Functions with no parameters shall be declared with parameter type void.
+    //-e937                     /* old-style function declaration */
+    //-elib(937)
+// </c>
+
+/* Rule 77 (req) **************************************/
+// <!c> Rule 77 (required): The unqualified type of parameters passed to a function shall be compatible with the unqualified expected types defined in the function prototype.
+    //-e747               /* significant prototype coercion */
+    //-elib(747)
+    //-e917               /* prototype coercion */
+    //-elib(917)
+    //-e918               /* prototype coercion of pointers */
+    //-elib(918)
+// </c>
+
+/* Rule 78 (req) ***************************************/
+// <!c> Rule 78 (required): The number of parameters passed to a function shall match the function prototype.
+    //-e118               /* too few arguments for prototype */
+    //-elib(118)
+    //-e119               /* too many arguments for prototype */
+    //-elib(119)
+// </c>
+
+/* Rule 79 (req) ****************************************/
+// <!c> Rule 79 (required): The values returned by void functions shall not be used.
+    //-e82                /* return (exp); illegal with void function */
+    //-elib(82)
+// </c>
+
+/* Rule 80 (req) ***************************************/
+// <!c> Rule 80 (required): void expressions shall not be passed as function parameters.
+    //-estring(64,*void)         /* type mismatch */
+    //-estring(917,void)         /* prototype coercion */
+    //-esym(960,80)              /* not sure if this works */
+// </c>
+
+/* Rule 81 (adv) *****************************************/
+// <!c> Rule 81 (advisory): const qualification should be used on function parameters which are passed by reference, where it is intended that the function will not modify the parameter.
+    //-e818                /* use const on paramaters where appropriate */
+    //-elib(818)
+// </c>
+
+/* Rule 82 (adv) *****************************************/
+// <!c> Rule 82 (advisory): A function should have a single point of exit.
+    //-e904                /* return before function end */
+    //-elib(904)
+// </c>
+
+/* Rule 83 (req) *****************************************/
+// <!c> Rule 83 (required): For functions with non-void return types:…
+    //-e533                /* function should return a value */
+    //-elib(533)
+// </c>
+
+/* Rule 84 (req) ******************************************/
+// <!c> Rule 84 (required): For functions with void return type, return statements shall not have an expression.
+    //-e82                 /* return (exp); illegal with void function */
+    //-elib(82)
+    //-e533                /* function should return a value */
+    //-elib(533)
+// </c>
+
+/* Rule 85 (adv) ****************************************/
+// <!c> Rule 85 (advisory): Function calls with no parameters should have empty parentheses.
+    //-e128                        /* pointer to function not allowed */
+    //-elib(128)
+    //-e506                        /* constant value boolean */
+    //-elib(506)
+    //-e522                        /* operator or function lacks side-effects */
+    //-elib(522)
+// </c>
+
+/* Rule 86 (adv) ******************************************/
+// <!c> Rule 86 (advisory): If a function returns error information, then that error information should be tested.
+    //-e534                /* Ignoring return value of function */
+    //-elib(534)
+// </c>
+// </h>
+
+// <h> Rules 87 - 100: Preprocessing directives
+/* Rule 87 (req) ****************************************/
+// <!c> Rule 87 (required): #include statements in a file shall only be preceded by other preprocessor directives or comments.
+    //-esym(960,87)
+// </c>
+
+/* Rule 88 (req) ****************************************/
+// <!c> Rule 88 (required): Non-standard characters shall not occur in header file names in #include directives.
+    //-esym(960,88)
+// </c>
+
+/* Rule 89 (req) ***************************************/
+// <!c> Rule 89 (required): The #include directive shall be followed by either a <filename>  or "filename" sequence.
+    //-e12
+    //-elib(12)
+// </c>
+
+/* Rule 90 (req) ***************************************/
+// <!c> Rule 90 (required): C macros shall only be used for symbolic constants, function-like macros, type qualifiers, and storage class specifiers.
+    //-esym(960,90)
+// </c>
+
+/* Rule 91 (req) ****************************************/
+// <!c> Rule 91 (required): Macros shall not be #define’d and #undef’d within a block.
+    //-esym(960,91)
+// </c>
+
+/* Rule 92 (adv) *****************************************/
+// <!c> Rule 92 (advisory): #undef should not be used.
+    //-esym(961,92)
+// </c>
+
+/* Rule 93 (adv) ******************************************/
+// <!c> Rule 93 (advisory): A function should be used in preference to a function-like macro.
+    //-esym(961,93)
+// </c>
+
+/* Rule 94 (req) **************************************/
+// <!c> Rule 94 (required): A function-like macro shall not be ‘called’ without all of its arguments.
+    //-e131                      /* syntax error in call of macro */
+    //-elib(131)
+// </c>
+
+/* Rule 95 (req) ****************************************/
+// <!c> Rule 95 (required): Arguments to a function-like macro shall not contain tokens that look like preprocessing directives.
+    //-e436                      /* preprocessor directive in macro */
+    //-elib(436)
+// </c>
+
+/* Rule 96 (req) ***************************************/
+// <!c> Rule 96 (required): In the definition of a function-like macro the whole definition, and each instance of a parameter, shall be enclosed in parentheses.
+    //-e773                      /* expression-like macro not parenthesized */
+    //-elib(773)
+    //-e973                      /* unary operator in macro not parenthesized  */
+    //-elib(973)
+    //-esym(960,96)
+// </c>
+
+/* Rule 97 (adv) ******************************************/
+// <!c> Rule 97 (advisory): Identifiers in preprocessor directives should be defined before use.
+    //-e553                       /* undefined preprocessor variable */
+    //-elib(553)
+// </c>
+
+/* Rule 98 (req) ********************************************/
+// <!c> Rule 98 (required): There shall be at most one occurrence of the # or ## preprocessor operator in a single macro definition.
+    //-esym(960,98)
+// </c>
+
+/* Rule 99 (req) ******************************************/
+// <n> Rule 99 (required): All uses of the #pragma directive shall be documented and explained.
+//  <i> *** NOT CHECKED *** not statically checkable
+
+/* Rule 100 (req) ***************************************/
+// <!c> Rule 100 (required): The defined preprocessor operator shall only be used in one of the two standard forms.
+    //-esym(960,100)
+// </c>
+// </h>
+
+// <h> Rules 101 - 107: Pointers and arrays
+/* Rule 101 (adv) *******************************************/
+// <!c> Rule 101 (advisory): Pointer arithmetic should not be used.
+    //-esym(961,101)
+// </c>
+
+/* Rule 102 (adv) ****************************************/
+// <!c> Rule 102 (advisory): No more than 2 levels of pointer indirection should be used.
+    //-esym(961,102)
+// </c>
+
+/* Rule 103 (req) **************************************/
+// <!c> Rule 103 (required): Relational operators shall not be applied to pointer types except where both operands are of the same type and point to the same array, structure, or union.
+    //-e946          /* relational or subtract operator applied to pointers */
+    //-elib(946)
+// </c>
+
+/* Rule 104 (req) *************************************/
+// <!c> Rule 104 (required): Non-constant pointers to functions shall not be used.
+    //-estring(64,*(*)(*))        /* type mismatch */
+    //-estring(923,* to pointer)  /* cast to pointer */
+    //-esym(960,104)              /* not sure if this works */
+// </c>
+
+/* Rule 105 (req) *************************************/
+// <!c> Rule 105 (required): All the functions pointed to by a single pointer to function shall be identical in the number and type of parameters and the return type.
+    //-estring(64,*(*)(*))        /* type mismatch */
+    //-esym(960,105)              /* not sure if this works */
+// </c>
+
+/* Rule 106 (req) *****************************************/
+// <!c> Rule 106 (required): The address of an object with automatic storage shall not be assigned to an object which may persist after the object has ceased to exist.
+    //-e733               /* assigning address of auto to outer scope symbol */
+    //-elib(733)
+    //-e789               /* assigning address of auto to static */
+    //-elib(789)
+// </c>
+
+/* Rule 107 (req) ****************************************/
+// <!c> Rule 107 (required): The null pointer shall not be de-referenced.
+    //-e413               /* likely use of null pointer */
+    //-elib(413)
+    //-e613               /* possible use of null pointer */
+    //-elib(613)
+    //-e794               /* conceivable use of null pointer */
+    //-elib(794)
+    //-esym(960,108)
+// </c>
+// </h>
+
+// <h> Rules 108 - 113: Structures and unions
+/* Rule 108 (req) *******************************************/
+// <!c> Rule 108 (required): In the specification of a structure or union type, all members of the structure or union shall be fully specified.
+    //-e43                         /* vacuous type for variable */
+    //-elib(43)
+    //-esym(960,108)
+// </c>
+
+/* Rule 109 (req) ******************************************/
+// <n> Rule 109 (required): Overlapping storage shall not be used.
+//  <i> *** NOT CHECKED *** not statically checkable
+
+/* Rule 110 (req) **************************************/
+// <!c> Rule 110 (required): Unions shall not be used to access subparts of larger data types.
+    //-esym(960,110)
+// </c>
+
+/* Rule 111 (req) ****************************************/
+// <!c> Rule 111 (required): Bitfields shall only be defined to be of type unsigned int or signed int.
+    //-e46                        /* bit field type should be int */
+    //-elib(46)
+    //-e846                       /* Signedness of bit field is implementation defined */
+    //-elib(846)
+    //-esym(960,111)
+// </c>
+
+/* Rule 112 (req) *****************************************/
+// <!c> Rule 112 (required): Bitfields of type signed int shall be at least 2 bits long.
+    //-e806               /* small bit field is signed rather than unsigned */
+    //-elib(806)
+    //-esym(960,112)
+// </c>
+
+/* Rule 113 (req) *****************************************/
+// <n> Rule 113 (required): All the members of a structure (or union) shall be named and shall only be accessed via their name.
+//  <i> *** NOT CHECKED *** not currently supported
+// </h>
+
+// <h> Rules 114 - 127: Standard libraries
+/* Rule 114 (req) ******************************************/
+// <!c> Rule 114 (required): Reserved words and standard library function names shall not be redefined or undefined.
+    //-e683             /* complain about #define standard functions */
+    //-elib(683)
+    ///*  Undefining standard library macros is covered by rule 92. */
+    ///*  Defining/redefining reserved/standard identifiers is covered by rule 115. */
+// </c>
+
+/* Rule 115 (req) ******************************************/
+// <!c> Rule 115 (required): Standard library function names shall not be reused.
+    //-esym(960,115)
+// </c>
+
+/* Rule 116 (req) *****************************************/
+// <n> Rule 116 (required): All libraries used in production code shall be written to comply with the provisions of this document, and shall have been subject to appropriate validation.
+//  <i> *** NOT CHECKED *** not statically checkable
+
+/* Rule 117 (req) ********************************************/
+// <n> Rule 117 (required): The validity of values passed to library functions shall be checked.
+//  <i> *** NOT CHECKED *** not statically checkable
+
+/* Rule 118 (req) *****************************************/
+// <!c> Rule 118 (required): Dynamic heap memory allocation shall not be used.
+    //-esym(421, calloc)
+    //-esym(421, malloc)
+    //-esym(421, realloc)
+    //-esym(421, free)
+// </c>
+
+/* Rule 119 (req) ****************************************/
+// <!c> Rule 119 (required): The error indicator errno shall not be used.
+	//-esym(586, errno)
+// </c>
+
+/* Rule 120 (req) ******************************************/
+// <!c> Rule 120 (required): The macro offsetof, in library <stddef.h>, shall not be used.
+	//-esym(586, offsetof)
+// </c>
+
+/* Rule 121 (req) *******************************************/
+// <!c> Rule 121 (required): <locale.h> and the setlocale function shall not be used.
+    //-esym(421, setlocale)
+    //-esym(421, localeconv)
+    //-efile(829, locale.h)
+// </c>
+
+/* Rule 122 (req) *********************************************/
+// <!c> Rule 122 (required): The setjmp macro and the longjmp function shall not be used.
+    //-esym(421, longjmp)
+    //-esym(421, setjmp)
+// </c>
+
+/* Rule 123 (req) *******************************************/
+// <!c> Rule 123 (required): The signal handling facilities of <signal.h> shall not be used.
+    //-esym(421, signal)
+    //-esym(421, raise)
+// </c>
+
+/* Rule 124 (req) ******************************************/
+// <!c> Rule 124 (required): The input/output library <stdio.h> shall not be used in production code.
+    //-efile(829, stdio.h)
+// </c>
+
+/* Rule 125 (req) ******************************************/
+// <!c> Rule 125 (required): The library functions atof, atoi, and atol from library <stdlib.h> shall not be used.
+    //-esym(421, atof)
+    //-esym(421, atoi)
+    //-esym(421, atol)
+// </c>
+
+/* Rule 126 (req) ******************************************/
+// <!c> Rule 126 (required): The library functions abort, exit, getenv, and system from library <stdlib.h> shall not be used.
+    //-esym(421, abort)
+    //-esym(421, exit)
+    //-esym(421, getenv)
+    //-esym(421, system)
+// </c>
+
+/* Rule 127 (req) *******************************************/
+// <!c> Rule 127 (required): The time handling functions of library <time.h> shall not be used.
+    //-esym(421, time)
+    //-esym(421, strftime)
+    //-esym(421, clock)
+    //-esym(421, difftime)
+    //-esym(421, mktime)
+// </c>
+// </h>
+
+// </h>
+
+// <<< end of configuration section >>>

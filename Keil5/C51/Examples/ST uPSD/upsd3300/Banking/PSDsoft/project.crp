@@ -1,0 +1,51 @@
+ ***************************************************************************
+                        PSDsoft Express Version 8.30
+                    Output of PSD Configurations
+ ***************************************************************************
+  PROJECT    : project                        DATE : 09/24/2004
+  DEVICE     : uPSD3334D                      TIME : 22:40:49
+ ***************************************************************************
+
+
+ ==== Bus Interface ==== 
+
+ Data Bus Width                                                    = 8-Bit 
+ Address/Data Mode                                                 = Multiplexed 
+ ALE/AS Signal                                                     = Active High 
+ Control Signals                                                   = /WR,/RD,/PSEN 
+ Main PSD flash memory will reside in this space at power-up       = Program space 
+ Secondary PSD flash memory will reside in this space at power-up  = Program space 
+
+
+ ==== Other Configurations ====  
+
+ Enable Chip-Select Input(/CSI)      = OFF 
+ Enable Standby Voltage Input (PC2)  = OFF 
+ Enable Standby-on Indicator (PC4)   = OFF 
+ Enable RDY/Busy function (PC3)      = OFF 
+ Load Micro-Cell on edge 
+ Security Protection                 = OFF 
+
+
+ ==== JTAG Configurations ====  
+
+ Enable TMS/TCK/TDI/TDO on PC0/PC1/PC5/PC6, respectively = ON 
+ Enables JTAG signal TSTAT on PC3 = OFF 
+ Enables JTAG signal TERR on PC4 = OFF 
+ User Code = 12344329
+
+ ==== Flash Sector Protect ====  
+
+ Flash Sector 0 is unprotected 
+ Flash Sector 1 is unprotected 
+ Flash Sector 2 is unprotected 
+ Flash Sector 3 is unprotected 
+ Flash Sector 4 is unprotected 
+ Flash Sector 5 is unprotected 
+ Flash Sector 6 is unprotected 
+ Flash Sector 7 is unprotected 
+ Flash Boot Sector 0 is unprotected 
+ Flash Boot Sector 1 is unprotected 
+ Flash Boot Sector 2 is unprotected 
+ Flash Boot Sector 3 is unprotected 
+

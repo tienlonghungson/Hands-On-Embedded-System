@@ -1,0 +1,258 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/04/2021  16:17:23  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+E:\LONG\KEIL5\C51\BIN\BL51.EXE .\Objects\bai1.obj TO .\Objects\bai1 PRINT (.\Listings\bai1.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\bai1.obj (BAI1)
+  E:\LONG\KEIL5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\bai1 (BAI1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         _DATA_GROUP_
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0061H     UNIT         ?PR?BLINK_ACCUMULATIVE?BAI1
+            CODE    0861H     0052H     UNIT         ?PR?BLINK_PAIR_CYCLE?BAI1
+            CODE    08B3H     0037H     UNIT         ?PR?BUMPING?BAI1
+            CODE    08EAH     002DH     UNIT         ?PR?BLINK_CYCLE_RIGHT_TO_LEFT?BAI1
+            CODE    0917H     002CH     UNIT         ?PR?BLINK_CYCLE_LEFT_TO_RIGHT?BAI1
+            CODE    0943H     0023H     UNIT         ?PR?MAIN?BAI1
+            CODE    0966H     0014H     UNIT         ?PR?BLINK_ALL?BAI1
+            CODE    097AH     0011H     UNIT         ?PR?_DELAY?BAI1
+            CODE    098BH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\bai1 (BAI1)
+
+
+SEGMENT                                      DATA_GROUP 
+  +--> CALLED SEGMENT                      START    LENGTH
+----------------------------------------------------------
+?C_C51STARTUP                              -----    -----
+  +--> ?PR?MAIN?BAI1
+
+?PR?MAIN?BAI1                              -----    -----
+  +--> ?PR?BLINK_ALL?BAI1
+  +--> ?PR?_DELAY?BAI1
+  +--> ?PR?BLINK_CYCLE_LEFT_TO_RIGHT?BAI1
+  +--> ?PR?BLINK_CYCLE_RIGHT_TO_LEFT?BAI1
+  +--> ?PR?BLINK_PAIR_CYCLE?BAI1
+  +--> ?PR?BLINK_ACCUMULATIVE?BAI1
+  +--> ?PR?BUMPING?BAI1
+
+?PR?BLINK_ALL?BAI1                         -----    -----
+  +--> ?PR?_DELAY?BAI1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/04/2021  16:17:23  PAGE 2
+
+
+
+?PR?BLINK_CYCLE_LEFT_TO_RIGHT?BAI1         -----    -----
+  +--> ?PR?_DELAY?BAI1
+
+?PR?BLINK_CYCLE_RIGHT_TO_LEFT?BAI1         -----    -----
+  +--> ?PR?_DELAY?BAI1
+
+?PR?BLINK_PAIR_CYCLE?BAI1                  -----    -----
+  +--> ?PR?_DELAY?BAI1
+
+?PR?BLINK_ACCUMULATIVE?BAI1                0008H    0002H
+  +--> ?PR?_DELAY?BAI1
+
+?PR?BUMPING?BAI1                           -----    -----
+  +--> ?PR?_DELAY?BAI1
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\bai1 (BAI1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        BAI1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0800H         PUBLIC        blink_accumulative
+  D:00A0H         PUBLIC        P2
+  C:0980H         PUBLIC        _delay
+  C:0861H         PUBLIC        blink_pair_cycle
+  C:0943H         PUBLIC        main
+  C:0966H         PUBLIC        blink_all
+  C:08EAH         PUBLIC        blink_cycle_right_to_left
+  C:0917H         PUBLIC        blink_cycle_left_to_right
+  C:08B3H         PUBLIC        bumping
+  C:097AH         SYMBOL        L?0048
+  C:097CH         SYMBOL        L?0049
+  -------         PROC          L?0047
+  -------         ENDPROC       L?0047
+  C:097AH         SYMBOL        L?0048
+  C:097CH         SYMBOL        L?0049
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        time
+  C:0980H         LINE#         3
+  C:0980H         LINE#         4
+  C:098AH         LINE#         5
+  -------         ENDPROC       _DELAY
+  -------         PROC          BLINK_ALL
+  C:0966H         LINE#         7
+  C:0966H         LINE#         8
+  C:0969H         LINE#         9
+  C:096CH         LINE#         10
+  C:096DH         LINE#         11
+  C:0970H         LINE#         12
+  C:0973H         LINE#         13
+  -------         ENDPROC       BLINK_ALL
+  -------         PROC          BLINK_CYCLE_LEFT_TO_RIGHT
+  -------         DO            
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/04/2021  16:17:23  PAGE 3
+
+
+  D:0005H         SYMBOL        i
+  -------         ENDDO         
+  C:0917H         LINE#         16
+  C:0917H         LINE#         18
+  C:091AH         LINE#         19
+  C:0927H         LINE#         20
+  C:092DH         LINE#         21
+  C:0939H         LINE#         22
+  C:093CH         LINE#         23
+  C:093FH         LINE#         24
+  C:0942H         LINE#         25
+  -------         ENDPROC       BLINK_CYCLE_LEFT_TO_RIGHT
+  -------         PROC          BLINK_CYCLE_RIGHT_TO_LEFT
+  -------         DO            
+  D:0002H         SYMBOL        i
+  -------         ENDDO         
+  C:08EAH         LINE#         27
+  C:08EAH         LINE#         29
+  C:08EDH         LINE#         30
+  C:08F0H         LINE#         31
+  C:08F6H         LINE#         32
+  C:0905H         LINE#         33
+  C:0908H         LINE#         34
+  C:0913H         LINE#         35
+  C:0916H         LINE#         36
+  -------         ENDPROC       BLINK_CYCLE_RIGHT_TO_LEFT
+  -------         PROC          BLINK_PAIR_CYCLE
+  -------         DO            
+  D:0002H         SYMBOL        i
+  -------         ENDDO         
+  C:0861H         LINE#         38
+  C:0861H         LINE#         40
+  C:0864H         LINE#         41
+  C:086CH         LINE#         42
+  C:086FH         LINE#         43
+  C:0875H         LINE#         44
+  C:0877H         LINE#         45
+  C:087AH         LINE#         46
+  C:0885H         LINE#         47
+  C:0888H         LINE#         48
+  C:088BH         LINE#         49
+  C:0891H         LINE#         50
+  C:0894H         LINE#         51
+  C:0897H         LINE#         52
+  C:089DH         LINE#         53
+  C:08A1H         LINE#         54
+  C:08A4H         LINE#         55
+  C:08AFH         LINE#         56
+  C:08B2H         LINE#         57
+  -------         ENDPROC       BLINK_PAIR_CYCLE
+  -------         PROC          BLINK_ACCUMULATIVE
+  -------         DO            
+  D:0001H         SYMBOL        sta
+  D:0005H         SYMBOL        tmp
+  D:0002H         SYMBOL        i
+  D:0008H         SYMBOL        j
+  D:0082H         SYMBOL        k
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/04/2021  16:17:23  PAGE 4
+
+
+  -------         ENDDO         
+  C:0800H         LINE#         59
+  C:0800H         LINE#         60
+  C:0800H         LINE#         61
+  C:0802H         LINE#         63
+  C:0805H         LINE#         64
+  C:0808H         LINE#         65
+  C:0812H         LINE#         66
+  C:0814H         LINE#         67
+  C:0822H         LINE#         68
+  C:0826H         LINE#         69
+  C:0832H         LINE#         70
+  C:0834H         LINE#         71
+  C:0837H         LINE#         72
+  C:083AH         LINE#         73
+  C:0845H         LINE#         74
+  C:0847H         LINE#         75
+  C:084AH         LINE#         76
+  C:084DH         LINE#         77
+  C:0850H         LINE#         78
+  C:0852H         LINE#         79
+  C:0855H         LINE#         80
+  C:0860H         LINE#         81
+  -------         ENDPROC       BLINK_ACCUMULATIVE
+  -------         PROC          BUMPING
+  -------         DO            
+  D:0002H         SYMBOL        i
+  D:0005H         SYMBOL        left
+  D:0003H         SYMBOL        right
+  -------         ENDDO         
+  C:08B3H         LINE#         83
+  C:08B3H         LINE#         85
+  C:08B5H         LINE#         86
+  C:08B7H         LINE#         87
+  C:08BAH         LINE#         88
+  C:08C7H         LINE#         89
+  C:08CBH         LINE#         90
+  C:08CFH         LINE#         91
+  C:08D9H         LINE#         92
+  C:08DDH         LINE#         93
+  C:08DEH         LINE#         94
+  C:08DEH         LINE#         95
+  C:08E0H         LINE#         96
+  C:08E3H         LINE#         97
+  C:08E6H         LINE#         98
+  C:08E9H         LINE#         99
+  -------         ENDPROC       BUMPING
+  -------         PROC          MAIN
+  C:0943H         LINE#         102
+  C:0943H         LINE#         103
+  C:0943H         LINE#         104
+  C:0946H         LINE#         105
+  C:0949H         LINE#         106
+  C:094CH         LINE#         107
+  C:094FH         LINE#         108
+  C:0952H         LINE#         109
+  C:0955H         LINE#         110
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/04/2021  16:17:23  PAGE 5
+
+
+  C:0958H         LINE#         111
+  C:095BH         LINE#         112
+  C:095EH         LINE#         113
+  C:0961H         LINE#         114
+  C:0964H         LINE#         115
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        BAI1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 018BH BYTE (19%) *
+******************************************************************************
+
+Program Size: data=11.0 xdata=0 code=410
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

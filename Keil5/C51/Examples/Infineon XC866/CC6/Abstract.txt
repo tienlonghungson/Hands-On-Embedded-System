@@ -1,0 +1,11 @@
+The CC6 project uses the Timers and the CAPCOM6 Unit 
+of the XC866 device to modulate the LEDs on P3.0 - P3.7.
+
+The CC6 program is available in different targets:
+  Simulator:           runs in software Simulator. The Logic Analyzer
+                       shows some of the Port 3 output pins. The
+                       Performance Analyzer is configured to show
+                       execution timing of the interrupt service routines.
+
+  Target via ULINK:    is configured for debugging with Keil ULINK
+  

@@ -1,0 +1,113 @@
+C51 COMPILER V9.60.0.0   7SEGX4                                                            11/29/2021 20:34:02 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE 7SEGX4
+OBJECT MODULE PLACED IN .\Objects\7segx4.obj
+COMPILER INVOKED BY: E:\Long\Keil5\C51\BIN\C51.EXE 7segx4.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\7segx4.lst) TABS(2) OBJECT(.\Objects\7segx4.obj)
+
+line level    source
+
+   1          #include <at89x51.h>
+   2          #define TH0_50ms 0x3C 
+   3          #define TL0_50ms 0xB0
+   4          //Khai bao bien toan cuc
+   5          int count=0;
+   6          
+   7          void display_number(int iNum);
+   8          
+   9          //Chuong trinh tao do tre
+  10          void delay(int interval)
+  11          {
+  12   1        int i,j;
+  13   1        for(i=0;i<100;i++)
+  14   1        {
+  15   2          for(j=0;j<interval;j++);
+  16   2        }
+  17   1      }
+  18          //7-seg only
+  19          void output_7seg(unsigned char value)
+  20          {
+  21   1        unsigned char const mask[10]={0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};
+  22   1        if(value < 10){
+  23   2          P0=mask[value];
+  24   2        }    
+  25   1      }
+  26          //7-seg with dot
+  27          void output_7seg_dot(unsigned char value)
+  28          {
+  29   1        unsigned char const mask[10]={0x40, 0x79, 0x24, 0x30, 0x19, 0x12, 0x02, 0x78, 0x00, 0x10};
+  30   1        if(value < 10){
+  31   2          P0=mask[value];
+  32   2        }    
+  33   1      }
+  34          //Timer 0 interrupt handler
+  35          void TMR0_Process() interrupt TF0_VECTOR{
+  36   1        TF0  = 0;       //clear flag
+  37   1        TR0  = 0;       //stop timer
+  38   1        TH0  = TH0_50ms;  //reset T0 value
+  39   1        TL0  = TL0_50ms;  //
+  40   1        
+  41   1        TR0  = 1;       //restart timer
+  42   1      }
+  43          
+  44          //EXT 0 interrupt handler
+  45          void EXT0_Process() interrupt IE0_VECTOR{
+  46   1        EA=0; //Cam ngat
+  47   1        count++;  
+  48   1        display_number(count);  
+  49   1        EA=1; //Cho phep ngat
+  50   1      }
+  51          //display 4 digits
+  52          void display_number(int iNum){
+  53   1        int i;
+  54   1        unsigned char pos=0x08;
+C51 COMPILER V9.60.0.0   7SEGX4                                                            11/29/2021 20:34:02 PAGE 2   
+
+  55   1        unsigned char temp;
+  56   1        for(i=0; i<4; i++){
+  57   2          temp = iNum % 10;
+  58   2          iNum = iNum / 10;
+  59   2          P2 = pos;
+  60   2          output_7seg(temp);
+  61   2          delay(5);
+  62   2          pos = pos>>1;
+  63   2        }
+  64   1      }
+  65          //system initialization
+  66          void init(){
+  67   1        P3_2 = 1;     //Thiet lap chan P3_2 lam chan vao
+  68   1        //ext int 0
+  69   1        EX0  = 1;     //Cho phep ngat ngoai 0
+  70   1        IT0  = 1;   //Ngat theo suon
+  71   1        //timer 0
+  72   1        TMOD = TMOD & 0xF0; 
+  73   1        TMOD = TMOD | 0x01;
+  74   1        TH0  = 0x3C;    //Khoi tao T0
+  75   1        TL0  = 0xB0;    //Tuong duong 15536
+  76   1        TF0  = 0;       //Xoa co tran timer 0
+  77   1        TR0  = 1;       //Khoi dong timer 0
+  78   1        ET0  = 1;     //cho phep ngat
+  79   1        EA   = 1;     //global interrupt enable
+  80   1      }
+  81          
+  82          void main(){
+  83   1        init();
+  84   1        while(1){
+  85   2            
+  86   2        } 
+  87   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    320    ----
+   CONSTANT SIZE    =     20    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2      28
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

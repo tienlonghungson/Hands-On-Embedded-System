@@ -1,0 +1,155 @@
+***********************************************************************
+                         PSDsoft Express Version 8.30
+                         Summary of Design Assistant
+***********************************************************************
+PROJECT    : DK3200_1                      DATE : 09/28/2004
+DEVICE     : uPSD3234A                     TIME : 16:35:05
+MCU/DSP    : uPSD32XX    
+***********************************************************************
+
+Initial setting for Program and Data Space:
+===========================================
+
+  Main PSD flash memory will reside in this space at power-up:      Data Space Only
+  Secondary PSD flash memory will reside in this space at power-up: Program Space Only
+
+Pin Definitions:
+================
+
+Pin          Signal                    Pin
+Name         Name                      Type
+------------ ------------------------- ------------
+pa7          LCD_d7                    Peripheral I/O mode
+pa6          LCD_d6                    Peripheral I/O mode
+pa5          LCD_d5                    Peripheral I/O mode
+pa4          LCD_d4                    Peripheral I/O mode
+pa3          LCD_d3                    Peripheral I/O mode
+pa2          LCD_d2                    Peripheral I/O mode
+pa1          LCD_d1                    Peripheral I/O mode
+pa0          LCD_d0                    Peripheral I/O mode
+pb7          LCD_e                     External chip select - Active Hi
+pb6          LCD_rw                    Combinatorial
+pb5          LCD_rs                    Combinatorial
+pb4          term_count                Combinatorial
+pb3          a15_x                     Combinatorial
+pb2          a14_x                     Combinatorial
+pb1          a13_x                     Combinatorial
+pb0          a12_x                     Combinatorial
+tdo          tdo                       Dedicated JTAG - TDO
+tdi          tdi                       Dedicated JTAG - TDI
+pc4          _terr                     Dedicated JTAG - /TERR
+pc3          tstat                     Dedicated JTAG - TSTAT
+pc2          vstby                     SRAM standby voltage input
+tck          tck                       Dedicated JTAG - TCK
+tms          tms                       Dedicated JTAG - TMS
+ale          ale                       ALE output  
+p4.7         PWM4                      GP I/O mode 
+p4.3         PWM0                      PWM0 Output 
+p3.1         USART1_Txd                UART1 TxD   
+p3.0         USART1_Rxd                UART1 RxD   
+p1.4         ADC_Ch0                   ADC channel0 input
+a11          a11                       Address line
+a10          a10                       Address line
+a9           a9                        Address line
+a8           a8                        Address line
+ad7          a7                        Data/Address line
+ad6          a6                        Data/Address line
+ad5          a5                        Data/Address line
+ad4          a4                        Data/Address line
+ad3          a3                        Data/Address line
+ad2          a2                        Data/Address line
+ad1          a1                        Data/Address line
+ad0          a0                        Data/Address line
+_Reset_In    Reset_In                  Reset In    
+Vref         VREF                      VREF input  
+_rd          _wr                       Bus control output
+_psen        _psen                     Bus control output
+_wr          _rd                       Bus control output
+USB-         USB_minus                 USB- bus    
+USB+         USB_plus                  USB+ bus    
+Xtal1        Xtal1                     Xtal1       
+Xtal2        Xtal2                     Xtal2       
+
+User defined nodes:
+===================
+
+Node         Node
+Name         Type
+------------ ------------
+down_count0  D-type register
+down_count1  D-type register
+down_count2  D-type register
+down_count3  D-type register
+init_count0  D-type register
+init_count1  D-type register
+init_count2  D-type register
+init_count3  D-type register
+
+Page Register settings:
+=======================
+
+pgr0 is used for paging
+pgr1 is used for paging
+pgr2 is used for paging
+pgr3 is not used
+pgr4 is not used
+pgr5 is not used
+pgr6 is not used
+pgr7 is not used
+
+Equations:
+==========
+
+rs0 = ((address >= ^h2000) & (address <= ^h3FFF));
+csiop = ((address >= ^h0200) & (address <= ^h02FF));
+fs0 = ((page == 0) & (address >= ^h8000) & (address <= ^hFFFF));
+fs1 = ((page == 1) & (address >= ^h8000) & (address <= ^hFFFF));
+fs2 = ((page == 2) & (address >= ^h8000) & (address <= ^hFFFF));
+fs3 = ((page == 3) & (address >= ^h8000) & (address <= ^hFFFF));
+fs4 = ((page == 4) & (address >= ^h8000) & (address <= ^hFFFF));
+fs5 = ((page == 5) & (address >= ^h8000) & (address <= ^hFFFF));
+fs6 = ((page == 6) & (address >= ^h8000) & (address <= ^hFFFF));
+fs7 = ((page == 7) & (address >= ^h8000) & (address <= ^hFFFF));
+csboot0 = ((address >= ^h0000) & (address <= ^h1FFF));
+csboot1 = ((address >= ^h2000) & (address <= ^h3FFF));
+csboot2 = ((address >= ^h4000) & (address <= ^h5FFF));
+csboot3 = ((address >= ^h6000) & (address <= ^h7FFF));
+psel0 = ((address >= ^h0300) & (address <= ^h03FF) & (_psen));
+LCD_e = ((address >= ^h0300) & (address <= ^h03FF) & (!_rd))
+     # ((address >= ^h0300) & (address <= ^h03FF) & (!_wr));
+LCD_rw = a0;
+LCD_rw.oe = Vcc;
+LCD_rs = a1;
+LCD_rs.oe = Vcc;
+a15_x = a15;
+a15_x.oe = Vcc;
+a14_x = a14;
+a14_x.oe = Vcc;
+a13_x = a13;
+a13_x.oe = Vcc;
+a12_x = a12;
+a12_x.oe = Vcc;
+down_count0.ck = ale;
+down_count0.re = !_reset;
+down_count0.pr = Gnd;
+down_count1.ck = ale;
+down_count1.re = !_reset;
+down_count1.pr = Gnd;
+down_count2.ck = ale;
+down_count2.re = !_reset;
+down_count2.pr = Gnd;
+down_count3.ck = ale;
+down_count3.re = !_reset;
+down_count3.pr = Gnd;
+init_count0.ck = Gnd;
+init_count0.re = !_reset;
+init_count0.pr = Gnd ;
+init_count1.ck = Gnd;
+init_count1.re = !_reset;
+init_count1.pr = Gnd;
+init_count2.ck = Gnd;
+init_count2.re = !_reset;
+init_count2.pr = Gnd;
+init_count3.ck = Gnd;
+init_count3.re = !_reset;
+init_count3.pr = Gnd;
