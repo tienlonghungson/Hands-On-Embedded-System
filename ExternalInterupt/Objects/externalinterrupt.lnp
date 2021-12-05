@@ -1,3 +1,0 @@
-".\Objects\ExtInterrupt.obj" 
-TO ".\Objects\externalinterrupt" 
-PRINT(".\Listings\externalinterrupt.m51")

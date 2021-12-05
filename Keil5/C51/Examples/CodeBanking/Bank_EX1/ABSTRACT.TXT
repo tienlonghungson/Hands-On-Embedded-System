@@ -1,2 +1,0 @@
-This program is a bank switching example that shows how you can
-run (simulate) code executing in several code banks.

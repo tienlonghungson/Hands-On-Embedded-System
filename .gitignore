@@ -1,0 +1,11 @@
+Keil5
+
+**/Objects
+**/Listings
+
+**/*.workspace
+**/*.pdsbak
+**/*.uvopt
+**/*.uvproj
+**/*.thanh
+**/*.exe

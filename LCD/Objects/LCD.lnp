@@ -1,3 +1,0 @@
-".\Objects\lcd.obj" 
-TO ".\Objects\LCD" 
-PRINT(".\Listings\LCD.m51")

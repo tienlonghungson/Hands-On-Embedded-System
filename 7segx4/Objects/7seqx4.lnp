@@ -1,3 +1,0 @@
-".\Objects\7segx4.obj" 
-TO ".\Objects\7seqx4" 
-PRINT(".\Listings\7seqx4.m51")
