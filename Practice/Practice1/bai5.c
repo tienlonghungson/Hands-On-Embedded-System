@@ -71,7 +71,7 @@ void EX0_Handler() interrupt IE0_VECTOR {
 		//timer 0
 		TMOD = TMOD & 0xF0;	
 		TMOD = TMOD | 0x01;
-		TH0  = TH0_50ms;		//Khoi tao T0
+		TH0  = TH0_50ms;		// Khoi tao T0
 		TL0  = TL0_50ms;		//Tuong duong 55536
 		TF0  = 0; 			//Xoa co tran timer 0
 		TR0  = 1; 			//Khoi dong timer 0

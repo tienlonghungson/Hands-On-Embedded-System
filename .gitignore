@@ -9,3 +9,6 @@ Keil5
 **/*.uvproj
 **/*.thanh
 **/*.exe
+**/.idea
+**/out
+**/.iml
