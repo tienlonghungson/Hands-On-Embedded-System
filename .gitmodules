@@ -1,3 +1,6 @@
 [submodule "Practice/Practice2"]
 	path = Practice/Practice2
 	url = https://github.com/tienlonghungson/piano8051
+[submodule "Practice/Practice3/Project/TH3"]
+	path = Practice/Practice3/Project/TH3
+	url = https://github.com/tienlonghungson/Hands-on-CPU-ARM-Cortex-M3-and-STM32F103/tree/main/Project1
