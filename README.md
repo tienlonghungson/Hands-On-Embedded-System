@@ -5,7 +5,7 @@
 
 This repo stores source codes when I learned Embedded System at HUST.
 
-Codes for practice classes lie in folder practice, with 5 subdirectory corresponding the 5 practice classes.
+Codes for practice classes lie in folder practice, with 3 subdirectory corresponding the 3 practice classes.
 
 ## Requirement :
 - Proteus
