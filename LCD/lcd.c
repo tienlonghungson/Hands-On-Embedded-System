@@ -1,10 +1,10 @@
 #include <at89x51.h>
 #include "string.h"
 //Dinh nghia mot so chan de dieu khien den LCD
-#define LCD_DATA P0
-sbit EN=P2^7;
-sbit RS=P2^6;
-sbit RW=P2^5;	   
+#define LCD_DATA P2
+sbit EN=P0^2;
+sbit RS=P0^0;
+sbit RW=P0^1;	   
 //Khai bao prototype cho cac ham
 void Init_System();	
 void Delay_ms(int interval);  
