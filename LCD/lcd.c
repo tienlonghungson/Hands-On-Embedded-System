@@ -17,7 +17,7 @@ void main()
 {
 	Init_System();
 	LCD_init();
-	LCD_Write_String("Xin chao KSTN 62");
+	LCD_Write_String("Xin chao KSTN 63");
 	LCD_Send_Command(0xC0); //Chuyen con tro xuong dong thu 2
 	LCD_Write_String("****************");	
 	while(1){		
