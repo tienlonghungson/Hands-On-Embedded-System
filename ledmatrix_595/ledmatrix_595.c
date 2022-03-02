@@ -51,7 +51,7 @@ void Hien_duong_ke()
 	Delay_ms(1);
 }
 void Hien_ABCD(){
-	int i,j,k,l;
+	int i,j,k;
 	unsigned char hang;
 	unsigned char temp;			
 	MR=0; //Xoa trang cac thanh ghi
@@ -61,12 +61,12 @@ void Hien_ABCD(){
 	//8 rows
 	for(i=0; i<8; i++)
 	{			
-	    OE=1; //High-Z output
+	  OE=1; //High-Z output
 		for(j=0;j<4;j++)
 		{
 			for(k=0;k<8;k++)
 			{
-				temp=chu_cai[j][i]>>k;
+				temp=chu_cai[3-j][i]>>k;
 				if(temp&0x01){
 					DS1=1;
 				}else{
@@ -89,10 +89,11 @@ void main(){
 	int i;
 	while(1){
 		P0 = 0xff;
-		Hien_duong_ke();
+		Delay_ms(100);
 		P0 = 0xff;
 		for (i=0;i<10;++i){
 			Hien_ABCD();
 		}
+		Hien_duong_ke();
 	}
 }
