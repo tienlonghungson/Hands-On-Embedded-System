@@ -26,7 +26,8 @@ void Delay_ms(int interval)
 		for(j=0;j<interval;j++);
 	}
 }
-//Display with running
+// Display with running
+// method = 0: run left->right, method = 1: run right->left
 void Shift_Effect(unsigned char method){
 	int i=0;
 	int j=0;
@@ -72,6 +73,6 @@ void main(){
 	init_system();
 		
 	while(1){
-		Shift_Effect(1);		
+		Shift_Effect(0);		
 	}
 }				  
