@@ -10,5 +10,5 @@
 
 # Note
 - This version is hard coded
-- (Here)[https://github.com/tienlonghungson/Hands-On-Embedded-System/tree/main/ExtInt7seg] is a standard version.
+- [Here](https://github.com/tienlonghungson/Hands-On-Embedded-System/tree/main/ExtInt7seg) is a standard version.
 ![extled7seg](extled7seg.png)
