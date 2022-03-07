@@ -9,6 +9,6 @@
 - One button is used to increase the displayed number, while the other one is used to decrease.
 
 # Notes:
-- This the standard version of this [code](https://github.com/tienlonghungson/Hands-On-Embedded-System/tree/main/ExternalInterupt)
+- This is the standard version of this [code](https://github.com/tienlonghungson/Hands-On-Embedded-System/tree/main/ExternalInterupt)
 
 ![ExtInt7seg](ExtInt7seg.png)
