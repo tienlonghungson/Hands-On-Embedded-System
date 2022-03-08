@@ -4,4 +4,4 @@
 </div>
 
 LCD basic commands.
-![LCDKeypad](LCDKeypad.png)
+![LCD](LCD.png)
