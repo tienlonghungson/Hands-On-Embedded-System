@@ -1,4 +1,4 @@
-<div aligh="center"> 
+<div align="center"> 
 
 # Practice 1: Kitchen Timer, Led Blinking
   
