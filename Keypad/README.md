@@ -1,6 +1,6 @@
 <div align="center"> 
 
-# LCD and Keypad
+# Keypad
 </div>
 
 ![Keypad](Keypad.png)
