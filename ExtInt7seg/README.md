@@ -1,4 +1,4 @@
-<div aligh="center"> 
+<div align="center"> 
 
 # Handle external interupt to display number on 7-segments led
 </div>
