@@ -1,4 +1,4 @@
-<div aligh="center"> 
+<div align="center"> 
 
 # Led Matrix 595
 </div>
