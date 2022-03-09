@@ -1,4 +1,4 @@
-<div aligh="center"> 
+<div align="center"> 
 
 # LIGHT SHOW 8 LEDS
 </div>
